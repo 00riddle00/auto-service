@@ -14,14 +14,7 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
-from django.conf import settings
-from django.conf.urls.static import static
-from django.contrib import admin
-from django.urls import include, path
-from django.views.generic import RedirectView
+from django.urls import path
+from project_management import views
 
-urlpatterns = [
-    path("car_service/", include("project_management.urls")),
-    path("admin/", admin.site.urls),
-    path("", RedirectView.as_view(url="car_service/", permanent=True)),
-] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+urlpatterns = [path("", views.index, name="index")]
