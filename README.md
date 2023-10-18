@@ -1,6 +1,6 @@
 ## Auto service project
 
 ### Admin (superuser) credentials:
-* Username: admin
+* Username: `admin`
 * E-mail: tomasgiedraitis@gmail.com
-* Password: testtest
+* Password: `testtest`

@@ -18,7 +18,7 @@ class Car(models.Model):
 
     def __str__(self):
         return (
-            f"{self.licence_plate_no} - {self.vin_code} ("
+            f"{self.license_plate_no} - {self.vin_code} ("
             f"{self.car_model}, {self.client_name})"
         )
 
