@@ -3,11 +3,18 @@ from django.db import models
 
 class Car(models.Model):
     license_plate_no = models.CharField(
-        verbose_name="License plate number", max_length=16
+        verbose_name="License plate number",
+        max_length=16,
+        help_text="Enter car's licence plate number (it need not be unique, "
+        "since cars can be from different countries)",
     )
     vin_code = models.CharField(
-        verbose_name="VIN code", max_length=32, unique=True
+        verbose_name="VIN code",
+        max_length=32,
+        unique=True,
+        help_text="Enter car's vin code (it must be unique)",
     )
+
     car_model = models.ForeignKey(
         to="CarModel",
         verbose_name="Model",
@@ -69,6 +76,7 @@ class Order(models.Model):
     class Meta:
         verbose_name = "Order"
         verbose_name_plural = "Orders"
+        ordering = ["-id"]
 
 
 class OrderLine(models.Model):
