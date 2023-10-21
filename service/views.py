@@ -1,4 +1,5 @@
 from django.shortcuts import get_object_or_404, render
+from django.views import generic
 
 from .models import Car, Order, Service
 
@@ -25,3 +26,8 @@ def cars(request):
 def car(request, car_id):
     car_ = get_object_or_404(Car, pk=car_id)
     return render(request, "car.html", {"car": car_})
+
+
+class ServiceListView(generic.ListView):
+    model = Service
+    template_name = "service_list.html"

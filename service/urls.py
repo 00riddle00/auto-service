@@ -21,4 +21,5 @@ urlpatterns = [
     path("", views.index, name="index"),
     path("cars/", views.cars, name="cars"),
     path("cars/<int:car_id>", views.car, name="car"),
+    path("services", views.ServiceListView.as_view(), name="services"),
 ]
