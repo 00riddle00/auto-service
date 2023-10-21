@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import get_object_or_404, render
 
 from .models import Car, Order, Service
 
@@ -15,3 +15,13 @@ def index(request):
     }
 
     return render(request, "index.html", context=context)
+
+
+def cars(request):
+    cars_ = Car.objects.all()
+    return render(request, "cars.html", {"cars": cars_})
+
+
+def car(request, car_id):
+    car_ = get_object_or_404(Car, pk=car_id)
+    return render(request, "car.html", {"car": car_})
