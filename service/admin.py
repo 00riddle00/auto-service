@@ -4,7 +4,13 @@ from .models import Car, CarModel, Order, OrderLine, Service
 
 
 class CarAdmin(admin.ModelAdmin):
-    list_display = ["license_plate_no", "vin_code", "car_model", "client_name"]
+    list_display = [
+        "license_plate_no",
+        "vin_code",
+        "car_model",
+        "client_name",
+        "description",
+    ]
     list_filter = ["client_name", "car_model__make", "car_model__model"]
     search_fields = ["license_plate_no", "vin_code"]
 
