@@ -16,7 +16,7 @@ class CarAdmin(admin.ModelAdmin):
 
 
 class ServiceAdmin(admin.ModelAdmin):
-    list_display = ["name", "price"]
+    list_display = ["name", "price", "description"]
 
 
 class OrderLineInline(admin.TabularInline):
