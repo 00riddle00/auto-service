@@ -3,7 +3,11 @@
 {% block title %}Car Details{% endblock %}
 
 {% block content %}
-<h2>{{ car.car_model }}</h2>
+<h2>{{ car.car_model.make }} {{ car.car_model.model }}</h2>
 <hr/>
-<p>{{ car.description }}</p>
+<p><strong>Client:</strong> {{ car.client_name }}</p>
+<p><strong>License plate number:</strong> {{ car.license_plate_no }}</p>
+<p><strong>VIN code:</strong> {{ car.vin_code }}</p>
+<p><strong>Year:</strong> {{ car.car_model.year }}</p>
+<p><strong>Engine type:</strong> {{ car.car_model.engine_type }}</p>
 {% endblock %}
