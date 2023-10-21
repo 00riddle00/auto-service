@@ -15,6 +15,16 @@ class CarAdmin(admin.ModelAdmin):
     search_fields = ["license_plate_no", "vin_code"]
 
 
+class CarModelAdmin(admin.ModelAdmin):
+    list_display = [
+        "make",
+        "model",
+        "year",
+        "engine_type",
+        "fuel_type",
+        "description",
+    ]
+
 class ServiceAdmin(admin.ModelAdmin):
     list_display = ["name", "price", "description"]
 
@@ -33,7 +43,7 @@ class OrderAdmin(admin.ModelAdmin):
 
 
 admin.site.register(Car, CarAdmin)
-admin.site.register(CarModel)
+admin.site.register(CarModel, CarModelAdmin)
 admin.site.register(Service, ServiceAdmin)
 admin.site.register(Order, OrderAdmin)
 admin.site.register(OrderLine)

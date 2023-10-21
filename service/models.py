@@ -40,6 +40,8 @@ class CarModel(models.Model):
     model = models.CharField(verbose_name="Model", max_length=64)
     year = models.IntegerField(verbose_name="Year")
     engine_type = models.CharField("Engine type", max_length=64)
+    fuel_type = models.CharField("Fuel type", max_length=64)
+    description = models.TextField("Description", max_length=2048, default="")
 
     def __str__(self):
         return f"{self.make} {self.model}, {self.year}, {self.engine_type}"
