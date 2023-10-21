@@ -1,13 +1,12 @@
 {% extends "base.html" %}
 
 {% block "content" %}
-    <h1>Auto service</h1>
-    <p>Welcome to the Car Heaven!</p>
-    <p>Currently, we have:</p>
-    <ul>
-        <li><strong>Cars:</strong> {{ num_cars }}</li>
-        <li><strong>Models:</strong> {{ num_models }}</li>
-        <li><strong>Services available:</strong> {{ num_services }}</li>
-        <li><strong>Orders:</strong> {{ num_orders }}</li>
-    </ul>
+<h1>Auto service</h1>
+<p>Welcome to the Car Heaven!</p>
+<p>Currently, we have:</p>
+<ul>
+    <li><strong>Cars:</strong> {{ num_cars }}</li>
+    <li><strong>Services available:</strong> {{ num_services }}</li>
+    <li><strong>Orders completed:</strong> {{ num_orders }}</li>
+</ul>
 {% endblock %}
