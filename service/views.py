@@ -25,7 +25,7 @@ def cars(request):
 
 def car(request, car_id):
     car_ = get_object_or_404(Car, pk=car_id)
-    return render(request, "car.html", {"car": car_})
+    return render(request, "car_details.html", {"car": car_})
 
 
 class ServiceListView(generic.ListView):
