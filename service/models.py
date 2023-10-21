@@ -70,6 +70,22 @@ class Order(models.Model):
     )
     total_price = models.FloatField(verbose_name="Total price")
 
+    ORDER_STATUS = (
+        ("N", "New"),
+        ("D", "Declined"),
+        ("A", "Accepted"),
+        ("P", "In Progress"),
+        ("C", "Completed"),
+    )
+
+    status = models.CharField(
+        verbose_name="Status",
+        max_length=1,
+        choices=ORDER_STATUS,
+        default="N",
+        blank=True,
+    )
+
     def __str__(self):
         return f"{self.date} ({self.car})"
 
