@@ -13,12 +13,6 @@ class ServiceAdmin(admin.ModelAdmin):
     list_display = ["name", "price"]
 
 
-class OrderAdmin(admin.ModelAdmin):
-    list_display = ["date", "car", "total_price"]
-    list_editable = "total_price"
-    inlines = ["OrderLineInline"]
-
-
 class OrderLineInline(admin.TabularInline):
     model = OrderLine
     readonly_fields = ["id"]
@@ -26,8 +20,14 @@ class OrderLineInline(admin.TabularInline):
     extra = 0
 
 
-admin.site.register(Car)
+class OrderAdmin(admin.ModelAdmin):
+    list_display = ["date", "car", "total_price"]
+    list_editable = ["total_price"]
+    inlines = [OrderLineInline]
+
+
+admin.site.register(Car, CarAdmin)
 admin.site.register(CarModel)
-admin.site.register(Service)
-admin.site.register(Order)
+admin.site.register(Service, ServiceAdmin)
+admin.site.register(Order, OrderAdmin)
 admin.site.register(OrderLine)
