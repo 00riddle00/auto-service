@@ -14,7 +14,7 @@ class ServiceAdmin(admin.ModelAdmin):
 
 
 class OrderAdmin(admin.ModelAdmin):
-    list_display = ("date", "car", "total_price")
+    list_display = ["date", "car", "total_price"]
     list_editable = "total_price"
     inlines = ["OrderLineInline"]
 
