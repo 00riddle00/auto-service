@@ -18,6 +18,10 @@ def index(request):
     return render(request, "index.html", context=context)
 
 
+def about(request):
+    return render(request, "about.html")
+
+
 def cars(request):
     cars_ = Car.objects.all()
     return render(request, "cars.html", {"cars": cars_})
