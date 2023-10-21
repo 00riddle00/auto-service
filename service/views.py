@@ -30,4 +30,9 @@ def car(request, car_id):
 
 class ServiceListView(generic.ListView):
     model = Service
-    template_name = "service_list.html"
+    template_name = "services.html"
+
+
+class ServiceDetailView(generic.DetailView):
+    model = Service
+    template_name = "service_details.html"

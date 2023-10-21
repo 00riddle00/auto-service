@@ -22,4 +22,9 @@ urlpatterns = [
     path("cars/", views.cars, name="cars"),
     path("cars/<int:car_id>", views.car, name="car-details"),
     path("services", views.ServiceListView.as_view(), name="services"),
+    path(
+        "services/<int:pk>",
+        views.ServiceDetailView.as_view(),
+        name="service-details",
+    ),
 ]
