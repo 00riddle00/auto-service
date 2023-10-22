@@ -25,8 +25,10 @@ class CarModelAdmin(admin.ModelAdmin):
         "description",
     ]
 
+
 class ServiceAdmin(admin.ModelAdmin):
     list_display = ["name", "price", "description"]
+    list_editable = ["description"]
 
 
 class OrderLineInline(admin.TabularInline):
