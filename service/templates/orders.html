@@ -14,21 +14,25 @@
 {% else %}
     <p>There are no orders at the moment.</p>
 {% endif %}
-<div class="pagination">
-    <span class="step-links">
+<div class="container">
+    <ul class="pagination pagination-sm justify-content-center">
         {% if page_obj.has_previous %}
-            <a href="?page=1">&laquo; first</a>
-            <a href="?page={{ page_obj.previous_page_number }}">back</a>
+            <li class="page-item">
+                <a href="?page=1" class="page-link">First</a>
+            </li>
+            <li class="page-item">
+                <a href="?page={{ page_obj.previous_page_number }}" class="page-link">Previous</a>
+            </li>
         {% endif %}
-
-        <span class="current">
-            {{ page_obj.number }} / {{ page_obj.paginator.num_pages }}
-        </span>
-
+        <li class="page-link active">{{ page_obj.number }} of {{ page_obj.paginator.num_pages }}</li>
         {% if page_obj.has_next %}
-            <a href="?page={{ page_obj.next_page_number }}">next</a>
-            <a href="?page={{ page_obj.paginator.num_pages }}">last &raquo;</a>
+            <li class="page-item">
+                <a href="?page={{ page_obj.next_page_number }}" class="page-link">Next</a>
+            </li>
+            <li class="page-item">
+                <a href="?page={{ page_obj.paginator.num_pages }}" class="page-link">Last</a>
+            </li>
         {% endif %}
-    </span>
+    </ul>
 </div>
 {% endblock %}

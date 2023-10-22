@@ -46,7 +46,7 @@ def about(request):
 
 
 def cars(request):
-    paginator = Paginator(Car.objects.all(), per_page=4)
+    paginator = Paginator(Car.objects.all(), per_page=5)
     page_number = request.GET.get("page")
     paged_cars = paginator.get_page(page_number)
     return render(request, "cars.html", context={"cars": paged_cars})
@@ -70,7 +70,7 @@ class ServiceDetailView(generic.DetailView):
 
 class OrderListView(generic.ListView):
     model = Order
-    paginate_by = 4
+    paginate_by = 5
     context_object_name = "orders"
     template_name = "orders.html"
 
