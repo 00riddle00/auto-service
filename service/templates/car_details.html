@@ -5,12 +5,12 @@
 {% block content %}
 <h2>{{ car.car_model.make }} {{ car.car_model.model }}</h2>
 <hr/>
-<p><strong>Client:</strong> {{ car.client_name }}</p>
-<p><strong>License plate number:</strong> {{ car.license_plate_no }}</p>
-<p><strong>VIN code:</strong> {{ car.vin_code }}</p>
-<p><strong>Year:</strong> {{ car.car_model.year }}</p>
-<p><strong>Engine type:</strong> {{ car.car_model.engine_type }}</p>
-<p><strong>Fuel type:</strong> {{ car.car_model.fuel_type }}</p>
-<p><strong>Description:</strong> {{ car.description }}</p>
-<p><strong>Model description:</strong> {{ car.car_model.description }}</p>
+<p><strong>Client: </strong>{{ car.client_name }}</p>
+<p><strong>License plate number: </strong>{{ car.license_plate_no }}</p>
+<p><strong>VIN code: </strong>{{ car.vin_code }}</p>
+<p><strong>Year: </strong>{{ car.car_model.year }}</p>
+<p><strong>Engine type: </strong>{{ car.car_model.engine_type }}</p>
+<p><strong>Fuel type: </strong>{{ car.car_model.fuel_type }}</p>
+<p><strong>Description: </strong>{{ car.description }}</p>
+<p><strong>Model description: </strong>{{ car.car_model.description }}</p>
 {% endblock %}

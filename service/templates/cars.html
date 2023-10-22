@@ -5,9 +5,13 @@
 {% block content %}
 <h2>Cars</h2>
 <h5>The list of cars registered in our auto service:</h5>
-<ul>
-    {% for car in cars %}
-        <li><a href="{% url 'car-details' car.id %}">{{ car }}</a></li>
-    {% endfor %}
-</ul>
+{% if cars %}
+    <ul>
+        {% for car in cars %}
+            <li><a href="{% url 'car-details' car.id %}">{{ car }}</a></li>
+        {% endfor %}
+    </ul>
+{% else %}
+    <p>There are no cars at the moment.</p>
+{% endif %}
 {% endblock %}

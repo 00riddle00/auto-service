@@ -49,13 +49,14 @@ def cars(request):
     return render(request, "cars.html", {"cars": cars_})
 
 
-def car(request, car_id):
-    car_ = get_object_or_404(Car, pk=car_id)
+def car(request, pk):
+    car_ = get_object_or_404(Car, pk=pk)
     return render(request, "car_details.html", {"car": car_})
 
 
 class ServiceListView(generic.ListView):
     model = Service
+    context_object_name = "services"
     template_name = "services.html"
 
 

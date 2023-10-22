@@ -5,9 +5,9 @@
 {% block content %}
 <h2>Services</h2>
 <h5>List of our services:</h5>
-{% if service_list %}
+{% if services %}
     <ul>
-        {% for service in service_list %}
+        {% for service in services %}
             <li><a href="{% url 'service-details' service.id %}">{{ service.name }}</a> ({{ service.price }} €)</li>
         {% endfor %}
     </ul>

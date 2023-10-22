@@ -44,7 +44,10 @@ class CarModel(models.Model):
     description = models.TextField("Description", max_length=2048, default="")
 
     def __str__(self):
-        return f"{self.make} {self.model}, {self.year}, {self.engine_type}"
+        return (
+            f"{self.make} {self.model}, {self.year}, {self.engine_type}, "
+            f"{self.fuel_type}"
+        )
 
     class Meta:
         verbose_name = "Car model"
