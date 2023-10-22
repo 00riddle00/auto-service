@@ -1,6 +1,7 @@
 import pandas as pd
 import plotly.express as px
 import plotly.offline as po
+from django.core.paginator import Paginator
 from django.shortcuts import get_object_or_404, render
 from django.views import generic
 
@@ -45,13 +46,15 @@ def about(request):
 
 
 def cars(request):
-    cars_ = Car.objects.all()
-    return render(request, "cars.html", {"cars": cars_})
+    paginator = Paginator(Car.objects.all(), per_page=4)
+    page_number = request.GET.get("page")
+    paged_cars = paginator.get_page(page_number)
+    return render(request, "cars.html", context={"cars": paged_cars})
 
 
 def car(request, pk):
     car_ = get_object_or_404(Car, pk=pk)
-    return render(request, "car_details.html", {"car": car_})
+    return render(request, "car_details.html", context={"car": car_})
 
 
 class ServiceListView(generic.ListView):
@@ -67,6 +70,7 @@ class ServiceDetailView(generic.DetailView):
 
 class OrderListView(generic.ListView):
     model = Order
+    paginate_by = 4
     context_object_name = "orders"
     template_name = "orders.html"
 

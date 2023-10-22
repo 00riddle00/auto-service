@@ -6,12 +6,29 @@
 <h2>Orders</h2>
 <h5>List of all our orders:</h5>
 {% if orders %}
-<ul>
-    {% for order in orders %}
-        <li>(Order ID: {{ order.id }}) <a href="{% url 'order-details' order.id %}">{{ order }}</a></li>
-    {% endfor %}
-</ul>
+    <ul>
+        {% for order in orders %}
+            <li>(Order ID: {{ order.id }}) <a href="{% url 'order-details' order.id %}">{{ order }}</a></li>
+        {% endfor %}
+    </ul>
 {% else %}
     <p>There are no orders at the moment.</p>
 {% endif %}
+<div class="pagination">
+    <span class="step-links">
+        {% if page_obj.has_previous %}
+            <a href="?page=1">&laquo; first</a>
+            <a href="?page={{ page_obj.previous_page_number }}">back</a>
+        {% endif %}
+
+        <span class="current">
+            {{ page_obj.number }} / {{ page_obj.paginator.num_pages }}
+        </span>
+
+        {% if page_obj.has_next %}
+            <a href="?page={{ page_obj.next_page_number }}">next</a>
+            <a href="?page={{ page_obj.paginator.num_pages }}">last &raquo;</a>
+        {% endif %}
+    </span>
+</div>
 {% endblock %}
