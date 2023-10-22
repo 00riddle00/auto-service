@@ -10,4 +10,19 @@
 <p><strong>Client: </strong>{{ order.car.client_name }}</p>
 <p><strong>Car: </strong><a href="{% url 'car-details' order.car.id %}">{{ order.car.car_model }}
     ({{ order.car.license_plate_no }}, {{ order.car.vin_code }})</a></p>
+<p><strong>Total price: </strong>{{ order.total_price }} €</p>
+<div class="container" style="padding-top: 20px; padding-left: 20px">
+    <h4>Tasks:</h4>
+    {% if order.lines.all %}
+        <ul>
+            <hr>
+            {% for line in order.lines.all %}
+                <li><strong>Service:</strong> {{ line.service.name }}. <strong>Qty: </strong>{{ line.quantity }}<strong>
+                    Price: </strong>{{ line.price }} €
+                </li>
+                <hr>
+            {% endfor %}
+        </ul>
+    {% endif %}
+</div>
 {% endblock %}

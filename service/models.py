@@ -75,7 +75,6 @@ class Order(models.Model):
         on_delete=models.CASCADE,
         related_name="orders",
     )
-    total_price = models.FloatField(verbose_name="Total price")
 
     ORDER_STATUS = (
         ("N", "New"),
@@ -100,6 +99,14 @@ class Order(models.Model):
         verbose_name = "Order"
         verbose_name_plural = "Orders"
         ordering = ["-id"]
+
+    @property
+    def total_price(self):
+        order_lines = OrderLine.objects.filter(order=self.id)
+        total_price = 0
+        for line in order_lines:
+            total_price += line.price * line.quantity
+        return total_price
 
 
 class OrderLine(models.Model):
