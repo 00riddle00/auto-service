@@ -28,4 +28,10 @@ urlpatterns = [
         views.ServiceDetailView.as_view(),
         name="service-details",
     ),
+    path("orders/", views.OrderListView.as_view(), name="orders"),
+    path(
+        "orders/<int:pk>",
+        views.OrderDetailView.as_view(),
+        name="order-details",
+    ),
 ]

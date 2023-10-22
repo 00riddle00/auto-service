@@ -7,9 +7,9 @@
 <p>Grant your car a <strong>two-way</strong> ticket to heaven!</p>
 <p>Currently, we have:</p>
 <ul>
-    <li><strong>Orders completed:</strong> <a href="{% url 'index' %}">{{ num_orders }}</a>
     <li><strong>Cars in our garage: </strong><a href="{% url 'cars' %}">{{ num_cars }}</a>
     <li><strong>Services available: </strong><a href="{% url 'services' %}">{{ num_services }}</a>
+    <li><strong>Orders completed: </strong><a href="{% url 'orders' %}">{{ num_orders }}</a>
 </ul>
 <div class="container" style="display: inline-block; width: 75%">
     {{ bar_chart|safe }}

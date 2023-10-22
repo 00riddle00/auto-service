@@ -63,3 +63,14 @@ class ServiceListView(generic.ListView):
 class ServiceDetailView(generic.DetailView):
     model = Service
     template_name = "service_details.html"
+
+
+class OrderListView(generic.ListView):
+    model = Order
+    context_object_name = "orders"
+    template_name = "orders.html"
+
+
+class OrderDetailView(generic.DetailView):
+    model = Order
+    template_name = "order_details.html"
