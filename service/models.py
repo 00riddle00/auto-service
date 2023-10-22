@@ -123,7 +123,7 @@ class OrderLine(models.Model):
         on_delete=models.SET_NULL,
         null=True,
     )
-    quantity = models.IntegerField(verbose_name="Quantity")
+    quantity = models.IntegerField(verbose_name="Quantity", default=1)
 
     @property
     def price(self):
