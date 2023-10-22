@@ -3,6 +3,15 @@
 {% block title %}Car Details{% endblock %}
 
 {% block content %}
+{% load static %}
+<div class="container">
+    {% if car.photo %}
+        <img src="{{ car.photo.url }}" class="card-img-top" alt="car-photo">
+    {% else %}
+        <img src="{% static 'img/no_image.png' %}" class="card-img-top" alt="no-image">
+    {% endif %}
+</div>
+<br>
 <h2>{{ car.car_model.make }} {{ car.car_model.model }}</h2>
 <hr/>
 <p><strong>Client: </strong>{{ car.client_name }}</p>

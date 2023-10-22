@@ -25,6 +25,9 @@ class Car(models.Model):
     observations = models.TextField(
         "Observations", max_length=2048, default=""
     )
+    photo = models.ImageField(
+        "Photo", upload_to="car_photos", null=True, blank=True
+    )
 
     def __str__(self):
         return (
