@@ -9,7 +9,7 @@ class CarAdmin(admin.ModelAdmin):
         "vin_code",
         "car_model",
         "client_name",
-        "description",
+        "observations",
     ]
     list_filter = ["client_name", "car_model__make", "car_model__model"]
     search_fields = ["license_plate_no", "vin_code"]

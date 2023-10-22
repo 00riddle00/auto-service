@@ -22,7 +22,9 @@ class Car(models.Model):
         null=True,
     )
     client_name = models.CharField(verbose_name="Client's name", max_length=64)
-    description = models.TextField("Description", max_length=2048, default="")
+    observations = models.TextField(
+        "Observations", max_length=2048, default=""
+    )
 
     def __str__(self):
         return (
