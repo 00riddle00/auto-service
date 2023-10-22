@@ -2,6 +2,7 @@ import pandas as pd
 import plotly.express as px
 import plotly.offline as po
 from django.core.paginator import Paginator
+from django.db.models import Q
 from django.shortcuts import get_object_or_404, render
 from django.views import generic
 
@@ -65,6 +66,7 @@ class ServiceListView(generic.ListView):
 
 class ServiceDetailView(generic.DetailView):
     model = Service
+    context_object_name = "service"
     template_name = "service_details.html"
 
 
@@ -77,4 +79,19 @@ class OrderListView(generic.ListView):
 
 class OrderDetailView(generic.DetailView):
     model = Order
+    context_object_name = "order"
     template_name = "order_details.html"
+
+
+def search(request):
+    query = request.GET.get("query")
+    search_results = Car.objects.filter(
+        Q(car_model__make__icontains=query)
+        | Q(car_model__model__icontains=query)
+    )
+    print(search_results)
+    return render(
+        request,
+        "search_cars.html",
+        context={"cars": search_results, "query": query},
+    )

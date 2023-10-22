@@ -34,4 +34,5 @@ urlpatterns = [
         views.OrderDetailView.as_view(),
         name="order-details",
     ),
+    path("search-cars/", views.search, name="search-cars"),
 ]
