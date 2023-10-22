@@ -13,4 +13,16 @@
 <p><strong>Fuel type: </strong>{{ car.car_model.fuel_type }}</p>
 <p><strong>Description: </strong>{{ car.description }}</p>
 <p><strong>Model description: </strong>{{ car.car_model.description }}</p>
+{% if car.orders.all %}
+    <div class="container">
+        <hr>
+        <h4>Orders:</h4>
+        <ul>
+            {% for order in car.orders.all %}
+                <li><a href="{% url 'order-details' order.id %}">{{ order }}</a></li>
+            {% endfor %}
+        </ul>
+        <hr>
+    </div>
+{% endif %}
 {% endblock %}
