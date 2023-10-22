@@ -10,19 +10,32 @@
 <p><strong>Client: </strong>{{ order.car.client_name }}</p>
 <p><strong>Car: </strong><a href="{% url 'car-details' order.car.id %}">{{ order.car.car_model }}
     ({{ order.car.license_plate_no }}, {{ order.car.vin_code }})</a></p>
-<p><strong>Total price: </strong>{{ order.total_price }} €</p>
-<div class="container" style="padding-top: 20px; padding-left: 20px">
-    <h4>Tasks:</h4>
-    {% if order.lines.all %}
-        <ul>
-            <hr>
+{% if order.lines.all %}
+    <div class="container" style="display: inline-block; padding-top: 20px; padding-left: 20px; width: 80%">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th>Service</th>
+                <th>Item price</th>
+                <th>Quantity</th>
+                <th>Price</th>
+            </tr>
+            </thead>
+            <tbody>
             {% for line in order.lines.all %}
-                <li><strong>Service:</strong> {{ line.service.name }}. <strong>Qty: </strong>{{ line.quantity }}<strong>
-                    Price: </strong>{{ line.price }} €
-                </li>
-                <hr>
+                <tr>
+                    <td>{{ line.service.name }}</td>
+                    <td>{{ line.service.price }} €</td>
+                    <td>{{ line.quantity }}</td>
+                    <td>{{ line.price }} €</td>
+                </tr>
             {% endfor %}
-        </ul>
-    {% endif %}
-</div>
+            <tr>
+                <td colspan="3"></td>
+                <td><strong>{{ order.total_price }} €</strong></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+{% endif %}
 {% endblock %}
