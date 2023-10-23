@@ -13,6 +13,8 @@ def index(request):
     num_cars = Car.objects.all().count()
     num_services = Service.objects.all().count()
     num_orders = Order.objects.filter(status__exact="C").count()
+    num_visits = request.session.get("num_visits", 1)
+    request.session["num_visits"] = num_visits + 1
 
     df = pd.DataFrame(
         {
@@ -37,6 +39,7 @@ def index(request):
         "num_services": num_services,
         "num_orders": num_orders,
         "bar_chart": bar_chart,
+        "num_visits": num_visits,
     }
 
     return render(request, "index.html", context=context)
