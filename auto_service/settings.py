@@ -116,6 +116,11 @@ USE_I18N = True
 
 USE_TZ = True
 
+# Default primary key field type
+# https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
+
+DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
+
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
 
@@ -130,7 +135,11 @@ MEDIA_URL = "media/"
 
 LOGIN_REDIRECT_URL = "/"
 
-# Default primary key field type
-# https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
+# Sending Email
 
-DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
+EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
+EMAIL_HOST = "smtp.gmail.com"
+EMAIL_POST = 587
+EMAIL_USE_TLS = True
+EMAIL_HOST_USER = "tomasgiedraitis@gmail.com"
+EMAIL_HOST_PASSWORD = "cubgxyscokadfxzj"
