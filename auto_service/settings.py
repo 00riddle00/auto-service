@@ -13,6 +13,8 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 import os
 from pathlib import Path
 
+from .email_settings import EMAIL_HOST_PASSWORD_SECRET, EMAIL_HOST_USER_SECRET
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -139,7 +141,7 @@ LOGIN_REDIRECT_URL = "/"
 
 EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
 EMAIL_HOST = "smtp.gmail.com"
-EMAIL_POST = 587
+EMAIL_PORT = 587
 EMAIL_USE_TLS = True
-EMAIL_HOST_USER = "tomasgiedraitis@gmail.com"
-EMAIL_HOST_PASSWORD = "cubgxyscokadfxzj"
+EMAIL_HOST_USER = EMAIL_HOST_USER_SECRET
+EMAIL_HOST_PASSWORD = EMAIL_HOST_PASSWORD_SECRET
