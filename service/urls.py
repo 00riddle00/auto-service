@@ -20,7 +20,6 @@ from service import views
 
 urlpatterns = [
     path("", views.index, name="index"),
-    path("about/", views.about, name="about"),
     path("cars/", views.cars, name="cars"),
     path("cars/<int:pk>", views.car, name="car-details"),
     path("search-cars/", views.search, name="search-cars"),

@@ -45,10 +45,6 @@ def index(request):
     return render(request, "index.html", context=context)
 
 
-def about(request):
-    return render(request, "about.html")
-
-
 def cars(request):
     paginator = Paginator(Car.objects.all(), per_page=5)
     page_number = request.GET.get("page")
