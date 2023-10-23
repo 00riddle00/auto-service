@@ -22,6 +22,7 @@ urlpatterns = [
     path("about/", views.about, name="about"),
     path("cars/", views.cars, name="cars"),
     path("cars/<int:pk>", views.car, name="car-details"),
+    path("search-cars/", views.search, name="search-cars"),
     path("services", views.ServiceListView.as_view(), name="services"),
     path(
         "services/<int:pk>",
@@ -34,5 +35,4 @@ urlpatterns = [
         views.OrderDetailView.as_view(),
         name="order-details",
     ),
-    path("search-cars/", views.search, name="search-cars"),
 ]
