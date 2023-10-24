@@ -137,7 +137,7 @@ MEDIA_URL = "media/"
 
 LOGIN_REDIRECT_URL = "/"
 
-# Sending Email
+# Sending email
 
 EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
 EMAIL_HOST = "smtp.gmail.com"
