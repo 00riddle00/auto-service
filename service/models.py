@@ -3,6 +3,7 @@ from datetime import datetime
 import pytz
 from django.contrib.auth.models import User
 from django.db import models
+from tinymce.models import HTMLField
 
 utc = pytz.utc
 
@@ -52,7 +53,7 @@ class CarModel(models.Model):
     year = models.IntegerField(verbose_name="Year")
     engine_type = models.CharField("Engine type", max_length=64)
     fuel_type = models.CharField("Fuel type", max_length=64)
-    description = models.TextField("Description", max_length=2048, default="")
+    description = HTMLField("Description", max_length=4096, default="")
 
     def __str__(self):
         return (
