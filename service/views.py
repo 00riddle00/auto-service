@@ -46,19 +46,23 @@ def index(request):
         "num_visits": num_visits,
     }
 
-    return render(request, "index.html", context=context)
+    return render(request, template_name="index.html", context=context)
 
 
 def cars(request):
     paginator = Paginator(Car.objects.all(), per_page=5)
     page_number = request.GET.get("page")
     paged_cars = paginator.get_page(page_number)
-    return render(request, "cars.html", context={"cars": paged_cars})
+    return render(
+        request, template_name="cars.html", context={"cars": paged_cars}
+    )
 
 
 def car(request, pk):
     car_ = get_object_or_404(Car, pk=pk)
-    return render(request, "car_details.html", context={"car": car_})
+    return render(
+        request, template_name="car_details.html", context={"car": car_}
+    )
 
 
 def search(request):
@@ -69,7 +73,7 @@ def search(request):
     )
     return render(
         request,
-        "search_cars.html",
+        template_name="search_cars.html",
         context={"cars": search_results, "query": query},
     )
 
