@@ -63,7 +63,6 @@ def search(request):
         Q(car_model__make__icontains=query)
         | Q(car_model__model__icontains=query)
     )
-    print(search_results)
     return render(
         request,
         "search_cars.html",
