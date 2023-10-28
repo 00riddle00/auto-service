@@ -1,5 +1,10 @@
+from datetime import datetime
+
+import pytz
 from django.contrib.auth.models import User
 from django.db import models
+
+utc = pytz.utc
 
 
 class Car(models.Model):
@@ -98,6 +103,10 @@ class Order(models.Model):
         blank=True,
     )
 
+    deadline = models.DateTimeField(
+        verbose_name="Deadline", null=True, blank=True
+    )
+
     user = models.ForeignKey(
         to=User,
         verbose_name="User",
@@ -120,6 +129,12 @@ class Order(models.Model):
         for line in self.lines.all():
             total_price += line.price
         return total_price
+
+    @property
+    def is_overdue(self):
+        return self.deadline and self.deadline.replace(
+            tzinfo=utc
+        ) < datetime.today().replace(tzinfo=utc)
 
 
 class OrderLine(models.Model):
