@@ -69,7 +69,7 @@ class CarModel(models.Model):
 class Service(models.Model):
     name = models.CharField(verbose_name="Name", max_length=128)
     price = models.FloatField(verbose_name="Price")
-    description = models.TextField("Description", max_length=2048, default="")
+    description = HTMLField("Description", max_length=4096, default="")
 
     def __str__(self):
         return f"{self.name} ({self.price} €)"
