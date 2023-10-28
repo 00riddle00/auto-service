@@ -8,7 +8,12 @@
 {% if user_orders %}
     <ul>
         {% for order in user_orders %}
-            <li><a href="{% url 'order-details' order.id %}">{{ order }}</a></li>
+            <li>
+                <a href="{% url 'order-details' order.id %}"
+                   class="{% if order.is_overdue %}text-danger{% endif %}">
+                    {{ order }}
+                </a>
+            </li>
         {% endfor %}
     </ul>
 {% else %}
