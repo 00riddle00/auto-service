@@ -24,6 +24,7 @@ urlpatterns = (
     [
         path("admin/", admin.site.urls),
         path("accounts/", include("django.contrib.auth.urls")),
+        path("tinymce/", include("tinymce.urls")),
         path("service/", include("service.urls")),
         path("", RedirectView.as_view(url="service/", permanent=True)),
     ]
