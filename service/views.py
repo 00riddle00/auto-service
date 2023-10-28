@@ -1,3 +1,5 @@
+import re
+
 import pandas as pd
 import plotly.express as px
 import plotly.offline as po
@@ -123,37 +125,54 @@ def register(request):
         email = request.POST["email"]
         password = request.POST["password"]
         password2 = request.POST["password2"]
+        # Check if all fields are filled.
+        if username == "" or email == "" or password == "":
+            messages.error(request, message="Please fill in all fields!")
+            return redirect("register")
         # Check if passwords match.
-        if password == password2:
-            # Check if username exists.
-            if User.objects.filter(username=username).exists():
-                messages.error(
-                    request,
-                    message=f"User <strong>{username}</strong> already "
-                    f"exists!",
-                )
-                return redirect("register")
-            else:
-                # Check if there is already a user with this email.
-                if User.objects.filter(email=email).exists():
-                    messages.error(
-                        request,
-                        message=f"User with email <strong>{email}</strong> "
-                        f"already exists!",
-                    )
-                    return redirect("register")
-                else:
-                    # If everything is ok, create new user.
-                    User.objects.create_user(
-                        username=username, email=email, password=password
-                    )
-                    messages.info(
-                        request,
-                        message=f"User <strong>{username}</strong> "
-                        f"successfully registered!",
-                    )
-                    return redirect("login")
-        else:
+        elif password != password2:
             messages.error(request, message="Passwords do not match!")
             return redirect("register")
+        # Check if password is strong enough.
+        elif not re.match(
+            string=password, pattern=r"^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$"
+        ):
+            messages.error(
+                request,
+                message="Password must be minimum 8 characters "
+                "long, contain at least one letter and "
+                "one number.",
+            )
+            return redirect("register")
+        # Check if username exists.
+        elif User.objects.filter(username=username).exists():
+            messages.error(
+                request,
+                message=f"User <strong>{username}</strong> already "
+                f"exists!",
+            )
+            return redirect("register")
+        # Check if there is already a user with this email.
+        elif User.objects.filter(email=email).exists():
+            messages.error(
+                request,
+                message=f"User with email <strong>{email}</strong> "
+                f"already exists!",
+            )
+            return redirect("register")
+        # If everything is ok, create new user.
+        else:
+            User.objects.create_user(
+                username=username, email=email, password=password
+            )
+            messages.info(
+                request,
+                message=f"User <strong>{username}</strong> "
+                f"successfully registered!",
+            )
+            return redirect("register-complete")
     return render(request, template_name="registration/register.html")
+
+
+def register_complete(request):
+    return render(request, template_name="registration/register_complete.html")

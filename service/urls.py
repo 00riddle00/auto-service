@@ -41,4 +41,7 @@ urlpatterns = [
         name="user-orders",
     ),
     path("register/", views.register, name="register"),
+    path(
+        "register/done/", views.register_complete, name="register-complete"
+    ),
 ]
