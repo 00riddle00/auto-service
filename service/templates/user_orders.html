@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+
+{% block title %}My Orders{% endblock %}
+
+{% block content %}
+<h2>My orders</h2>
+<h5>List of all my orders:</h5>
+{% if user_orders %}
+    <ul>
+        {% for order in user_orders %}
+            <li><a href="{% url 'order-details' order.id %}">{{ order }}</a></li>
+        {% endfor %}
+    </ul>
+{% else %}
+    <p>You have no orders at the moment.</p>
+{% endif %}
+<div class="container">
+    <ul class="pagination pagination-sm justify-content-center">
+        {% if page_obj.has_previous %}
+            <li class="page-item">
+                <a href="?page=1" class="page-link">First</a>
+            </li>
+            <li class="page-item">
+                <a href="?page={{ page_obj.previous_page_number }}" class="page-link">Previous</a>
+            </li>
+        {% endif %}
+        <li class="page-link active">{{ page_obj.number }} of {{ page_obj.paginator.num_pages }}</li>
+        {% if page_obj.has_next %}
+            <li class="page-item">
+                <a href="?page={{ page_obj.next_page_number }}" class="page-link">Next</a>
+            </li>
+            <li class="page-item">
+                <a href="?page={{ page_obj.paginator.num_pages }}" class="page-link">Last</a>
+            </li>
+        {% endif %}
+    </ul>
+</div>
+{% endblock %}

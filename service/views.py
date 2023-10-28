@@ -1,6 +1,7 @@
 import pandas as pd
 import plotly.express as px
 import plotly.offline as po
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.core.paginator import Paginator
 from django.db.models import Q
 from django.shortcuts import get_object_or_404, render
@@ -93,3 +94,15 @@ class OrderDetailView(generic.DetailView):
     model = Order
     context_object_name = "order"
     template_name = "order_details.html"
+
+
+class UserOrderListView(LoginRequiredMixin, generic.ListView):
+    model = Order
+    paginate_by = 5
+    context_object_name = "user_orders"
+    template_name = "user_orders.html"
+
+    def get_queryset(self):
+        return Order.objects.filter(user=self.request.user).order_by(
+            "deadline"
+        )

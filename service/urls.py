@@ -35,4 +35,9 @@ urlpatterns = [
         views.OrderDetailView.as_view(),
         name="order-details",
     ),
+    path(
+        "my-orders/",
+        views.UserOrderListView.as_view(),
+        name="user-orders",
+    ),
 ]
