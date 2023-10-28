@@ -1,11 +1,14 @@
 import pandas as pd
 import plotly.express as px
 import plotly.offline as po
+from django.contrib import messages
+from django.contrib.auth.forms import User
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.core.paginator import Paginator
 from django.db.models import Q
-from django.shortcuts import get_object_or_404, render
+from django.shortcuts import get_object_or_404, redirect, render
 from django.views import generic
+from django.views.decorators.csrf import csrf_protect
 
 from .models import Car, Order, Service
 
@@ -106,3 +109,44 @@ class UserOrderListView(LoginRequiredMixin, generic.ListView):
         return Order.objects.filter(user=self.request.user).order_by(
             "deadline"
         )
+
+
+@csrf_protect
+def register(request):
+    if request.method == "POST":
+        # Get values from registration form.
+        username = request.POST["username"]
+        email = request.POST["email"]
+        password = request.POST["password"]
+        password2 = request.POST["password2"]
+        # Check if passwords match.
+        if password == password2:
+            # Check if username exists.
+            if User.objects.filter(username=username).exists():
+                messages.error(
+                    request,
+                    message=f"User {username} already exists!",
+                )
+                return redirect("register")
+            else:
+                # Check if there is already a user with this email.
+                if User.objects.filter(email=email).exists():
+                    messages.error(
+                        request,
+                        message=f"User with email {email} already exists!",
+                    )
+                    return redirect("register")
+                else:
+                    # If everything is ok, create new user.
+                    User.objects.create_user(
+                        username=username, email=email, password=password
+                    )
+                    messages.info(
+                        request,
+                        message="User {username} successfully registered!",
+                    )
+                    return redirect("login")
+        else:
+            messages.error(request, message="Passwords do not match!")
+            return redirect("register")
+    return render(request, template_name="registration/register.html")
