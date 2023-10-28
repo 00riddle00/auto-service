@@ -170,3 +170,22 @@ class OrderLine(models.Model):
     class Meta:
         verbose_name = "Order line"
         verbose_name_plural = "Order lines"
+
+
+class OrderComment(models.Model):
+    order = models.ForeignKey(
+        to="Order",
+        verbose_name="Order",
+        on_delete=models.CASCADE,
+        related_name="comments",
+    )
+    author = models.ForeignKey(
+        to=User, verbose_name="Author", on_delete=models.CASCADE
+    )
+    date = models.DateTimeField(verbose_name="Date", auto_now_add=True)
+    text = models.TextField(verbose_name="Text", max_length=2048)
+
+    class Meta:
+        verbose_name = "Comment"
+        verbose_name_plural = "Comments"
+        ordering = ["-date"]

@@ -42,4 +42,18 @@
         </table>
     </div>
 {% endif %}
+<br>
+<br>
+<h3>Comments:</h3>
+<div class="container" style="display: inline-block; padding-top: 20px; padding-left: 20px; width: 80%">
+    {% if order.comments.all %}
+        {% for comment in order.comments.all %}
+            <strong>{{ comment.author }}</strong>, <em>{{ comment.date }}</em>
+            <p>{{ comment.text }}</p>
+            <hr>
+        {% endfor %}
+    {% else %}
+        <p>There are no comments for this order.</p>
+    {% endif %}
+</div>
 {% endblock %}
