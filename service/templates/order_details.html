@@ -44,6 +44,22 @@
 {% endif %}
 <br>
 <br>
+{% if user.is_authenticated %}
+    <div class="fieldWrapper">
+        <hr>
+        <br>
+        <h4>Leave a comment:</h4>
+        <form action="" method="post">
+            {% csrf_token %}
+            {{ form.text }}
+            <br>
+            <br>
+            <input type="submit" class="btn btn-primary" value="Post"/>
+        </form>
+    </div>
+{% endif %}
+<br>
+<br>
 <h3>Comments:</h3>
 <div class="container" style="display: inline-block; padding-top: 20px; padding-left: 20px; width: 80%">
     {% if order.comments.all %}

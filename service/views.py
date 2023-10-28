@@ -8,10 +8,12 @@ from django.contrib.auth.forms import User
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.core.paginator import Paginator
 from django.db.models import Q
-from django.shortcuts import get_object_or_404, redirect, render
+from django.shortcuts import get_object_or_404, redirect, render, reverse
 from django.views import generic
 from django.views.decorators.csrf import csrf_protect
+from django.views.generic.edit import FormMixin
 
+from .forms import OrderCommentForm
 from .models import Car, Order, Service
 
 
@@ -99,10 +101,33 @@ class OrderListView(generic.ListView):
     template_name = "orders.html"
 
 
-class OrderDetailView(generic.DetailView):
+class OrderDetailView(FormMixin, generic.DetailView):
     model = Order
     context_object_name = "order"
+    form_class = OrderCommentForm
     template_name = "order_details.html"
+
+    # Specify where to redirect after comment is successfully posted.
+    def get_success_url(self):
+        return reverse("order-details", kwargs={"pk": self.object.id})
+
+    # Standard post method override using FormMixin, can be copied directly
+    # to our project.
+    def post(self, request, *args, **kwargs):
+        self.object = self.get_object()
+        form = self.get_form()
+        if form.is_valid():
+            return self.form_valid(form)
+        else:
+            return self.form_invalid(form)
+
+    # Specify that the order will be the one after which we comment,
+    # and the user will be the one who is logged in.
+    def form_valid(self, form):
+        form.instance.order = self.object
+        form.instance.author = self.request.user
+        form.save()
+        return super().form_valid(form)
 
 
 class UserOrderListView(LoginRequiredMixin, generic.ListView):
