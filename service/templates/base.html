@@ -45,7 +45,7 @@
                 </li>
                 {% if user.is_authenticated %}
                     <li class="nav-item">
-                        <a class="nav-link" href="{% url 'user-orders'%}">My orders</a>
+                        <a class="nav-link" href="{% url 'user-orders' %}">My orders</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="{% url 'logout' %}"> Sign out</a>
@@ -68,7 +68,7 @@
                         <a class="nav-link" href="{% url 'login' %}?next={{ request.path }}">Sign in</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{% url 'register'%}">Sign up</a>
+                        <a class="nav-link" href="{% url 'register' %}">Sign up</a>
                     </li>
                 {% endif %}
             </ul>
@@ -77,6 +77,14 @@
 </nav>
 <!-- Page Content -->
 <div class="container" style="padding-top: 30px">
+    {% if messages %}
+        {% for msg in messages %}
+            <div class="alert alert-{% if msg.tags == 'error' %}danger{% elif msg.tags == 'info' %}success{% endif %}"
+                 role="alert">
+                {{ msg }}
+            </div>
+        {% endfor %}
+    {% endif %}
     {% block content %}{% endblock %}
 </div>
 <!-- Scripts -->
