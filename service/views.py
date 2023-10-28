@@ -129,7 +129,8 @@ def register(request):
             if User.objects.filter(username=username).exists():
                 messages.error(
                     request,
-                    message=f"User {username} already exists!",
+                    message=f"User <strong>{username}</strong> already "
+                    f"exists!",
                 )
                 return redirect("register")
             else:
@@ -137,7 +138,8 @@ def register(request):
                 if User.objects.filter(email=email).exists():
                     messages.error(
                         request,
-                        message=f"User with email {email} already exists!",
+                        message=f"User with email <strong>{email}</strong> "
+                        f"already exists!",
                     )
                     return redirect("register")
                 else:
@@ -147,7 +149,8 @@ def register(request):
                     )
                     messages.info(
                         request,
-                        message="User {username} successfully registered!",
+                        message=f"User <strong>{username}</strong> "
+                        f"successfully registered!",
                     )
                     return redirect("login")
         else:
