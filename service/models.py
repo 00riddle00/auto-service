@@ -1,3 +1,4 @@
+from django.contrib.auth.models import User
 from django.db import models
 
 
@@ -94,6 +95,14 @@ class Order(models.Model):
         max_length=1,
         choices=ORDER_STATUS,
         default="N",
+        blank=True,
+    )
+
+    user = models.ForeignKey(
+        to=User,
+        verbose_name="User",
+        on_delete=models.SET_NULL,
+        null=True,
         blank=True,
     )
 
