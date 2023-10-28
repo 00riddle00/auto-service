@@ -30,10 +30,10 @@ class Car(models.Model):
     )
     client_name = models.CharField(verbose_name="Client's name", max_length=64)
     observations = models.TextField(
-        "Observations", max_length=2048, default=""
+        verbose_name="Observations", max_length=2048, default=""
     )
     photo = models.ImageField(
-        "Photo", upload_to="car_photos", null=True, blank=True
+        verbose_name="Photo", upload_to="car_photos", null=True, blank=True
     )
 
     def __str__(self):
@@ -51,9 +51,11 @@ class CarModel(models.Model):
     make = models.CharField(verbose_name="Make", max_length=64)
     model = models.CharField(verbose_name="Model", max_length=64)
     year = models.IntegerField(verbose_name="Year")
-    engine_type = models.CharField("Engine type", max_length=64)
-    fuel_type = models.CharField("Fuel type", max_length=64)
-    description = HTMLField("Description", max_length=4096, default="")
+    engine_type = models.CharField(verbose_name="Engine type", max_length=64)
+    fuel_type = models.CharField(verbose_name="Fuel type", max_length=64)
+    description = HTMLField(
+        verbose_name="Description", max_length=4096, default=""
+    )
 
     def __str__(self):
         return (
@@ -69,7 +71,9 @@ class CarModel(models.Model):
 class Service(models.Model):
     name = models.CharField(verbose_name="Name", max_length=128)
     price = models.FloatField(verbose_name="Price")
-    description = HTMLField("Description", max_length=4096, default="")
+    description = HTMLField(
+        verbose_name="Description", max_length=4096, default=""
+    )
 
     def __str__(self):
         return f"{self.name} ({self.price} €)"
