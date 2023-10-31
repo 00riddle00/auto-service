@@ -12,13 +12,13 @@
     <form action="{% url 'login' %}" method="post">
         {% csrf_token %}
         <div class="form-group">
-            <label for="username">Username:</label>
+            <label for="id_username">Username:</label>
             <br>
             {{ form.username }}
         </div>
         <br>
         <div class="form-group">
-            <label for="password">Password:</label>
+            <label for="id_password">Password:</label>
             <br>
             {{ form.password }}
         </div>
