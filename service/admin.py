@@ -1,6 +1,14 @@
 from django.contrib import admin
 
-from .models import Car, CarModel, Order, OrderComment, OrderLine, Service
+from .models import (
+    Car,
+    CarModel,
+    Order,
+    OrderComment,
+    OrderLine,
+    Profile,
+    Service,
+)
 
 
 class CarAdmin(admin.ModelAdmin):
@@ -54,3 +62,4 @@ admin.site.register(CarModel, CarModelAdmin)
 admin.site.register(Service, ServiceAdmin)
 admin.site.register(Order, OrderAdmin)
 admin.site.register(OrderLine)
+admin.site.register(Profile)

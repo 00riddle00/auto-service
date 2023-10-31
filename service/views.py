@@ -4,6 +4,7 @@ import pandas as pd
 import plotly.express as px
 import plotly.offline as po
 from django.contrib import messages
+from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import User
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.core.paginator import Paginator
@@ -201,3 +202,8 @@ def register(request):
 
 def register_complete(request):
     return render(request, template_name="registration/register_complete.html")
+
+
+@login_required
+def profile(request):
+    return render(request, template_name="profile.html")

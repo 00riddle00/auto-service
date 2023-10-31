@@ -189,3 +189,21 @@ class OrderComment(models.Model):
         verbose_name = "Comment"
         verbose_name_plural = "Comments"
         ordering = ["-date"]
+
+
+class Profile(models.Model):
+    user = models.OneToOneField(
+        to=User, verbose_name="User", on_delete=models.CASCADE
+    )
+    picture = models.ImageField(
+        verbose_name="Picture",
+        upload_to="profile_pics",
+        default="profile_pics/default.png",
+    )
+
+    def __str__(self):
+        return f"{self.user.username} profile"
+
+    class Meta:
+        verbose_name = "Profile"
+        verbose_name_plural = "Profiles"
