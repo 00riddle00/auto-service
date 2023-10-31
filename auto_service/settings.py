@@ -34,7 +34,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
-    "service",
+    "service.apps.ServiceConfig",
     "tinymce",
     "django.contrib.admin",
     "django.contrib.auth",
