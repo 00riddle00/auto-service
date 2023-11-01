@@ -5,8 +5,8 @@ import plotly.express as px
 import plotly.offline as po
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
-from django.contrib.auth.forms import User
 from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.auth.models import User
 from django.core.paginator import Paginator
 from django.db.models import Q
 from django.shortcuts import get_object_or_404, redirect, render, reverse
@@ -22,7 +22,7 @@ def index(request):
     num_cars = Car.objects.all().count()
     num_services = Service.objects.all().count()
     num_orders = Order.objects.filter(status__exact="C").count()
-    num_visits = request.session.get("num_visits", 1)
+    num_visits = request.session.get(key="num_visits", default=1)
     request.session["num_visits"] = num_visits + 1
 
     df = pd.DataFrame(
@@ -50,7 +50,6 @@ def index(request):
         "bar_chart": bar_chart,
         "num_visits": num_visits,
     }
-
     return render(request, template_name="index.html", context=context)
 
 
@@ -110,7 +109,7 @@ class OrderDetailView(FormMixin, generic.DetailView):
 
     # Specify where to redirect after comment is successfully posted.
     def get_success_url(self):
-        return reverse("order-details", kwargs={"pk": self.object.id})
+        return reverse(viewname="order-details", kwargs={"pk": self.object.id})
 
     # Standard post method override using FormMixin, can be copied directly
     # to our project.
