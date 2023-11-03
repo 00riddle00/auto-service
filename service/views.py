@@ -14,7 +14,7 @@ from django.views import generic
 from django.views.decorators.csrf import csrf_protect
 from django.views.generic.edit import FormMixin
 
-from .forms import OrderCommentForm
+from .forms import OrderCommentForm, ProfileUpdateForm, UserUpdateForm
 from .models import Car, Order, Service
 
 
@@ -205,4 +205,22 @@ def register_complete(request):
 
 @login_required
 def profile(request):
-    return render(request, template_name="profile.html")
+    if request.method == "POST":
+        user_form = UserUpdateForm(request.POST, instance=request.user)
+        profile_form = ProfileUpdateForm(
+            request.POST, request.FILES, instance=request.user.profile
+        )
+        if user_form.is_valid() and profile_form.is_valid():
+            user_form.save()
+            profile_form.save()
+            messages.success(request, message=f"Profile updated")
+            return redirect("profile")
+    else:
+        user_form = UserUpdateForm(instance=request.user)
+        profile_form = ProfileUpdateForm(instance=request.user.profile)
+
+    context = {
+        "user_form": user_form,
+        "profile_form": profile_form,
+    }
+    return render(request, template_name="profile.html", context=context)
