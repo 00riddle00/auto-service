@@ -13,17 +13,27 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 import os
 from pathlib import Path
 
-from .email_settings import EMAIL_HOST_PASSWORD_SECRET, EMAIL_HOST_USER_SECRET
+from dotenv import load_dotenv
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
+
+# Python dotenv
+dotenv_path = os.path.join(BASE_DIR / ".env")
+
+if os.path.exists(dotenv_path):
+    # take environment variables from .env file
+    load_dotenv(dotenv_path)
+
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = (
-    "django-insecure-xq%=y@j+8682pdq1@l#*j5yundk4r#_60odc%ot1y6zjw1g*)a"
+
+SECRET_KEY = os.environ.get(
+    "SECRET_KEY",
+    default="django-insecure-xq%=y@j+8682pdq1@l#*j5yundk4r#_60odc%ot1y6zjw1g*",
 )
 
 # SECURITY WARNING: don't run with debug turned on in production!
@@ -62,7 +72,7 @@ TEMPLATES = [
     {
         "BACKEND": "django.template.backends.django.DjangoTemplates",
         "DIRS": [
-            os.path.join(BASE_DIR, "templates"),
+            os.path.join(BASE_DIR / "templates"),
         ],
         "APP_DIRS": True,
         "OPTIONS": {
@@ -84,9 +94,11 @@ WSGI_APPLICATION = "auto_service.wsgi.application"
 DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.sqlite3",
-        "NAME": BASE_DIR / "auto_service.sqlite3",
+        "NAME": BASE_DIR
+        / os.environ.get("DB_NAME", default="auto_service.sqlite3"),
     }
 }
+
 
 # Password validation
 # https://docs.djangoproject.com/en/4.2/ref/settings/#auth-password-validators
@@ -146,8 +158,10 @@ EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
 EMAIL_HOST = "smtp.gmail.com"
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
-EMAIL_HOST_USER = EMAIL_HOST_USER_SECRET
-EMAIL_HOST_PASSWORD = EMAIL_HOST_PASSWORD_SECRET
+EMAIL_HOST_USER = os.environ.get(
+    "EMAIL_HOST_USER", default="admin@example.com"
+)
+EMAIL_HOST_PASSWORD = os.environ.get("EMAIL_HOST_PASSWORD", default="password")
 
 # TinyMCE for WYSIWYG editing
 
