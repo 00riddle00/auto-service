@@ -164,8 +164,8 @@ class OrderLine(models.Model):
 
     def __str__(self):
         return (
-            f"{self.order} ({self.service}, {self.price} "
-            f"€, qty: {self.quantity})"
+            f"{self.order}, {self.price} € ({self.service}, "
+            f"qty: {self.quantity})"
         )
 
     class Meta:
