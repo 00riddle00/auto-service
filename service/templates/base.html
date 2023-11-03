@@ -51,7 +51,9 @@
                             {{ user.get_username }}
                         </a>
                         <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="{% url 'user-orders' %}">My orders</a></li>
+                            <li><a class="dropdown-item" href="{% url 'profile' %}">Your profile</a></li>
+                            <li><a class="dropdown-item" href="{% url 'user-orders' %}">Your orders</a></li>
+                            <li><hr></li>
                             <li><a class="dropdown-item" href="{% url 'logout' %}">Sign out</a></li>
                         </ul>
                     </li>
