@@ -64,6 +64,7 @@
 <div class="container" style="display: inline-block; padding-top: 20px; padding-left: 20px; width: 80%">
     {% if order.comments.all %}
         {% for comment in order.comments.all %}
+            <img src="{{ comment.author.profile.picture.url }}" alt="profile-picture" width="40" height="40">
             <strong>{{ comment.author }}</strong>, <em>{{ comment.date }}</em>
             <p>{{ comment.text }}</p>
             <hr>
