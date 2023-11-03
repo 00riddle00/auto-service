@@ -19,11 +19,18 @@ from django.conf.urls.static import static
 from django.contrib import admin
 from django.urls import include, path
 from django.views.generic import RedirectView
+from service import views as service_views
 
 urlpatterns = (
     [
         path("admin/", admin.site.urls),
         path("accounts/", include("django.contrib.auth.urls")),
+        path("register/", service_views.register, name="register"),
+        path(
+            "register/done/",
+            service_views.register_complete,
+            name="register-complete",
+        ),
         path("tinymce/", include("tinymce.urls")),
         path("service/", include("service.urls")),
         path("", RedirectView.as_view(url="service/", permanent=True)),

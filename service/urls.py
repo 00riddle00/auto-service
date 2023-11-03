@@ -40,7 +40,5 @@ urlpatterns = [
         views.UserOrderListView.as_view(),
         name="user-orders",
     ),
-    path("register/", views.register, name="register"),
-    path("register/done/", views.register_complete, name="register-complete"),
     path("profile/", views.profile, name="profile"),
 ]
