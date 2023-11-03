@@ -6,9 +6,6 @@
 <div class="container" style="display: inline-block; width: 70%">
     <h2>Sign in</h2>
     <br>
-    {% if form.errors %}
-        <p>An error occurred while signing you in, please try again.</p>
-    {% endif %}
     <form action="{% url 'login' %}" method="post">
         {% csrf_token %}
         <div class="form-group">
@@ -23,6 +20,9 @@
             {{ form.password }}
         </div>
         <br>
+        {% if form.errors %}
+            <p class="text-danger">An error occurred while signing you in, please try again.</p>
+        {% endif %}
         <input type="submit" class="btn btn-primary" value="Sign in"/>
     </form>
     <br>
