@@ -4,18 +4,43 @@
 
 {% block content %}
 <h2>My orders</h2>
-<h5>List of all my orders:</h5>
+<br>
+<h5>All my orders:</h5>
+<br>
 {% if user_orders %}
-    <ul>
+    <div class="row">
         {% for order in user_orders %}
-            <li>
-                <a href="{% url 'order-details' order.id %}"
-                   class="{% if order.is_overdue %}text-danger{% endif %}">
-                    {{ order }}
-                </a>
-            </li>
+            <div class="col-md-4 d-flex align-items-stretch">
+                <div class="card mb-4 shadow-sm">
+                    <div class="card-body">
+                        <p class="card-text">
+                            <a href="{% url 'order-details' order.id %}">
+                                {{ order.car.car_model.make }} {{ order.car.car_model.model }}
+                                ({{ order.car.car_model.year }}), {{ order.total_price }} €
+                            </a>
+                            <br>
+                            <a href="{% url 'order-details' order.id %}">ID: {{ order.id }}</a>
+                        </p>
+                        <h6 class="card-subtitle mb-2 text-muted"></h6>
+                        <br>
+                        <h6 class="card-subtitle mb-2 text-muted">{{ order.car.license_plate_no }}</h6>
+                        <h6 class="card-subtitle mb-2 text-muted">{{ order.car.vin_code }}</h6>
+                        <h6 class="card-subtitle mb-2 text-muted">
+                            {{ order.car.car_model.engine_type }}, {{ order.car.car_model.fuel_type }}
+                        </h6>
+                        <br>
+                        <h6 class="card-subtitle mb-2 text-muted"></h6>
+                        <h6 class="card-subtitle mb-2 text-muted">From: {{ order.date|date:"Y-m-d" }}</h6>
+                        <h6 class="card-subtitle mb-2 text-muted">Until:
+                            <span class="text-{% if order.is_overdue %}danger{% else %}success{% endif %}">
+                            {{ order.deadline|date:"Y-m-d, H:i" }}
+                    </span>
+                        </h6>
+                    </div>
+                </div>
+            </div>
         {% endfor %}
-    </ul>
+    </div>
 {% else %}
     <p>You have no orders at the moment.</p>
 {% endif %}
