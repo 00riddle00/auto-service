@@ -18,15 +18,16 @@ from django.conf import settings
 from django.conf.urls.static import static
 from django.contrib import admin
 from django.urls import include, path
+
 from service import views as service_views
 
 urlpatterns = (
     [
         path("admin/", admin.site.urls),
         path("accounts/", include("django.contrib.auth.urls")),
-        path("register/", service_views.register, name="register"),
+        path("accounts/register/", service_views.register, name="register"),
         path(
-            "register/done/",
+            "accounts/register/done/",
             service_views.register_complete,
             name="register-complete",
         ),
