@@ -11,11 +11,15 @@ from django.core.paginator import Paginator
 from django.db.models import Q
 from django.shortcuts import get_object_or_404, redirect, render, reverse
 from django.views import generic
-
 from django.views.decorators.csrf import csrf_protect
 from django.views.generic.edit import FormMixin
 
-from .forms import OrderCommentForm, ProfileUpdateForm, UserUpdateForm
+from .forms import (
+    OrderCommentForm,
+    OrderForm,
+    ProfileUpdateForm,
+    UserUpdateForm,
+)
 from .models import Car, Order, Service
 
 
@@ -145,8 +149,8 @@ class UserOrderListView(LoginRequiredMixin, generic.ListView):
 
 class OrderCreateView(LoginRequiredMixin, generic.CreateView):
     model = Order
-    fields = ["car", "deadline"]
     success_url = "/my-orders/"
+    form_class = OrderForm
     template_name = "order_form.html"
 
     def form_valid(self, form):
@@ -159,8 +163,8 @@ class OrderUpdateView(
     LoginRequiredMixin, UserPassesTestMixin, generic.UpdateView
 ):
     model = Order
-    fields = ["car", "deadline"]
     success_url = "/my-orders/"
+    form_class = OrderForm
     template_name = "order_form.html"
 
     def form_valid(self, form):
