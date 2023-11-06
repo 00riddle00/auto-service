@@ -142,6 +142,17 @@ class UserOrderListView(LoginRequiredMixin, generic.ListView):
         )
 
 
+class OrderCreateView(LoginRequiredMixin, generic.CreateView):
+    model = Order
+    fields = ["car", "deadline"]
+    success_url = "/my-orders/"
+    template_name = 'order_form.html'
+
+    def form_valid(self, form):
+        form.instance.reader = self.request.user
+        form.save()
+        return super().form_valid(form)
+
 @csrf_protect
 def register(request):
     if request.method == "POST":
