@@ -46,9 +46,14 @@ urlpatterns = [
         name="order-new",
     ),
     path(
-        "orders/<int:pk>/update",
+        "orders/<int:pk>/update/",
         views.OrderUpdateView.as_view(),
         name="order-update",
+    ),
+    path(
+        "orders/<int:pk>/delete/",
+        views.OrderDeleteView.as_view(),
+        name="order-delete",
     ),
     path("profile/", views.profile, name="profile"),
 ]

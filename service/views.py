@@ -172,6 +172,18 @@ class OrderUpdateView(
         return self.get_object().user == self.request.user
 
 
+class OrderDeleteView(
+    LoginRequiredMixin, UserPassesTestMixin, generic.DeleteView
+):
+    model = Order
+    success_url = "/my-orders/"
+    context_object_name = "order"
+    template_name = "order_delete.html"
+
+    def test_func(self):
+        return self.get_object().user == self.request.user
+
+
 @csrf_protect
 def register(request):
     if request.method == "POST":

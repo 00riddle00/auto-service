@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% load crispy_forms_tags %}
+
+{% block title %}Delete Order{% endblock %}
+
+{% block content %}
+<div class="content-section">
+    <form method="POST">
+        {% csrf_token %}
+        <fieldset class="form-group">
+            <legend class="border-bottom mb-4">Delete order</legend>
+            <h2>Are you sure you want to delete order this order?</h2>
+            <h5>{{ order }}</h5>
+        </fieldset>
+        <div class="form-group">
+            <button class="btn btn-danger" type="submit">Yes, delete</button>
+            <a class="btn btn-secondary" href="{% url 'order-details' order.id %}">Cancel</a>
+        </div>
+    </form>
+</div>
+{% endblock %}
