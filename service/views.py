@@ -5,12 +5,13 @@ import plotly.express as px
 import plotly.offline as po
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
-from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.contrib.auth.models import User
 from django.core.paginator import Paginator
 from django.db.models import Q
 from django.shortcuts import get_object_or_404, redirect, render, reverse
 from django.views import generic
+
 from django.views.decorators.csrf import csrf_protect
 from django.views.generic.edit import FormMixin
 
@@ -152,6 +153,23 @@ class OrderCreateView(LoginRequiredMixin, generic.CreateView):
         form.instance.user = self.request.user
         form.save()
         return super().form_valid(form)
+
+
+class OrderUpdateView(
+    LoginRequiredMixin, UserPassesTestMixin, generic.UpdateView
+):
+    model = Order
+    fields = ["car", "deadline"]
+    success_url = "/my-orders/"
+    template_name = "order_form.html"
+
+    def form_valid(self, form):
+        form.instance.user = self.request.user
+        form.save()
+        return super().form_valid(form)
+
+    def test_func(self):
+        return self.get_object().user == self.request.user
 
 
 @csrf_protect
