@@ -206,7 +206,8 @@ class OrderLineCreateView(
         return super().form_valid(form)
 
     def test_func(self):
-        return self.get_object().order.user == self.request.user
+        order = Order.objects.get(pk=self.kwargs["pk"])
+        return order.user == self.request.user
 
     def get_success_url(self):
         return reverse(
