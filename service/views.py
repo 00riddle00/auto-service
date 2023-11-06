@@ -20,7 +20,7 @@ from .forms import (
     ProfileUpdateForm,
     UserUpdateForm,
 )
-from .models import Car, Order, Service
+from .models import Car, Order, OrderLine, Service
 
 
 def index(request):
@@ -186,6 +186,27 @@ class OrderDeleteView(
 
     def test_func(self):
         return self.get_object().user == self.request.user
+
+
+class OrderLineCreateView(
+    LoginRequiredMixin, UserPassesTestMixin, generic.CreateView
+):
+    model = OrderLine
+    fields = ["service", "quantity"]
+    template_name = "order_line_form.html"
+
+    def form_valid(self, form):
+        form.instance.order = Order.objects.get(pk=self.kwargs["pk"])
+        form.save()
+        return super().form_valid(form)
+
+    def test_func(self):
+        return self.get_object().order.user == self.request.user
+
+    def get_success_url(self):
+        return reverse(
+            viewname="order-details", kwargs={"pk": self.kwargs["pk"]}
+        )
 
 
 @csrf_protect

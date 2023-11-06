@@ -55,5 +55,10 @@ urlpatterns = [
         views.OrderDeleteView.as_view(),
         name="order-delete",
     ),
+    path(
+        "orders/<int:pk>/lines/new/",
+        views.OrderLineCreateView.as_view(),
+        name="order-line-new",
+    ),
     path("profile/", views.profile, name="profile"),
 ]

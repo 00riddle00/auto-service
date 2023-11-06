@@ -49,6 +49,10 @@
     </div>
 {% endif %}
 <br>
+{% if order.user == user %}
+    <a class="btn btn-primary btn-sm mt-1 mb-1" href="{% url 'order-line-new' order.id %}">Add a service</a>
+{% endif %}
+<br>
 <br>
 {% if user.is_authenticated %}
     <div class="fieldWrapper">
