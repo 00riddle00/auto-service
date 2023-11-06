@@ -209,6 +209,22 @@ class OrderLineCreateView(
         )
 
 
+class OrderLineDeleteView(
+    LoginRequiredMixin, UserPassesTestMixin, generic.DeleteView
+):
+    model = OrderLine
+    context_object_name = "order_line"
+    template_name = "order_line_delete.html"
+
+    def test_func(self):
+        return self.get_object().order.user == self.request.user
+
+    def get_success_url(self):
+        return reverse(
+            viewname="order-details", kwargs={"pk": self.kwargs["order_pk"]}
+        )
+
+
 @csrf_protect
 def register(request):
     if request.method == "POST":

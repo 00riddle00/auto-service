@@ -29,6 +29,7 @@
                 <th>Item price</th>
                 <th>Quantity</th>
                 <th>Price</th>
+                <th>Actions</th>
             </tr>
             </thead>
             <tbody>
@@ -38,11 +39,20 @@
                     <td>{{ line.service.price }} €</td>
                     <td>{{ line.quantity }}</td>
                     <td>{{ line.price }} €</td>
+                    <td>
+                        {% if order.user == user %}
+                            <div>
+                                <a class="btn btn-danger btn-sm mt-1 mb-1"
+                                   href="{% url 'order-line-delete' order.id line.id %}">Delete</a>
+                            </div>
+                        {% endif %}
+                    </td>
                 </tr>
             {% endfor %}
             <tr>
                 <td colspan="3"></td>
                 <td><strong>{{ order.total_price }} €</strong></td>
+                <td></td>
             </tr>
             </tbody>
         </table>
