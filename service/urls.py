@@ -41,7 +41,7 @@ urlpatterns = [
         name="user-orders",
     ),
     path(
-        "orders/new",
+        "orders/new/",
         views.OrderCreateView.as_view(),
         name="order-new",
     ),
