@@ -3,113 +3,117 @@
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
-#, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: PACKAGE VERSION\n"
+"Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-11-04 18:25+0200\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
-"Language: \n"
+"POT-Creation-Date: 2023-11-04 18:37+0200\n"
+"PO-Revision-Date: 2023-11-04 13:03+0200\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: lt\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=4; plural=(n % 10 == 1 && (n % 100 > 19 || n % 100 < "
-"11) ? 0 : (n % 10 >= 2 && n % 10 <=9) && (n % 100 > 19 || n % 100 < 11) ? "
-"1 : n % 1 != 0 ? 2: 3);\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && (n%100<11 || n%100>19) ? 0 : "
+"n%10>=2 && n%10<=9 && (n%100<11 || n%100>19) ? 1 : 2);\n"
+"X-Generator: Poedit 3.3.2\n"
+
 #: models.py:15
 msgid "License plate number"
-msgstr ""
+msgstr "Valstybinis numeris"
 
 #: models.py:18
 msgid ""
 "Enter car's licence plate number (it need not be unique, since cars can be "
 "from different countries)"
 msgstr ""
+"Įveskite automobilio valstybinį numerį (jis nebūtinai turi būti unikalus, "
+"nes automobiliai gali būti iš skirtingų šalių)"
 
 #: models.py:23
 msgid "VIN code"
-msgstr ""
+msgstr "VIN kodas"
 
 #: models.py:26
 msgid "Enter car's VIN code (it must be unique)"
-msgstr ""
+msgstr "Įveskite automobilio VIN kodą (jis turi būti unikalus)"
 
 #: models.py:31
 msgid "Model"
-msgstr ""
+msgstr "Modelis"
 
 #: models.py:36
 msgid "Client's name"
-msgstr ""
+msgstr "Kliento vardas"
 
 #: models.py:39
 msgid "Observations"
-msgstr ""
+msgstr "Pastebėjimai"
 
 #: models.py:42
 msgid "Photo"
-msgstr ""
+msgstr "Nuotrauka"
 
 #: models.py:52
 msgid "Car"
-msgstr ""
+msgstr "Automobilis"
 
 #: models.py:53
 msgid "Cars"
-msgstr ""
+msgstr "Automobiliai"
 
 #: templates/index.html:7
 msgid "Welcome to"
-msgstr ""
+msgstr "Sveiki atvykę į"
 
 #: templates/index.html:8
 msgid "Grant your car a"
-msgstr ""
+msgstr "Suteikite savo automobiliui"
 
 #: templates/index.html:8
 msgid "two-way"
-msgstr ""
+msgstr "abipusį"
 
 #: templates/index.html:8
 msgid "ticket to heaven"
-msgstr ""
+msgstr "bilietą į rojų"
 
 #: templates/index.html:9
 msgid "Currently, we have:"
-msgstr ""
+msgstr "Šiuo metu, mes turime:"
 
 #: templates/index.html:11
 msgid "Cars in our garage:"
-msgstr ""
+msgstr "Automobiliai mūsų garaže:"
 
 #: templates/index.html:12
 msgid "Services available:"
-msgstr ""
+msgstr "Teikiamos paslaugos:"
 
 #: templates/index.html:13
 msgid "Orders completed:"
-msgstr ""
+msgstr "Įvykdyti užsakymai:"
 
 #: templates/index.html:18
 msgid "Your visits:"
-msgstr ""
+msgstr "Jūsų apsilankymai:"
 
 #: views.py:264
 msgid "Please fill in all fields!"
-msgstr ""
+msgstr "Prašome užpildyti visus laukus!"
 
 #: views.py:268
 msgid "Passwords do not match!"
-msgstr ""
+msgstr "Slaptažodžiai nesutampa!"
 
 #: views.py:277
 msgid ""
 "Password must be minimum 8 characters long, contain at least one letter and "
 "one number."
 msgstr ""
+"Slaptažodis turi būti sudarytas iš mažiausiai 8 simbolių, jame turi būti "
+"bent viena raidė ir vienas skaičius."
 
 #: views.py:287
 #, python-brace-format
@@ -125,3 +129,21 @@ msgstr ""
 #, python-brace-format
 msgid "User with username {username_bold} successfully registered!"
 msgstr ""
+
+#~ msgid "User with username"
+#~ msgstr "Vartotojas su vardu"
+
+#~ msgid "already exists!"
+#~ msgstr "jau egzistuoja!"
+
+#~ msgid "User with email"
+#~ msgstr "Vartotojas su el. paštu"
+
+#~ msgid "User"
+#~ msgstr "Vartotojas"
+
+#~ msgid "successfully registered!"
+#~ msgstr "sėkmingai užregistruotas!"
+
+#~ msgid "Car Heaven"
+#~ msgstr "Automobilių Rojų"
