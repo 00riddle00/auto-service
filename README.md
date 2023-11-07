@@ -32,4 +32,4 @@ pip install -r requirements.txt
 ## Admin (superuser) credentials:
 * Username: `admin`
 * E-mail: tomasgiedraitis@gmail.com
-* Password: `testtest12`
+* Password: `rorosroros1`
