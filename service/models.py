@@ -39,7 +39,9 @@ class Car(models.Model):
         verbose_name=_("Observations"), max_length=2048, default=""
     )
     photo = models.ImageField(
-        verbose_name=_("Photo"), upload_to="car_photos", null=True, blank=True
+        verbose_name=_("Photo"),
+        upload_to="car_photos",
+        default="car_photos/no_photo.jpg",
     )
 
     def __str__(self):
@@ -51,6 +53,14 @@ class Car(models.Model):
     class Meta:
         verbose_name = _("Car")
         verbose_name_plural = _("Cars")
+
+    def save(self, *args, **kwargs):
+        super().save(*args, **kwargs)
+        img = Image.open(self.photo.path)
+        if img.height > 1000 or img.width > 1000:
+            output_size = (1000, 1000)
+            img.thumbnail(output_size)
+            img.save(self.photo.path)
 
 
 class CarModel(models.Model):

@@ -14,11 +14,7 @@
         {% for car in cars %}
             <div class="col-md-4 d-flex align-items-stretch">
                 <div class="card mb-4 shadow-sm">
-                    {% if car.photo %}
-                        <img src="{{ car.photo.url }}" class="card-img-top" alt="{% trans 'car-photo' %}">
-                    {% else %}
-                        <img src="{% static 'img/no_image.png' %}" class="card-img-top" alt="{% trans 'no-image' %}">
-                    {% endif %}
+                    <img src="{{ car.photo.url }}" class="card-img-top" alt="{% trans 'car-photo' %}">
                     <div class="card-body">
                         <p class="card-text">
                             <a href="{{ car.id }}">

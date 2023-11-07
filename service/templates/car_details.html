@@ -6,11 +6,7 @@
 {% block content %}
 {% load static %}
 <div class="container">
-    {% if car.photo %}
-        <img src="{{ car.photo.url }}" class="card-img-top" alt="{% trans 'car-photo' %}">
-    {% else %}
-        <img src="{% static 'img/no_image.png' %}" class="card-img-top" alt="{% trans 'no-image' %}">
-    {% endif %}
+    <img src="{{ car.photo.url }}" class="card-img-top" alt="{% trans 'car-photo' %}">
 </div>
 <br>
 <h2>{{ car.car_model.make }} {{ car.car_model.model }}</h2>
