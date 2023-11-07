@@ -91,6 +91,7 @@ def search(request):
 
 class ServiceListView(generic.ListView):
     model = Service
+    paginate_by = 5
     context_object_name = "services"
     template_name = "services.html"
 
