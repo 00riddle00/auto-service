@@ -3,16 +3,17 @@
 {% block title %}Car Heaven{% endblock %}
 
 {% block content %}
-<h3>Welcome to <strong>Car Heaven</strong>!</h3>
-<p>Grant your car a <strong>two-way</strong> ticket to heaven!</p>
-<p>Currently, we have:</p>
+{% load i18n %}
+<h3>{% trans "Welcome to" %} <strong>Car Heaven</strong>!</h3>
+<p>{% trans "Grant your car a" %} <strong>{% trans "two-way" %}</strong> {% trans "ticket to heaven" %}!</p>
+<p>{% trans "Currently, we have:" %}</p>
 <ul>
-    <li><strong>Cars in our garage: </strong><a href="{% url 'cars' %}">{{ num_cars }}</a>
-    <li><strong>Services available: </strong><a href="{% url 'services' %}">{{ num_services }}</a>
-    <li><strong>Orders completed: </strong><a href="{% url 'orders' %}">{{ num_orders }}</a>
+    <li><strong>{% trans "Cars in our garage:" %} </strong><a href="{% url 'cars' %}">{{ num_cars }}</a>
+    <li><strong>{% trans "Services available:" %} </strong><a href="{% url 'services' %}">{{ num_services }}</a>
+    <li><strong>{% trans "Orders completed:" %} </strong><a href="{% url 'orders' %}">{{ num_orders }}</a>
 </ul>
 <div class="container" style="display: inline-block; width: 75%">
     {{ bar_chart|safe }}
 </div>
-<p>Your visits: {{ num_visits }}.</p>
+<p>{% trans "Your visits:" %} {{ num_visits }}.</p>
 {% endblock %}
