@@ -20,10 +20,12 @@
 <nav class="navbar navbar-expand-lg bg-body-tertiary" data-bs-theme="light">
     <div class="container-fluid">
         <a class="navbar-brand" href="{% url 'index' %}">
-            <img src="{% static 'img/car_heaven_logo.png' %}" alt="Car Heaven Logo" width="50" height="50">
-            Car Heaven</a>
+            <img src="{% static 'img/car_heaven_logo.png' %}" alt="Car Heaven {% trans 'Logo' %}"
+                 width="50" height="50">
+            Car Heaven
+        </a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
-                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                aria-controls="navbarSupportedContent" aria-expanded="false">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
@@ -36,17 +38,19 @@
                     </form>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="{% url 'cars' %}">Cars</a>
+                    <a class="nav-link active" aria-current="page" href="{% url 'cars' %}">{% trans "Cars" %}</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="{% url 'services' %}">Services</a>
+                    <a class="nav-link active" aria-current="page" href="{% url 'services' %}">
+                        {% trans "Services" %}
+                    </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="{% url 'orders' %}">Orders</a>
+                    <a class="nav-link active" aria-current="page" href="{% url 'orders' %}">{% trans "Orders" %}</a>
                 </li>
                 <li class="nav-item dropdown">
                     <a class="nav-link" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                        <img src="{% static 'img/lang.png' %}" alt="language-icon" width="25" height="25">
+                        <img src="{% static 'img/lang.png' %}" alt="{% trans 'language-icon' %}" width="25" height="25">
                     </a>
                     <ul class="dropdown-menu">
                         <li>
@@ -73,22 +77,28 @@
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
                            aria-expanded="false">
-                            <img src="{{ user.profile.picture.url }}" alt="profile-picture" width="25" height="25">
+                            <img src="{{ user.profile.picture.url }}" alt="{% trans 'profile-picture' %}" width="25" height="25">
                             {{ user.get_username }}
                         </a>
                         <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="{% url 'profile' %}">Your profile</a></li>
-                            <li><a class="dropdown-item" href="{% url 'user-orders' %}">Your orders</a></li>
-                            <li><hr></li>
-                            <li><a class="dropdown-item" href="{% url 'logout' %}">Sign out</a></li>
+                            <li><a class="dropdown-item" href="{% url 'profile' %}">{% trans "Your profile" %}</a></li>
+                            <li>
+                                <a class="dropdown-item" href="{% url 'user-orders' %}">
+                                    {% trans "Your orders" %}
+                                </a>
+                            </li>
+                            <li>
+                                <hr>
+                            </li>
+                            <li><a class="dropdown-item" href="{% url 'logout' %}">{% trans "Sign out" %}</a></li>
                         </ul>
                     </li>
                 {% else %}
                     <li class="nav-item">
-                        <a class="nav-link" href="{% url 'login' %}">Sign in</a>
+                        <a class="nav-link" href="{% url 'login' %}">{% trans "Sign in" %}</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{% url 'register' %}">Sign up</a>
+                        <a class="nav-link" href="{% url 'register' %}">{% trans "Sign up" %}</a>
                     </li>
                 {% endif %}
             </ul>

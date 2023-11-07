@@ -1,19 +1,19 @@
 {% extends "base.html" %}
+{% load i18n %}
 
 {% block title %}Car Heaven{% endblock %}
 
 {% block content %}
-{% load i18n %}
 <h3>{% trans "Welcome to" %} <strong>Car Heaven</strong>!</h3>
 <p>{% trans "Grant your car a" %} <strong>{% trans "two-way" %}</strong> {% trans "ticket to heaven" %}!</p>
-<p>{% trans "Currently, we have:" %}</p>
+<p>{% trans "Currently, we have" %}:</p>
 <ul>
-    <li><strong>{% trans "Cars in our garage:" %} </strong><a href="{% url 'cars' %}">{{ num_cars }}</a>
-    <li><strong>{% trans "Services available:" %} </strong><a href="{% url 'services' %}">{{ num_services }}</a>
-    <li><strong>{% trans "Orders completed:" %} </strong><a href="{% url 'orders' %}">{{ num_orders }}</a>
+    <li><strong>{% trans "Cars in our garage" %}: </strong><a href="{% url 'cars' %}">{{ num_cars }}</a>
+    <li><strong>{% trans "Services available" %}: </strong><a href="{% url 'services' %}">{{ num_services }}</a>
+    <li><strong>{% trans "Orders completed" %}: </strong><a href="{% url 'orders' %}">{{ num_orders }}</a>
 </ul>
 <div class="container" style="display: inline-block; width: 75%">
     {{ bar_chart|safe }}
 </div>
-<p>{% trans "Your visits:" %} {{ num_visits }}.</p>
+<p>{% trans "Your visits" %}: {{ num_visits }}.</p>
 {% endblock %}

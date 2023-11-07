@@ -1,6 +1,7 @@
 {% extends "base.html" %}
+{% load i18n %}
 
-{% block title %}Delete Order Line{% endblock %}
+{% block title %}{% trans "Delete Order Line" %}{% endblock %}
 
 {% block content %}
 <div class="content-section">
@@ -8,13 +9,13 @@
     <form method="POST">
         {% csrf_token %}
         <fieldset class="form-group">
-            <legend class="border-bottom mb-4">Delete order line</legend>
-            <h2>Are you sure you want to delete order this order line?</h2>
+            <legend class="border-bottom mb-4">{% trans "Delete order line" %}</legend>
+            <h2>{% trans "Are you sure you want to delete order this order line" %}?</h2>
             <h5>{{ order_line }}</h5>
         </fieldset>
         <div class="form-group">
-            <button class="btn btn-danger" type="submit">Yes, delete</button>
-            <a class="btn btn-secondary" href="{% url 'order-details' order_line.order.id %}">Cancel</a>
+            <button class="btn btn-danger" type="submit">{% trans "Yes, delete" %}</button>
+            <a class="btn btn-secondary" href="{% url 'order-details' order_line.order.id %}">{% trans "Cancel" %}</a>
         </div>
     </form>
 </div>

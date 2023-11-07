@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-11-04 22:59+0200\n"
-"PO-Revision-Date: 2023-11-04 23:00+0200\n"
+"POT-Creation-Date: 2023-11-05 01:16+0200\n"
+"PO-Revision-Date: 2023-11-05 01:19+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: lt\n"
@@ -19,7 +19,7 @@ msgstr ""
 "n%10>=2 && n%10<=9 && (n%100<11 || n%100>19) ? 1 : 2);\n"
 "X-Generator: Poedit 3.3.2\n"
 
-#: models.py:15
+#: models.py:15 templates/car_details.html:19
 msgid "License plate number"
 msgstr "Valstybinis numeris"
 
@@ -31,7 +31,7 @@ msgstr ""
 "Įveskite automobilio valstybinį numerį (jis nebūtinai turi būti unikalus, "
 "nes automobiliai gali būti iš skirtingų šalių)"
 
-#: models.py:23
+#: models.py:23 templates/car_details.html:20
 msgid "VIN code"
 msgstr "VIN kodas"
 
@@ -47,7 +47,7 @@ msgstr "Modelis"
 msgid "Client's name"
 msgstr "Kliento vardas"
 
-#: models.py:39
+#: models.py:39 templates/car_details.html:24
 msgid "Observations"
 msgstr "Pastebėjimai"
 
@@ -55,11 +55,12 @@ msgstr "Pastebėjimai"
 msgid "Photo"
 msgstr "Nuotrauka"
 
-#: models.py:52 models.py:98
+#: models.py:52 models.py:98 templates/order_details.html:22
 msgid "Car"
 msgstr "Automobilis"
 
-#: models.py:53 views.py:36
+#: models.py:53 templates/base.html:41 templates/cars.html:4
+#: templates/cars.html:8 views.py:36
 msgid "Cars"
 msgstr "Automobiliai"
 
@@ -67,19 +68,19 @@ msgstr "Automobiliai"
 msgid "Make"
 msgstr "Markė"
 
-#: models.py:59
+#: models.py:59 templates/car_details.html:21
 msgid "Year"
 msgstr "Metai"
 
-#: models.py:61
+#: models.py:61 templates/car_details.html:22
 msgid "Engine type"
 msgstr "Variklio tipas"
 
-#: models.py:63
+#: models.py:63 templates/car_details.html:23
 msgid "Fuel type"
 msgstr "Kuro tipas"
 
-#: models.py:65 models.py:83
+#: models.py:65 models.py:83 templates/service_details.html:9
 msgid "Description"
 msgstr "Aprašymas"
 
@@ -95,19 +96,21 @@ msgstr "Automobilių modeliai"
 msgid "Name"
 msgstr "Pavadinimas"
 
-#: models.py:81
+#: models.py:81 templates/order_details.html:32
+#: templates/service_details.html:8
 msgid "Price"
 msgstr "Kaina"
 
-#: models.py:90 models.py:162
+#: models.py:90 models.py:162 templates/order_details.html:29
 msgid "Service"
 msgstr "Paslauga"
 
-#: models.py:91 views.py:36
+#: models.py:91 templates/base.html:45 templates/services.html:4
+#: templates/services.html:7 views.py:36
 msgid "Services"
 msgstr "Paslaugos"
 
-#: models.py:95 models.py:194
+#: models.py:95 models.py:194 templates/order_details.html:16
 msgid "Date"
 msgstr "Data"
 
@@ -131,7 +134,7 @@ msgstr "Vykdomas"
 msgid "Completed"
 msgstr "Įvykdytas"
 
-#: models.py:112
+#: models.py:112 templates/order_details.html:15
 msgid "Status"
 msgstr "Būsena"
 
@@ -147,11 +150,12 @@ msgstr "Vartotojas"
 msgid "Order"
 msgstr "Užsakymas"
 
-#: models.py:136 views.py:36
+#: models.py:136 templates/base.html:49 templates/car_details.html:29
+#: templates/orders.html:4 templates/orders.html:7 views.py:36
 msgid "Orders"
 msgstr "Užsakymai"
 
-#: models.py:166
+#: models.py:166 templates/order_details.html:31
 msgid "Quantity"
 msgstr "Kiekis"
 
@@ -179,7 +183,7 @@ msgstr "Tekstas"
 msgid "Comment"
 msgstr "Komentaras"
 
-#: models.py:199
+#: models.py:199 templates/order_details.html:84
 msgid "Comments"
 msgstr "Komentarai"
 
@@ -199,9 +203,76 @@ msgstr "Profilis"
 msgid "Profiles"
 msgstr "Profiliai"
 
-#: templates/base.html:35
+#: templates/base.html:23
+msgid "Logo"
+msgstr "Logotipas"
+
+#: templates/base.html:37
 msgid "Search cars"
 msgstr "Ieškoti automobilių"
+
+#: templates/base.html:53
+msgid "language-icon"
+msgstr "kalbos-ikonėlė"
+
+#: templates/base.html:80 templates/order_details.html:88
+#: templates/orders.html:16 templates/profile.html:11
+#: templates/user_orders.html:19
+msgid "profile-picture"
+msgstr "profilio-paveikslėlis"
+
+#: templates/base.html:84
+msgid "Your profile"
+msgstr "Jūsų profilis"
+
+#: templates/base.html:87 templates/user_orders.html:7
+msgid "Your orders"
+msgstr "Jūsų užsakymai"
+
+#: templates/base.html:93
+msgid "Sign out"
+msgstr "Atsijungti"
+
+#: templates/base.html:98 templates/registration/login.html:8
+#: templates/registration/login.html:27
+#: templates/registration/password_reset_complete.html:9
+#: templates/registration/register.html:42
+#: templates/registration/register_complete.html:9
+msgid "Sign in"
+msgstr "Prisijungti"
+
+#: templates/base.html:101 templates/registration/register.html:8
+#: templates/registration/register.html:39
+msgid "Sign up"
+msgstr "Registruotis"
+
+#: templates/car_details.html:4
+msgid "Car Details"
+msgstr "Automobilio informacija"
+
+#: templates/car_details.html:10 templates/cars.html:18
+msgid "car-photo"
+msgstr "automobilio-nuotrauka"
+
+#: templates/car_details.html:12 templates/cars.html:20
+msgid "no-image"
+msgstr "nėra-paveikslėlio"
+
+#: templates/car_details.html:18 templates/order_details.html:21
+msgid "Client"
+msgstr "Klientas"
+
+#: templates/car_details.html:25
+msgid "Model description"
+msgstr "Modelio aprašymas (anglų kalba)"
+
+#: templates/cars.html:10
+msgid "Cars registered in our auto service"
+msgstr "Automobiliai, užregistruoti mūsų autoservise"
+
+#: templates/cars.html:43
+msgid "There are no cars at the moment"
+msgstr "Šiuo metu automobilių nėra"
 
 #: templates/index.html:7
 msgid "Welcome to"
@@ -220,24 +291,358 @@ msgid "ticket to heaven"
 msgstr "bilietą į rojų"
 
 #: templates/index.html:9
-msgid "Currently, we have:"
-msgstr "Šiuo metu, mes turime:"
+msgid "Currently, we have"
+msgstr "Šiuo metu, mes turime"
 
 #: templates/index.html:11
-msgid "Cars in our garage:"
-msgstr "Automobilių mūsų garaže:"
+msgid "Cars in our garage"
+msgstr "Automobilių mūsų garaže"
 
 #: templates/index.html:12
-msgid "Services available:"
-msgstr "Teikiamos paslaugos:"
+msgid "Services available"
+msgstr "Teikiamų paslaugų"
 
 #: templates/index.html:13
-msgid "Orders completed:"
-msgstr "Įvykdyti užsakymai:"
+msgid "Orders completed"
+msgstr "Įvykdytų užsakymų"
 
 #: templates/index.html:18
-msgid "Your visits:"
-msgstr "Jūsų apsilankymai:"
+msgid "Your visits"
+msgstr "Jūsų apsilankymai"
+
+#: templates/order_delete.html:4
+msgid "Delete Order"
+msgstr "Pašalinti užsakymą"
+
+#: templates/order_delete.html:12 templates/order_details.html:11
+msgid "Delete order"
+msgstr "Pašalinti užsakymą"
+
+#: templates/order_delete.html:13
+msgid "Are you sure you want to delete order this order"
+msgstr "Ar tikrai norite pašalinti šį užsakymą"
+
+#: templates/order_delete.html:17 templates/order_line_delete.html:17
+msgid "Yes, delete"
+msgstr "Taip, pašalinti"
+
+#: templates/order_delete.html:18 templates/order_line_delete.html:18
+msgid "Cancel"
+msgstr "Atšaukti"
+
+#: templates/order_details.html:4
+msgid "Order Details"
+msgstr "Užsakymo informacija"
+
+#: templates/order_details.html:7
+msgid "Order no"
+msgstr "Užsakymas nr."
+
+#: templates/order_details.html:10
+msgid "Edit order"
+msgstr "Redaguoti užsakymą"
+
+#: templates/order_details.html:17
+msgid "Return date"
+msgstr "Grąžinimo data"
+
+#: templates/order_details.html:18
+msgid "Is overdue"
+msgstr "Ar terminas pasibaigęs"
+
+#: templates/order_details.html:19
+msgid "Yes"
+msgstr "Taip"
+
+#: templates/order_details.html:19
+msgid "No"
+msgstr "Ne"
+
+#: templates/order_details.html:30
+msgid "Item price"
+msgstr "Elemento kaina"
+
+#: templates/order_details.html:33
+msgid "Actions"
+msgstr "Veiksmai"
+
+#: templates/order_details.html:46
+msgid "Edit"
+msgstr "Redaguoti"
+
+#: templates/order_details.html:48
+msgid "Delete"
+msgstr "Pašalinti"
+
+#: templates/order_details.html:64
+msgid "Add a service"
+msgstr "Pridėti paslaugą"
+
+#: templates/order_details.html:72
+msgid "Leave a comment"
+msgstr "Rašyti komentarą"
+
+#: templates/order_details.html:78
+msgid "Post"
+msgstr "Paskelbti"
+
+#: templates/order_details.html:94
+msgid "There are no comments for this order"
+msgstr "Šiuo metu komentarų apie užsakymą nėra"
+
+#: templates/order_form.html:4
+msgid "Create or Update Order"
+msgstr "Užsakymo kūrimas ar redagavimas"
+
+#: templates/order_form.html:12
+msgid "Create or update order"
+msgstr "Užsakymo kūrimas ar redagavimas"
+
+#: templates/order_form.html:16 templates/order_line_form.html:16
+msgid "Save"
+msgstr "Išsaugoti"
+
+#: templates/order_line_delete.html:4
+msgid "Delete Order Line"
+msgstr "Užsakymo eilutės pašalinimas"
+
+#: templates/order_line_delete.html:12
+msgid "Delete order line"
+msgstr "Užsakymo eilutės pašalinimas"
+
+#: templates/order_line_delete.html:13
+msgid "Are you sure you want to delete order this order line"
+msgstr "Ar tikrai norite pašalinti šią užsakymo eilutę"
+
+#: templates/order_line_form.html:4
+msgid "Create or Update Order Line"
+msgstr "Užsakymo eilutės kūrimas ar redagavimas"
+
+#: templates/order_line_form.html:12
+msgid "Create or update order line"
+msgstr "Užsakymo eilutės kūrimas ar redagavimas"
+
+#: templates/orders.html:9
+msgid "All our orders"
+msgstr "Visi mūsų užsakymai"
+
+#: templates/orders.html:39 templates/user_orders.html:38
+msgid "From"
+msgstr "Nuo"
+
+#: templates/orders.html:40 templates/user_orders.html:39
+msgid "Until"
+msgstr "Iki"
+
+#: templates/orders.html:51
+msgid "There are no orders at the moment"
+msgstr "Šiuo metu užsakymų nėra"
+
+#: templates/orders.html:57 templates/user_orders.html:56
+msgid "First"
+msgstr "Pirmas"
+
+#: templates/orders.html:60 templates/user_orders.html:59
+msgid "Previous"
+msgstr "Ankstesnis"
+
+#: templates/orders.html:66 templates/user_orders.html:65
+msgid "Next"
+msgstr "Kitas"
+
+#: templates/orders.html:69 templates/user_orders.html:68
+msgid "Last"
+msgstr "Paskutinis"
+
+#: templates/profile.html:4
+msgid "User Profile"
+msgstr "Vartotojo profilis"
+
+#: templates/profile.html:21
+msgid "Profile info"
+msgstr "Profilio informacija"
+
+#: templates/profile.html:26
+msgid "Update"
+msgstr "Atnaujinti"
+
+#: templates/registration/logged_out.html:4
+msgid "Signed Out"
+msgstr "Atsijungta"
+
+#: templates/registration/logged_out.html:8
+msgid "You have been successfully signed out"
+msgstr "Jūs sėkmingai atsijungėte"
+
+#: templates/registration/logged_out.html:10
+msgid "Sign in again"
+msgstr "Prisijungti iš naujo"
+
+#: templates/registration/login.html:4
+msgid "Sign In"
+msgstr "Prisijungti"
+
+#: templates/registration/login.html:13 templates/registration/register.html:13
+msgid "Username"
+msgstr "Vartotojas vardas"
+
+#: templates/registration/login.html:19 templates/registration/register.html:27
+msgid "Password"
+msgstr "Slaptažodis"
+
+#: templates/registration/login.html:25
+msgid "An error occurred while signing you in, please try again"
+msgstr "Prisijungiant įvyko klaida, pabandykite dar kartą"
+
+#: templates/registration/login.html:30
+msgid "Forgot password"
+msgstr "Pamiršote slaptažodį"
+
+#: templates/registration/password_reset_complete.html:4
+#: templates/registration/password_reset_confirm.html:4
+#: templates/registration/password_reset_done.html:4
+#: templates/registration/password_reset_form.html:4
+msgid "Reset Password"
+msgstr "Atstatyti slaptažodį"
+
+#: templates/registration/password_reset_complete.html:7
+msgid "Password changed successfully"
+msgstr "Slaptažodis sėkmingai pakeistas"
+
+#: templates/registration/password_reset_confirm.html:9
+msgid "Enter and then confirm your new password"
+msgstr "Įveskite ir patvirtinkite naują slaptažodį"
+
+#: templates/registration/password_reset_confirm.html:14
+msgid "New Password"
+msgstr "Naujas slaptažodis"
+
+#: templates/registration/password_reset_confirm.html:20
+msgid "Confirm Password"
+msgstr "Slaptažodžio patvirtinimas"
+
+#: templates/registration/password_reset_confirm.html:25
+msgid "Reset"
+msgstr "Atstatyti"
+
+#: templates/registration/password_reset_confirm.html:28
+msgid "Password change unsuccessful"
+msgstr "Slaptažodžio pakeitimas nesėkmingas"
+
+#: templates/registration/password_reset_confirm.html:29
+msgid ""
+"The password reset link is invalid, possibly because it has already been "
+"used. Please request a new password reset."
+msgstr ""
+"Slaptažodžio atstatymo nuoroda negaliojanti, galimai todėl, kad ji jau buvo "
+"panaudota. Paprašykite atstatyti slaptažodį iš naujo."
+
+#: templates/registration/password_reset_done.html:7
+msgid "Check your inbox"
+msgstr "Patikrinkite savo el. pašto dėžutę"
+
+#: templates/registration/password_reset_done.html:9
+msgid "The email with the password reset link has been sent to you"
+msgstr "Jums išsiųstas el. laiškas su slaptažodžio atstatymo nuoroda"
+
+#: templates/registration/password_reset_form.html:12
+msgid "Forgot your password"
+msgstr "Pamiršote savo slaptažodį"
+
+#: templates/registration/password_reset_form.html:14
+msgid ""
+"Enter your email address below and we'll send you password reset instructions"
+msgstr ""
+"Įveskite savo el. pašto adresą žemiau ir mes Jums atsiųsime slaptažodžio "
+"atstatymo instrukciją"
+
+#: templates/registration/password_reset_form.html:16
+msgid "Email"
+msgstr "El. paštas"
+
+#: templates/registration/password_reset_form.html:21
+msgid "Reset password"
+msgstr "Atstatyti slaptažodį"
+
+#: templates/registration/register.html:4
+#: templates/registration/register_complete.html:4
+msgid "Sign Up"
+msgstr "Registruotis"
+
+#: templates/registration/register.html:16
+msgid "Up to 150 characters"
+msgstr "Iki 150 simbolių"
+
+#: templates/registration/register.html:23
+msgid ""
+"We will not share your email with anyone nor send you any spam. Your email "
+"is required to send you a password reset link."
+msgstr ""
+"Mes su niekuo nesidalinsime Jūsų el. paštu ir nesiųsime jums jokių brukalų "
+"(spam). Jūsų el. paštas reikalingas tam, kad galėtume Jums išsiųsti "
+"slaptažodžio atstatymo nuorodą."
+
+#: templates/registration/register.html:30
+msgid "Minimum 8 characters, at least one letter and one number"
+msgstr ""
+"Slaptažodis turi būti sudarytas iš mažiausiai 8 simbolių, jame turi būti "
+"bent viena raidė ir bent vienas skaičius"
+
+#: templates/registration/register.html:34
+msgid "Confirm password"
+msgstr "Patvirtinti slaptažodį"
+
+#: templates/registration/register.html:42
+msgid "If you already have an account,"
+msgstr "Jeigu jau esate prisiregistravęs, galite"
+
+#: templates/registration/register_complete.html:7
+msgid "Success"
+msgstr "Sėkmingai"
+
+#: templates/registration/register_complete.html:9
+msgid "You can now"
+msgstr "Jūs dabar galite"
+
+#: templates/search_cars.html:4
+msgid "Car Search Results"
+msgstr "Automobilių paieškos rezultatai"
+
+#: templates/search_cars.html:7
+msgid "Search results for"
+msgstr "Paieškos rezultatai pagal"
+
+#: templates/search_cars.html:18
+msgid "Oops. Nothing found."
+msgstr "Oi. Nieko nerasta."
+
+#: templates/service_details.html:4
+msgid "Service Details"
+msgstr "Paslaugos informacija"
+
+#: templates/services.html:8
+msgid "List of our services"
+msgstr "Mūsų paslaugų sąrašas"
+
+#: templates/services.html:16
+msgid "There are no services at the moment"
+msgstr "Šiuo metu paslaugų nėra"
+
+#: templates/user_orders.html:4
+msgid "Your Orders"
+msgstr "Jūsų užsakymai"
+
+#: templates/user_orders.html:9
+msgid "New order"
+msgstr "Naujas užsakymas"
+
+#: templates/user_orders.html:12
+msgid "All your orders"
+msgstr "Visi Jūsų užsakymai"
+
+#: templates/user_orders.html:50
+msgid "You have no orders at the moment"
+msgstr "Šiuo metu užsakymų neturite"
 
 #: views.py:46
 msgid "Overview:"
@@ -285,6 +690,68 @@ msgstr "Vartotojas {username_bold} sėkmingai užregistruotas!"
 #: views.py:330
 msgid "Profile updated"
 msgstr "Profilis atnaujintas"
+
+#~ msgid "Create Order Line"
+#~ msgstr "Užsakymo eilutės sukūrimas"
+
+#~ msgid "Create order line"
+#~ msgstr "Užsakymo eilutės sukūrimas"
+
+#~ msgid "Add"
+#~ msgstr "Pridėti"
+
+#~ msgid "License plate number:"
+#~ msgstr "Valstybinis numeris:"
+
+#~ msgid "VIN code:"
+#~ msgstr "VIN kodas:"
+
+#~ msgid "Year:"
+#~ msgstr "Metai:"
+
+#~ msgid "Engine type:"
+#~ msgstr "Variklio tipas:"
+
+#~ msgid "Fuel type:"
+#~ msgstr "Kuro tipas:"
+
+#~ msgid "Observations:"
+#~ msgstr "Pastebėjimai:"
+
+#~ msgid "Orders:"
+#~ msgstr "Užsakymai:"
+
+#~ msgid "Status:"
+#~ msgstr "Būsena:"
+
+#~ msgid "Date:"
+#~ msgstr "Data:"
+
+#~ msgid "Car:"
+#~ msgstr "Automobilis:"
+
+#, fuzzy
+#~| msgid "Comments"
+#~ msgid "Comments:"
+#~ msgstr "Komentarai"
+
+#, fuzzy
+#~| msgid "Price"
+#~ msgid "Price:"
+#~ msgstr "Kaina"
+
+#, fuzzy
+#~| msgid "Description"
+#~ msgid "Description:"
+#~ msgstr "Aprašymas"
+
+#~ msgid "Client: "
+#~ msgstr "Klientas: "
+
+#, fuzzy
+#~| msgid "Order no '%(order.id)s':"
+#~ msgid "Order no {{ order.id }}:"
+#~ msgstr "Užsakymas nr. '%(order.id)s':"
 
 #~ msgid "User with username"
 #~ msgstr "Vartotojas su vardu"

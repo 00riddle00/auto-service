@@ -1,12 +1,14 @@
 {% extends "base.html" %}
+{% load i18n %}
 
-{% block title %}User Profile{% endblock %}
+{% block title %}{% trans "User Profile" %}{% endblock %}
 
 {% block content %}
 <div class="container" style="display: inline-block; width: 70%">
     <div class="content-section">
         <div class="media">
-            <img class="rounded-circle account-img" src="{{ user.profile.picture.url }}" alt="profile-picture">
+            <img class="rounded-circle account-img" src="{{ user.profile.picture.url }}"
+                 alt="{% trans 'profile-picture' %}">
             <div class="media-body">
                 <h2 class="account-heading">{{ user.username }}</h2>
                 <p class="text-secondary">{{ user.email }}</p>
@@ -16,12 +18,12 @@
             {% csrf_token %}
             {% load crispy_forms_tags %}
             <fieldset class="form-group">
-                <legend class="border-bottom mb-4">Profile info</legend>
+                <legend class="border-bottom mb-4">{% trans "Profile info" %}</legend>
                 {{ user_form|crispy }}
                 {{ profile_form|crispy }}
             </fieldset>
             <div class="form-group">
-                <button class="btn btn-primary" type="submit">Update</button>
+                <button class="btn btn-primary" type="submit">{% trans "Update" %}</button>
             </div>
         </form>
     </div>

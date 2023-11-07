@@ -1,20 +1,21 @@
 {% extends "base.html" %}
-{% load crispy_forms_tags %}
+{% load i18n %}
 
-{% block title %}Delete Order{% endblock %}
+{% block title %}{% trans "Delete Order" %}{% endblock %}
 
 {% block content %}
 <div class="content-section">
+    {% load crispy_forms_tags %}
     <form method="POST">
         {% csrf_token %}
         <fieldset class="form-group">
-            <legend class="border-bottom mb-4">Delete order</legend>
-            <h2>Are you sure you want to delete order this order?</h2>
+            <legend class="border-bottom mb-4">{% trans "Delete order" %}</legend>
+            <h2>{% trans "Are you sure you want to delete order this order" %}?</h2>
             <h5>{{ order }}</h5>
         </fieldset>
         <div class="form-group">
-            <button class="btn btn-danger" type="submit">Yes, delete</button>
-            <a class="btn btn-secondary" href="{% url 'order-details' order.id %}">Cancel</a>
+            <button class="btn btn-danger" type="submit">{% trans "Yes, delete" %}</button>
+            <a class="btn btn-secondary" href="{% url 'order-details' order.id %}">{% trans "Cancel" %}</a>
         </div>
     </form>
 </div>

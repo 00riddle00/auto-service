@@ -1,9 +1,10 @@
 {% extends "base.html" %}
+{% load i18n %}
 
-{% block title %}Sign Up{% endblock %}
+{% block title %}{% trans "Sign Up" %}{% endblock %}
 
 {% block content %}
-<h3>Success!</h3>
+<h3>{% trans "Success" %}!</h3>
 <br>
-<h5>You can now <a href="{% url 'login' %}">Sign in</a>.</h5>
+<h5>{% trans "You can now" %} <a href="{% url 'login' %}">{% trans "Sign in" %}</a>.</h5>
 {% endblock %}

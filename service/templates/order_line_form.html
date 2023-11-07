@@ -1,18 +1,19 @@
 {% extends "base.html" %}
-{% load crispy_forms_tags %}
+{% load i18n %}
 
-{% block title %}Create Order Line{% endblock %}
+{% block title %}{% trans "Create or Update Order Line" %}{% endblock %}
 
 {% block content %}
 <div class="content-section">
+    {% load crispy_forms_tags %}
     <form method="POST">
         {% csrf_token %}
         <fieldset class="form-group">
-            <legend class="border-bottom mb-4">Create order line</legend>
+            <legend class="border-bottom mb-4">{% trans "Create or update order line" %}</legend>
             {{ form|crispy }}
         </fieldset>
         <div class="form-group">
-            <button class="btn btn-primary" type="submit">Add</button>
+            <button class="btn btn-primary" type="submit">{% trans "Save" %}</button>
         </div>
     </form>
 </div>

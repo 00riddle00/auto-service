@@ -1,10 +1,11 @@
 {% extends "base.html" %}
+{% load i18n %}
 
-{% block title %}Services{% endblock %}
+{% block title %}{% trans "Services" %}{% endblock %}
 
 {% block content %}
-<h2>Services</h2>
-<h5>List of our services:</h5>
+<h2>{% trans "Services" %}</h2>
+<h5>{% trans "List of our services" %}:</h5>
 {% if services %}
     <ul>
         {% for service in services %}
@@ -12,6 +13,6 @@
         {% endfor %}
     </ul>
 {% else %}
-    <p>There are no services at the moment.</p>
+    <p>{% trans "There are no services at the moment" %}.</p>
 {% endif %}
 {% endblock %}

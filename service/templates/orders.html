@@ -1,18 +1,19 @@
 {% extends "base.html" %}
+{% load i18n %}
 
-{% block title %}Orders{% endblock %}
+{% block title %}{% trans "Orders" %}{% endblock %}
 
 {% block content %}
-<h2>Orders</h2>
+<h2>{% trans "Orders" %}</h2>
 <br>
-<h5>All our orders:</h5>
+<h5>{% trans "All our orders" %}:</h5>
 <br>
 {% if orders %}
     <div class="row">
         {% for order in orders %}
             <div class="col-md-4 d-flex align-items-stretch">
                 <div class="card mb-4 shadow-sm">
-                    <img src="{{ order.user.profile.picture.url }}" class="card-img-top" alt="profile-picture">
+                    <img src="{{ order.user.profile.picture.url }}" class="card-img-top" alt="{% trans 'profile-picture' %}">
                     <div class="card-body">
                         <p class="card-text">
                             <a href="{% url 'order-details' order.id %}">
@@ -35,8 +36,8 @@
                         </h6>
                         <br>
                         <h6 class="card-subtitle mb-2 text-muted"></h6>
-                        <h6 class="card-subtitle mb-2 text-muted">From: {{ order.date|date:"Y-m-d" }}</h6>
-                        <h6 class="card-subtitle mb-2 text-muted">Until:
+                        <h6 class="card-subtitle mb-2 text-muted">{% trans "From" %}: {{ order.date|date:"Y-m-d" }}</h6>
+                        <h6 class="card-subtitle mb-2 text-muted">{% trans "Until" %}:
                             <span class="text-{% if order.is_overdue %}danger{% else %}success{% endif %}">
                             {{ order.deadline|date:"Y-m-d, H:i" }}
                         </span>
@@ -47,25 +48,25 @@
         {% endfor %}
     </div>
 {% else %}
-    <p>There are no orders at the moment.</p>
+    <p>{% trans "There are no orders at the moment" %}.</p>
 {% endif %}
 <div class="container">
     <ul class="pagination pagination-sm justify-content-center">
         {% if page_obj.has_previous %}
             <li class="page-item">
-                <a href="?page=1" class="page-link">First</a>
+                <a href="?page=1" class="page-link">{% trans "First" %}</a>
             </li>
             <li class="page-item">
-                <a href="?page={{ page_obj.previous_page_number }}" class="page-link">Previous</a>
+                <a href="?page={{ page_obj.previous_page_number }}" class="page-link">{% trans "Previous" %}</a>
             </li>
         {% endif %}
         <li class="page-link active">{{ page_obj.number }} of {{ page_obj.paginator.num_pages }}</li>
         {% if page_obj.has_next %}
             <li class="page-item">
-                <a href="?page={{ page_obj.next_page_number }}" class="page-link">Next</a>
+                <a href="?page={{ page_obj.next_page_number }}" class="page-link">{% trans "Next" %}</a>
             </li>
             <li class="page-item">
-                <a href="?page={{ page_obj.paginator.num_pages }}" class="page-link">Last</a>
+                <a href="?page={{ page_obj.paginator.num_pages }}" class="page-link">{% trans "Last" %}</a>
             </li>
         {% endif %}
     </ul>

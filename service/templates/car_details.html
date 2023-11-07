@@ -1,31 +1,32 @@
 {% extends "base.html" %}
+{% load i18n %}
 
-{% block title %}Car Details{% endblock %}
+{% block title %}{% trans "Car Details" %}{% endblock %}
 
 {% block content %}
 {% load static %}
 <div class="container">
     {% if car.photo %}
-        <img src="{{ car.photo.url }}" class="card-img-top" alt="car-photo">
+        <img src="{{ car.photo.url }}" class="card-img-top" alt="{% trans 'car-photo' %}">
     {% else %}
-        <img src="{% static 'img/no_image.png' %}" class="card-img-top" alt="no-image">
+        <img src="{% static 'img/no_image.png' %}" class="card-img-top" alt="{% trans 'no-image' %}">
     {% endif %}
 </div>
 <br>
 <h2>{{ car.car_model.make }} {{ car.car_model.model }}</h2>
 <hr/>
-<p><strong>Client: </strong>{{ car.client_name }}</p>
-<p><strong>License plate number: </strong>{{ car.license_plate_no }}</p>
-<p><strong>VIN code: </strong>{{ car.vin_code }}</p>
-<p><strong>Year: </strong>{{ car.car_model.year }}</p>
-<p><strong>Engine type: </strong>{{ car.car_model.engine_type }}</p>
-<p><strong>Fuel type: </strong>{{ car.car_model.fuel_type }}</p>
-<p><strong>Observations: </strong>{{ car.observations }}</p>
-<p><strong>Model description: </strong>{{ car.car_model.description|safe }}</p>
+<p><strong>{% trans "Client" %}: </strong>{{ car.client_name }}</p>
+<p><strong>{% trans "License plate number" %}: </strong>{{ car.license_plate_no }}</p>
+<p><strong>{% trans "VIN code" %}: </strong>{{ car.vin_code }}</p>
+<p><strong>{% trans "Year" %}: </strong>{{ car.car_model.year }}</p>
+<p><strong>{% trans "Engine type" %}: </strong>{{ car.car_model.engine_type }}</p>
+<p><strong>{% trans "Fuel type" %}: </strong>{{ car.car_model.fuel_type }}</p>
+<p><strong>{% trans "Observations" %}: </strong>{{ car.observations }}</p>
+<p><strong>{% trans "Model description" %}: </strong>{{ car.car_model.description|safe }}</p>
 {% if car.orders.all %}
     <div class="container">
         <hr>
-        <h4>Orders:</h4>
+        <h4>{% trans "Orders" %}:</h4>
         <ul>
             {% for order in car.orders.all %}
                 <li><a href="{% url 'order-details' order.id %}">{{ order }}</a></li>

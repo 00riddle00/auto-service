@@ -1,9 +1,10 @@
 {% extends "base.html" %}
+{% load i18n %}
 
-{% block title %}Car Search Results{% endblock %}
+{% block title %}{% trans "Car Search Results" %}{% endblock %}
 
 {% block content %}
-<h4>Search results for "{{ query }}":</h4>
+<h4>{% trans "Search results for" %} "{{ query }}":</h4>
 <br>
 {% if cars %}
     <ul>
@@ -14,6 +15,6 @@
         {% endfor %}
     </ul>
 {% else %}
-    <p>Oops. Nothing found.</p>
+    <p>{% trans "Oops. Nothing found." %}</p>
 {% endif %}
 {% endblock %}
