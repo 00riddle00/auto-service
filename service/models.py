@@ -21,7 +21,7 @@ class Car(models.Model):
     )
     vin_code = models.CharField(
         verbose_name=_("VIN code"),
-        max_length=32,
+        max_length=17,
         unique=True,
         help_text=_("Enter car's VIN code (it must be unique)"),
     )
