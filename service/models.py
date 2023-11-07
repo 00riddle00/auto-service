@@ -3,6 +3,7 @@ from datetime import datetime
 import pytz
 from django.contrib.auth.models import User
 from django.db import models
+from django.utils.translation import gettext_lazy as _
 from PIL import Image
 from tinymce.models import HTMLField
 
@@ -11,30 +12,34 @@ utc = pytz.utc
 
 class Car(models.Model):
     license_plate_no = models.CharField(
-        verbose_name="License plate number",
+        verbose_name=_("License plate number"),
         max_length=16,
-        help_text="Enter car's licence plate number (it need not be unique, "
-        "since cars can be from different countries)",
+        help_text=_(
+            "Enter car's licence plate number (it need not be unique, "
+            "since cars can be from different countries)"
+        ),
     )
     vin_code = models.CharField(
-        verbose_name="VIN code",
+        verbose_name=_("VIN code"),
         max_length=32,
         unique=True,
-        help_text="Enter car's vin code (it must be unique)",
+        help_text=_("Enter car's VIN code (it must be unique)"),
     )
 
     car_model = models.ForeignKey(
         to="CarModel",
-        verbose_name="Model",
+        verbose_name=_("Model"),
         on_delete=models.SET_NULL,
         null=True,
     )
-    client_name = models.CharField(verbose_name="Client's name", max_length=64)
+    client_name = models.CharField(
+        verbose_name=_("Client's name"), max_length=64
+    )
     observations = models.TextField(
-        verbose_name="Observations", max_length=2048, default=""
+        verbose_name=_("Observations"), max_length=2048, default=""
     )
     photo = models.ImageField(
-        verbose_name="Photo", upload_to="car_photos", null=True, blank=True
+        verbose_name=_("Photo"), upload_to="car_photos", null=True, blank=True
     )
 
     def __str__(self):
@@ -44,8 +49,8 @@ class Car(models.Model):
         )
 
     class Meta:
-        verbose_name = "Car"
-        verbose_name_plural = "Cars"
+        verbose_name = _("Car")
+        verbose_name_plural = _("Cars")
 
 
 class CarModel(models.Model):
