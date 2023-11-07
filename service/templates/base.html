@@ -15,6 +15,7 @@
     <link rel="stylesheet" href="{% static 'css/main.css' %}">
 </head>
 <body>
+{% load i18n %}
 <!-- Navigation -->
 <nav class="navbar navbar-expand-lg bg-body-tertiary" data-bs-theme="light">
     <div class="container-fluid">
@@ -31,7 +32,7 @@
                     <form action="{% url 'search-cars' %}" method="get">
                         <label for="search-cars" hidden></label>
                         <input type="search" id="search-cars" name="query" class="form-control"
-                               placeholder="Search cars">
+                               placeholder="{% trans "Search cars" %}">
                     </form>
                 </li>
                 <li class="nav-item">
