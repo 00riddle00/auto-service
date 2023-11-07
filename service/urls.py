@@ -21,17 +21,17 @@ from . import views
 urlpatterns = [
     path("", views.index, name="index"),
     path("cars/", views.cars, name="cars"),
-    path("cars/<int:pk>", views.car, name="car-details"),
+    path("cars/<int:pk>/", views.car, name="car-details"),
     path("search-cars/", views.search, name="search-cars"),
     path("services/", views.ServiceListView.as_view(), name="services"),
     path(
-        "services/<int:pk>",
+        "services/<int:pk>/",
         views.ServiceDetailView.as_view(),
         name="service-details",
     ),
     path("orders/", views.OrderListView.as_view(), name="orders"),
     path(
-        "orders/<int:pk>",
+        "orders/<int:pk>/",
         views.OrderDetailView.as_view(),
         name="order-details",
     ),
