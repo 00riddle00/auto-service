@@ -54,13 +54,15 @@ class Car(models.Model):
 
 
 class CarModel(models.Model):
-    make = models.CharField(verbose_name="Make", max_length=64)
-    model = models.CharField(verbose_name="Model", max_length=64)
-    year = models.IntegerField(verbose_name="Year")
-    engine_type = models.CharField(verbose_name="Engine type", max_length=64)
-    fuel_type = models.CharField(verbose_name="Fuel type", max_length=64)
+    make = models.CharField(verbose_name=_("Make"), max_length=64)
+    model = models.CharField(verbose_name=_("Model"), max_length=64)
+    year = models.IntegerField(verbose_name=_("Year"))
+    engine_type = models.CharField(
+        verbose_name=_("Engine type"), max_length=64
+    )
+    fuel_type = models.CharField(verbose_name=_("Fuel type"), max_length=64)
     description = HTMLField(
-        verbose_name="Description", max_length=4096, default=""
+        verbose_name=_("Description"), max_length=4096, default=""
     )
 
     def __str__(self):
@@ -70,44 +72,44 @@ class CarModel(models.Model):
         )
 
     class Meta:
-        verbose_name = "Car model"
-        verbose_name_plural = "Car models"
+        verbose_name = _("Car model")
+        verbose_name_plural = _("Car models")
 
 
 class Service(models.Model):
-    name = models.CharField(verbose_name="Name", max_length=128)
-    price = models.FloatField(verbose_name="Price")
+    name = models.CharField(verbose_name=_("Name"), max_length=128)
+    price = models.FloatField(verbose_name=_("Price"))
     description = HTMLField(
-        verbose_name="Description", max_length=4096, default=""
+        verbose_name=_("Description"), max_length=4096, default=""
     )
 
     def __str__(self):
         return f"{self.name} ({self.price} €)"
 
     class Meta:
-        verbose_name = "Service"
-        verbose_name_plural = "Services"
+        verbose_name = _("Service")
+        verbose_name_plural = _("Services")
 
 
 class Order(models.Model):
-    date = models.DateField(verbose_name="Date", auto_now_add=True)
+    date = models.DateField(verbose_name=_("Date"), auto_now_add=True)
     car = models.ForeignKey(
         to="Car",
-        verbose_name="Car",
+        verbose_name=_("Car"),
         on_delete=models.CASCADE,
         related_name="orders",
     )
 
     ORDER_STATUS = (
-        ("N", "New"),
-        ("D", "Declined"),
-        ("A", "Accepted"),
-        ("P", "In Progress"),
-        ("C", "Completed"),
+        ("N", _("New")),
+        ("D", _("Declined")),
+        ("A", _("Accepted")),
+        ("P", _("In Progress")),
+        ("C", _("Completed")),
     )
 
     status = models.CharField(
-        verbose_name="Status",
+        verbose_name=_("Status"),
         max_length=1,
         choices=ORDER_STATUS,
         default="N",
@@ -115,12 +117,12 @@ class Order(models.Model):
     )
 
     deadline = models.DateTimeField(
-        verbose_name="Deadline", null=True, blank=True
+        verbose_name=_("Deadline"), null=True, blank=True
     )
 
     user = models.ForeignKey(
         to=User,
-        verbose_name="User",
+        verbose_name=_("User"),
         on_delete=models.SET_NULL,
         null=True,
         blank=True,
@@ -130,8 +132,8 @@ class Order(models.Model):
         return f"{self.date} ({self.car})"
 
     class Meta:
-        verbose_name = "Order"
-        verbose_name_plural = "Orders"
+        verbose_name = _("Order")
+        verbose_name_plural = _("Orders")
         ordering = ["-id"]
 
     @property
@@ -151,68 +153,70 @@ class Order(models.Model):
 class OrderLine(models.Model):
     order = models.ForeignKey(
         to="Order",
-        verbose_name="Order",
+        verbose_name=_("Order"),
         on_delete=models.CASCADE,
         related_name="lines",
     )
     service = models.ForeignKey(
         to="Service",
-        verbose_name="Service",
+        verbose_name=_("Service"),
         on_delete=models.SET_NULL,
         null=True,
     )
-    quantity = models.IntegerField(verbose_name="Quantity", default=1)
+    quantity = models.IntegerField(verbose_name=_("Quantity"), default=1)
 
     @property
     def price(self):
         return self.service.price * self.quantity
 
     def __str__(self):
+        qty = _("qty")
         return (
             f"{self.order}, {self.price} € ({self.service}, "
-            f"qty: {self.quantity})"
+            f"{qty}: {self.quantity})"
         )
 
     class Meta:
-        verbose_name = "Order line"
-        verbose_name_plural = "Order lines"
+        verbose_name = _("Order line")
+        verbose_name_plural = _("Order lines")
 
 
 class OrderComment(models.Model):
     order = models.ForeignKey(
         to="Order",
-        verbose_name="Order",
+        verbose_name=_("Order"),
         on_delete=models.CASCADE,
         related_name="comments",
     )
     author = models.ForeignKey(
-        to=User, verbose_name="Author", on_delete=models.CASCADE
+        to=User, verbose_name=_("Author"), on_delete=models.CASCADE
     )
-    date = models.DateTimeField(verbose_name="Date", auto_now_add=True)
-    text = models.TextField(verbose_name="Text", max_length=2048)
+    date = models.DateTimeField(verbose_name=_("Date"), auto_now_add=True)
+    text = models.TextField(verbose_name=_("Text"), max_length=2048)
 
     class Meta:
-        verbose_name = "Comment"
-        verbose_name_plural = "Comments"
+        verbose_name = _("Comment")
+        verbose_name_plural = _("Comments")
         ordering = ["-date"]
 
 
 class Profile(models.Model):
     user = models.OneToOneField(
-        to=User, verbose_name="User", on_delete=models.CASCADE
+        to=User, verbose_name=_("User"), on_delete=models.CASCADE
     )
     picture = models.ImageField(
-        verbose_name="Picture",
+        verbose_name=_("Picture"),
         upload_to="profile_pics",
         default="profile_pics/default.png",
     )
 
     def __str__(self):
-        return f"{self.user.username} profile"
+        profile = _("profile")
+        return f"{self.user.username} {profile}"
 
     class Meta:
-        verbose_name = "Profile"
-        verbose_name_plural = "Profiles"
+        verbose_name = _("Profile")
+        verbose_name_plural = _("Profiles")
 
     def save(self, *args, **kwargs):
         super().save(*args, **kwargs)

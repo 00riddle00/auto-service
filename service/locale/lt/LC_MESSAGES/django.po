@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-11-04 19:41+0200\n"
-"PO-Revision-Date: 2023-11-04 19:53+0200\n"
+"POT-Creation-Date: 2023-11-04 22:45+0200\n"
+"PO-Revision-Date: 2023-11-04 22:45+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: lt\n"
@@ -39,7 +39,7 @@ msgstr "VIN kodas"
 msgid "Enter car's VIN code (it must be unique)"
 msgstr "Įveskite automobilio VIN kodą (jis turi būti unikalus)"
 
-#: models.py:31
+#: models.py:31 models.py:58
 msgid "Model"
 msgstr "Modelis"
 
@@ -55,7 +55,7 @@ msgstr "Pastebėjimai"
 msgid "Photo"
 msgstr "Nuotrauka"
 
-#: models.py:52
+#: models.py:52 models.py:98
 msgid "Car"
 msgstr "Automobilis"
 
@@ -63,7 +63,143 @@ msgstr "Automobilis"
 msgid "Cars"
 msgstr "Automobiliai"
 
-#: templates/base.html:82
+#: models.py:57
+msgid "Make"
+msgstr "Markė"
+
+#: models.py:59
+msgid "Year"
+msgstr "Metai"
+
+#: models.py:61
+msgid "Engine type"
+msgstr "Variklio tipas"
+
+#: models.py:63
+msgid "Fuel type"
+msgstr "Kuro tipas"
+
+#: models.py:65 models.py:83
+msgid "Description"
+msgstr "Aprašymas"
+
+#: models.py:75
+msgid "Car model"
+msgstr "Automobilio modelis"
+
+#: models.py:76
+msgid "Car models"
+msgstr "Automobilių modeliai"
+
+#: models.py:80
+msgid "Name"
+msgstr "Pavadinimas"
+
+#: models.py:81
+msgid "Price"
+msgstr "Kaina"
+
+#: models.py:90 models.py:162
+msgid "Service"
+msgstr "Paslauga"
+
+#: models.py:91
+msgid "Services"
+msgstr "Paslaugos"
+
+#: models.py:95 models.py:194
+msgid "Date"
+msgstr "Data"
+
+#: models.py:104
+msgid "New"
+msgstr "Naujas"
+
+#: models.py:105
+msgid "Declined"
+msgstr "Atšauktas"
+
+#: models.py:106
+msgid "Accepted"
+msgstr "Patvirtintas"
+
+#: models.py:107
+msgid "In Progress"
+msgstr "Vykdomas"
+
+#: models.py:108
+msgid "Completed"
+msgstr "Įvykdytas"
+
+#: models.py:112
+msgid "Status"
+msgstr "Būsena"
+
+#: models.py:120
+msgid "Deadline"
+msgstr "Terminas"
+
+#: models.py:125 models.py:205
+msgid "User"
+msgstr "Vartotojas"
+
+#: models.py:135 models.py:156 models.py:187
+msgid "Order"
+msgstr "Užsakymas"
+
+#: models.py:136
+msgid "Orders"
+msgstr "Užsakymai"
+
+#: models.py:166
+msgid "Quantity"
+msgstr "Kiekis"
+
+#: models.py:173
+msgid "qty"
+msgstr "kiekis"
+
+#: models.py:180
+msgid "Order line"
+msgstr "Užsakymo eilutė"
+
+#: models.py:181
+msgid "Order lines"
+msgstr "Užsakymo eilutės"
+
+#: models.py:192
+msgid "Author"
+msgstr "Autorius"
+
+#: models.py:195
+msgid "Text"
+msgstr "Tekstas"
+
+#: models.py:198
+msgid "Comment"
+msgstr "Komentaras"
+
+#: models.py:199
+msgid "Comments"
+msgstr "Komentarai"
+
+#: models.py:208
+msgid "Picture"
+msgstr "Paveikslėlis"
+
+#: models.py:214
+msgid "profile"
+msgstr "profilis"
+
+#: models.py:218
+msgid "Profile"
+msgstr "Profilis"
+
+#: models.py:219
+msgid "Profiles"
+msgstr "Profiliai"
+
+#: templates/base.html:35
 msgid "Search cars"
 msgstr "Ieškoti automobilių"
 
@@ -142,9 +278,6 @@ msgstr "Vartotojas {username_bold} sėkmingai užregistruotas!"
 
 #~ msgid "User with email"
 #~ msgstr "Vartotojas su el. paštu"
-
-#~ msgid "User"
-#~ msgstr "Vartotojas"
 
 #~ msgid "successfully registered!"
 #~ msgstr "sėkmingai užregistruotas!"
