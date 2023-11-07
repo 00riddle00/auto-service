@@ -1,10 +1,10 @@
 {% extends "base.html" %}
 {% load i18n %}
+{% load static %}
 
 {% block title %}{% trans "Car Details" %}{% endblock %}
 
 {% block content %}
-{% load static %}
 <div class="container">
     <img src="{{ car.photo.url }}" class="card-img-top" alt="{% trans 'car-photo' %}">
 </div>

@@ -1,11 +1,11 @@
 {% extends "base.html" %}
 {% load i18n %}
+{% load crispy_forms_tags %}
 
 {% block title %}{% trans "Create or Update Order Line" %}{% endblock %}
 
 {% block content %}
 <div class="content-section">
-    {% load crispy_forms_tags %}
     <form method="POST">
         {% csrf_token %}
         <fieldset class="form-group">

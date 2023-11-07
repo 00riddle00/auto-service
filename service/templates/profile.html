@@ -1,5 +1,6 @@
 {% extends "base.html" %}
 {% load i18n %}
+{% load crispy_forms_tags %}
 
 {% block title %}{% trans "User Profile" %}{% endblock %}
 
@@ -16,7 +17,6 @@
         </div>
         <form method="POST" enctype="multipart/form-data">
             {% csrf_token %}
-            {% load crispy_forms_tags %}
             <fieldset class="form-group">
                 <legend class="border-bottom mb-4">{% trans "Profile info" %}</legend>
                 {{ user_form|crispy }}
