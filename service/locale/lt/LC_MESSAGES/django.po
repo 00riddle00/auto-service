@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-11-04 22:45+0200\n"
-"PO-Revision-Date: 2023-11-04 22:45+0200\n"
+"POT-Creation-Date: 2023-11-04 22:59+0200\n"
+"PO-Revision-Date: 2023-11-04 23:00+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: lt\n"
@@ -59,7 +59,7 @@ msgstr "Nuotrauka"
 msgid "Car"
 msgstr "Automobilis"
 
-#: models.py:53
+#: models.py:53 views.py:36
 msgid "Cars"
 msgstr "Automobiliai"
 
@@ -103,7 +103,7 @@ msgstr "Kaina"
 msgid "Service"
 msgstr "Paslauga"
 
-#: models.py:91
+#: models.py:91 views.py:36
 msgid "Services"
 msgstr "Paslaugos"
 
@@ -147,7 +147,7 @@ msgstr "Vartotojas"
 msgid "Order"
 msgstr "Užsakymas"
 
-#: models.py:136
+#: models.py:136 views.py:36
 msgid "Orders"
 msgstr "Užsakymai"
 
@@ -225,7 +225,7 @@ msgstr "Šiuo metu, mes turime:"
 
 #: templates/index.html:11
 msgid "Cars in our garage:"
-msgstr "Automobiliai mūsų garaže:"
+msgstr "Automobilių mūsų garaže:"
 
 #: templates/index.html:12
 msgid "Services available:"
@@ -239,15 +239,27 @@ msgstr "Įvykdyti užsakymai:"
 msgid "Your visits:"
 msgstr "Jūsų apsilankymai:"
 
-#: views.py:264
+#: views.py:46
+msgid "Overview:"
+msgstr "Apžvalga:"
+
+#: views.py:47
+msgid "item"
+msgstr "elementas"
+
+#: views.py:47
+msgid "count"
+msgstr "kiekis"
+
+#: views.py:265
 msgid "Please fill in all fields!"
 msgstr "Prašome užpildyti visus laukus!"
 
-#: views.py:268
+#: views.py:269
 msgid "Passwords do not match!"
 msgstr "Slaptažodžiai nesutampa!"
 
-#: views.py:277
+#: views.py:278
 msgid ""
 "Password must be minimum 8 characters long, contain at least one letter and "
 "one number."
@@ -255,20 +267,24 @@ msgstr ""
 "Slaptažodis turi būti sudarytas iš mažiausiai 8 simbolių, jame turi būti "
 "bent viena raidė ir vienas skaičius."
 
-#: views.py:287
+#: views.py:288
 #, python-brace-format
 msgid "User with username {username_bold} already exists!"
 msgstr "Vartotojas su vardu {username_bold} jau egzistuoja!"
 
-#: views.py:296
+#: views.py:297
 #, python-brace-format
 msgid "User with email {email_bold} already exists!"
 msgstr "Vartotojas su el. paštu {email_bold} jau egzistuoja!"
 
-#: views.py:308
+#: views.py:309
 #, python-brace-format
 msgid "User {username_bold} successfully registered!"
 msgstr "Vartotojas {username_bold} sėkmingai užregistruotas!"
+
+#: views.py:330
+msgid "Profile updated"
+msgstr "Profilis atnaujintas"
 
 #~ msgid "User with username"
 #~ msgstr "Vartotojas su vardu"

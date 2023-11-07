@@ -33,17 +33,18 @@ def index(request):
 
     df = pd.DataFrame(
         {
-            "items": ["Cars", "Services", "Orders"],
+            "item": [_("Cars"), _("Services"), _("Orders")],
             "count": [num_cars, num_services, num_orders],
         }
     )
 
     fig = px.bar(
         df,
-        x="items",
+        x="item",
         y="count",
         color_discrete_sequence=["#386b58"],
-        title="Overview:",
+        title=_("Overview:"),
+        labels={"item": _("item"), "count": _("count")},
     )
     fig.update_layout(xaxis_title=None, yaxis_title=None)
     fig.update_yaxes(dtick=1, ticks="outside", tickwidth=2, tickformat=",d")
@@ -327,7 +328,7 @@ def profile(request):
         if user_form.is_valid() and profile_form.is_valid():
             user_form.save()
             profile_form.save()
-            messages.success(request, message="Profile updated")
+            messages.success(request, message=_("Profile updated"))
             return redirect("profile")
     else:
         user_form = UserUpdateForm(instance=request.user)
