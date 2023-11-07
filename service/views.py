@@ -10,6 +10,7 @@ from django.contrib.auth.models import User
 from django.core.paginator import Paginator
 from django.db.models import Q
 from django.shortcuts import get_object_or_404, redirect, render, reverse
+from django.utils.translation import gettext as _
 from django.views import generic
 from django.views.decorators.csrf import csrf_protect
 from django.views.generic.edit import FormMixin
@@ -261,11 +262,11 @@ def register(request):
         password2 = request.POST["password2"]
         # Check if all fields are filled.
         if username == "" or email == "" or password == "":
-            messages.error(request, message="Please fill in all fields!")
+            messages.error(request, message=_("Please fill in all fields!"))
             return redirect("register")
         # Check if passwords match.
         elif password != password2:
-            messages.error(request, message="Passwords do not match!")
+            messages.error(request, message=_("Passwords do not match!"))
             return redirect("register")
         # Check if password is strong enough.
         elif not re.match(
@@ -273,25 +274,28 @@ def register(request):
         ):
             messages.error(
                 request,
-                message="Password must be minimum 8 characters "
-                "long, contain at least one letter and "
-                "one number.",
+                message=_(
+                    "Password must be minimum 8 characters long, contain at "
+                    "least one letter and one number."
+                ),
             )
             return redirect("register")
         # Check if username exists.
         elif User.objects.filter(username=username).exists():
             messages.error(
                 request,
-                message=f"User <strong>{username}</strong> already "
-                f"exists!",
+                message=_(
+                    "User with username {username_bold} already exists!"
+                ).format(username_bold=f"<strong>{username}</strong>"),
             )
             return redirect("register")
         # Check if there is already a user with this email.
         elif User.objects.filter(email=email).exists():
             messages.error(
                 request,
-                message=f"User with email <strong>{email}</strong> "
-                f"already exists!",
+                message=_(
+                    "User with email {email_bold} already exists!"
+                ).format(email_bold=f"<strong>{email}</strong>"),
             )
             return redirect("register")
         # If everything is ok, create new user.
@@ -301,8 +305,10 @@ def register(request):
             )
             messages.info(
                 request,
-                message=f"User <strong>{username}</strong> "
-                f"successfully registered!",
+                message=_(
+                    "User with username {username_bold} successfully "
+                    "registered!"
+                ).format(username_bold=f"<strong>{username}</strong>"),
             )
             return redirect("register-complete")
     return render(request, template_name="registration/register.html")
