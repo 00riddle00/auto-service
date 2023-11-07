@@ -32,6 +32,7 @@ urlpatterns = (
             name="register-complete",
         ),
         path("tinymce/", include("tinymce.urls")),
+        path("i18n/", include("django.conf.urls.i18n")),
         path("", include("service.urls")),
     ]
     + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
