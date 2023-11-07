@@ -53,6 +53,7 @@ class Car(models.Model):
     class Meta:
         verbose_name = _("Car")
         verbose_name_plural = _("Cars")
+        ordering = ["id"]
 
     def save(self, *args, **kwargs):
         super().save(*args, **kwargs)
@@ -99,6 +100,7 @@ class Service(models.Model):
     class Meta:
         verbose_name = _("Service")
         verbose_name_plural = _("Services")
+        ordering = ["id"]
 
 
 class Order(models.Model):
