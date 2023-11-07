@@ -1,9 +1,12 @@
 import datetime
 
+import pytz
 from django.test import TestCase
 from PIL import Image
 
 from service.models import Car, CarModel, Order
+
+utc = pytz.utc
 
 
 class TestCar(TestCase):
@@ -64,7 +67,8 @@ class TestOrder(TestCase):
 
         Order.objects.create(
             car=Car.objects.get(id=1),
-            deadline=datetime.date.today() - datetime.timedelta(days=1),
+            deadline=datetime.datetime.today().replace(tzinfo=utc)
+            - datetime.timedelta(days=1),
         )
 
     def test_overdue(self):

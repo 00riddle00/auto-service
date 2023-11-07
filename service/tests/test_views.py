@@ -1,10 +1,13 @@
 import datetime
 
+import pytz
 from django.contrib.auth.models import User
 from django.test import TestCase
 from django.urls import reverse
 
 from service.models import Car, CarModel, Order, Service
+
+utc = pytz.utc
 
 
 class TestServiceListView(TestCase):
@@ -60,7 +63,8 @@ class TestUserOrderListView(TestCase):
         Order.objects.create(
             car=Car.objects.get(id=1),
             user=test_user,
-            deadline=datetime.date.today() + datetime.timedelta(days=3),
+            deadline=datetime.datetime.today().replace(tzinfo=utc)
+            + datetime.timedelta(days=3),
         )
 
     def test_logged_in_uses_correct_template(self):
