@@ -38,9 +38,9 @@ SECRET_KEY = os.environ.get(
 )
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = os.environ.get("DEBUG", default=False)
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["localhost", "127.0.0.1"]
 
 # Application definition
 
@@ -162,9 +162,9 @@ LOGIN_REDIRECT_URL = "/"
 # Sending email
 
 EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
-EMAIL_HOST = "smtp.gmail.com"
-EMAIL_PORT = 587
-EMAIL_USE_TLS = True
+EMAIL_HOST = os.environ.get("EMAIL_HOST", default="smtp.gmail.com")
+EMAIL_PORT = os.environ.get("EMAIL_PORT", default=587)
+EMAIL_USE_TLS = os.environ.get("EMAIL_USE_TLS", default=True)
 EMAIL_HOST_USER = os.environ.get(
     "EMAIL_HOST_USER", default="admin@example.com"
 )
