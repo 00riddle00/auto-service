@@ -109,7 +109,7 @@
 <div class="container" style="padding-top: 30px">
     {% if messages %}
         {% for msg in messages %}
-            <div class="alert alert-{% if msg.tags == 'error' %}danger{% elif msg.tags == 'info' %}success{% endif %}"
+            <div class="alert alert-{% if msg.tags == 'error' %}danger{% elif msg.tags == 'info' or msg.tags == 'success' %}success{% endif %}"
                  role="alert">
                 {{ msg|safe }}
             </div>
