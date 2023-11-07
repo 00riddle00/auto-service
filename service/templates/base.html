@@ -77,7 +77,8 @@
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
                            aria-expanded="false">
-                            <img src="{{ user.profile.picture.url }}" alt="{% trans 'profile-picture' %}" width="25" height="25">
+                            <img src="{{ user.profile.picture.url }}" alt="{% trans 'profile-picture' %}"
+                                 width="25" height="25">
                             {{ user.get_username }}
                         </a>
                         <ul class="dropdown-menu">
@@ -109,7 +110,7 @@
 <div class="container" style="padding-top: 30px">
     {% if messages %}
         {% for msg in messages %}
-            <div class="alert alert-{% if msg.tags == 'error' %}danger{% elif msg.tags == 'info' or msg.tags == 'success' %}success{% endif %}"
+            <div class="alert alert-{% if msg.tags == 'error' %}danger{% elif msg.tags in 'info,success' %}success{% endif %}"
                  role="alert">
                 {{ msg|safe }}
             </div>

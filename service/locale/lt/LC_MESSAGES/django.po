@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-11-05 02:37+0200\n"
-"PO-Revision-Date: 2023-11-05 02:40+0200\n"
+"POT-Creation-Date: 2023-11-05 17:11+0200\n"
+"PO-Revision-Date: 2023-11-05 17:14+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: lt\n"
@@ -183,7 +183,7 @@ msgstr "Tekstas"
 msgid "Comment"
 msgstr "Komentaras"
 
-#: models.py:199 templates/order_details.html:84
+#: models.py:199 templates/order_details.html:86
 msgid "Comments"
 msgstr "Komentarai"
 
@@ -215,34 +215,34 @@ msgstr "Ieškoti automobilių"
 msgid "language-icon"
 msgstr "kalbos-ikonėlė"
 
-#: templates/base.html:80 templates/order_details.html:88
-#: templates/orders.html:16 templates/profile.html:11
-#: templates/user_orders.html:19
+#: templates/base.html:80 templates/order_details.html:90
+#: templates/orders.html:17 templates/profile.html:11
+#: templates/user_orders.html:20
 msgid "profile-picture"
 msgstr "profilio-paveikslėlis"
 
-#: templates/base.html:84
+#: templates/base.html:85
 msgid "Your profile"
 msgstr "Jūsų profilis"
 
-#: templates/base.html:87 templates/user_orders.html:7
+#: templates/base.html:88 templates/user_orders.html:7
 msgid "Your orders"
 msgstr "Jūsų užsakymai"
 
-#: templates/base.html:93
+#: templates/base.html:94
 msgid "Sign out"
 msgstr "Atsijungti"
 
-#: templates/base.html:98 templates/registration/login.html:8
+#: templates/base.html:99 templates/registration/login.html:8
 #: templates/registration/login.html:27
 #: templates/registration/password_reset_complete.html:9
-#: templates/registration/register.html:42
+#: templates/registration/register.html:50
 #: templates/registration/register_complete.html:9
 msgid "Sign in"
 msgstr "Prisijungti"
 
-#: templates/base.html:101 templates/registration/register.html:8
-#: templates/registration/register.html:39
+#: templates/base.html:102 templates/registration/register.html:8
+#: templates/registration/register.html:46
 msgid "Sign up"
 msgstr "Registruotis"
 
@@ -374,19 +374,19 @@ msgstr "Redaguoti"
 msgid "Delete"
 msgstr "Pašalinti"
 
-#: templates/order_details.html:64
+#: templates/order_details.html:65
 msgid "Add a service"
 msgstr "Pridėti paslaugą"
 
-#: templates/order_details.html:72
+#: templates/order_details.html:74
 msgid "Leave a comment"
 msgstr "Rašyti komentarą"
 
-#: templates/order_details.html:78
+#: templates/order_details.html:80
 msgid "Post"
 msgstr "Paskelbti"
 
-#: templates/order_details.html:94
+#: templates/order_details.html:97
 msgid "There are no comments for this order"
 msgstr "Šiuo metu komentarų apie užsakymą nėra"
 
@@ -426,31 +426,31 @@ msgstr "Užsakymo eilutės kūrimas ar redagavimas"
 msgid "All our orders"
 msgstr "Visi mūsų užsakymai"
 
-#: templates/orders.html:39 templates/user_orders.html:38
+#: templates/orders.html:40 templates/user_orders.html:39
 msgid "From"
 msgstr "Nuo"
 
-#: templates/orders.html:40 templates/user_orders.html:39
+#: templates/orders.html:41 templates/user_orders.html:40
 msgid "Until"
 msgstr "Iki"
 
-#: templates/orders.html:51
+#: templates/orders.html:52
 msgid "There are no orders at the moment"
 msgstr "Šiuo metu užsakymų nėra"
 
-#: templates/orders.html:57 templates/user_orders.html:56
+#: templates/orders.html:58 templates/user_orders.html:57
 msgid "First"
 msgstr "Pirmas"
 
-#: templates/orders.html:60 templates/user_orders.html:59
+#: templates/orders.html:61 templates/user_orders.html:60
 msgid "Previous"
 msgstr "Ankstesnis"
 
-#: templates/orders.html:66 templates/user_orders.html:65
+#: templates/orders.html:67 templates/user_orders.html:66
 msgid "Next"
 msgstr "Kitas"
 
-#: templates/orders.html:69 templates/user_orders.html:68
+#: templates/orders.html:70 templates/user_orders.html:69
 msgid "Last"
 msgstr "Paskutinis"
 
@@ -486,7 +486,7 @@ msgstr "Prisijungti"
 msgid "Username"
 msgstr "Vartotojas vardas"
 
-#: templates/registration/login.html:19 templates/registration/register.html:27
+#: templates/registration/login.html:19 templates/registration/register.html:32
 msgid "Password"
 msgstr "Slaptažodis"
 
@@ -525,17 +525,23 @@ msgstr "Slaptažodžio patvirtinimas"
 msgid "Reset"
 msgstr "Atstatyti"
 
-#: templates/registration/password_reset_confirm.html:28
+#: templates/registration/password_reset_confirm.html:27
 msgid "Password change unsuccessful"
 msgstr "Slaptažodžio pakeitimas nesėkmingas"
 
-#: templates/registration/password_reset_confirm.html:29
+#: templates/registration/password_reset_confirm.html:28
 msgid ""
-"The password reset link is invalid, possibly because it has already been "
-"used. Please request a new password reset."
+"\n"
+"            <p>The password reset link is invalid, possibly because it has "
+"already been used. Please request a new\n"
+"                password reset.</p>\n"
+"        "
 msgstr ""
-"Slaptažodžio atstatymo nuoroda negaliojanti, galimai todėl, kad ji jau buvo "
-"panaudota. Paprašykite atstatyti slaptažodį iš naujo."
+"\n"
+"            <p>Slaptažodžio atstatymo nuoroda negaliojanti, galimai todėl, "
+"kad ji jau buvo panaudota. Paprašykite\n"
+"                atstatyti slaptažodį iš naujo.</p>\n"
+"        "
 
 #: templates/registration/password_reset_done.html:7
 msgid "Check your inbox"
@@ -545,25 +551,24 @@ msgstr "Patikrinkite savo el. pašto dėžutę"
 msgid "The email with the password reset link has been sent to you"
 msgstr "Jums išsiųstas el. laiškas su slaptažodžio atstatymo nuoroda"
 
-#: templates/registration/password_reset_email.html:2
-msgid "Hello"
-msgstr "Sveiki"
-
-#: templates/registration/password_reset_email.html:4
+#: templates/registration/password_reset_email.html:3
 msgid ""
+"\n"
+"Hello,\n"
+"\n"
 "Someone requested a password reset for our site. If this was a mistake, just "
-"ignore this email and nothing will happen."
+"ignore this email and nothing will happen.\n"
+"If it was you, follow the link below to reset your password:\n"
 msgstr ""
+"\n"
+"Sveiki,\n"
+"\n"
 "Kažkas paprašė atstatyti savo slaptažodį mūsų tinklalapyje. Jei tai buvo "
-"klaida, tiesiog ignoruokite šį el. laišką ir nieko neįvyks."
+"klaida, tiesiog ignoruokite šį el. laišką ir nieko neįvyks.\n"
+"Jei tai buvote Jūs, paspauskite žemiau pateiktą nuorodą, kad iš naujo "
+"nustatytumėte slaptažodį:\n"
 
-#: templates/registration/password_reset_email.html:5
-msgid "If it was you, follow the link below to reset your password"
-msgstr ""
-"Jei tai buvote jūs, paspauskite žemiau pateiktą nuorodą, kad iš naujo "
-"nustatytumėte slaptažodį"
-
-#: templates/registration/password_reset_email.html:8
+#: templates/registration/password_reset_email.html:11
 msgid "Regards"
 msgstr "Pagarbiai"
 
@@ -595,26 +600,32 @@ msgstr "Registruotis"
 msgid "Up to 150 characters"
 msgstr "Iki 150 simbolių"
 
-#: templates/registration/register.html:23
+#: templates/registration/register.html:24
 msgid ""
-"We will not share your email with anyone nor send you any spam. Your email "
-"is required to send you a password reset link."
+"\n"
+"                        We will not share your email with anyone nor send "
+"you any spam. Your email is required to send\n"
+"                        you a password reset link.\n"
+"                    "
 msgstr ""
-"Mes su niekuo nesidalinsime Jūsų el. paštu ir nesiųsime jums jokių brukalų "
-"(spam). Jūsų el. paštas reikalingas tam, kad galėtume Jums išsiųsti "
-"slaptažodžio atstatymo nuorodą."
+"\n"
+"                        Mes su niekuo nesidalinsime Jūsų el. paštu ir "
+"nesiųsime jums jokių brukalų (spam). Jūsų el. paštas \n"
+"                        reikalingas tam, kad galėtume Jums išsiųsti "
+"slaptažodžio atstatymo nuorodą.\n"
+"                    "
 
-#: templates/registration/register.html:30
+#: templates/registration/register.html:36
 msgid "Minimum 8 characters, at least one letter and one number"
 msgstr ""
 "Slaptažodis turi būti sudarytas iš mažiausiai 8 simbolių, jame turi būti "
 "bent viena raidė ir bent vienas skaičius"
 
-#: templates/registration/register.html:34
+#: templates/registration/register.html:41
 msgid "Confirm password"
 msgstr "Patvirtinti slaptažodį"
 
-#: templates/registration/register.html:42
+#: templates/registration/register.html:49
 msgid "If you already have an account,"
 msgstr "Jeigu jau esate prisiregistravęs, galite"
 
@@ -662,7 +673,7 @@ msgstr "Naujas užsakymas"
 msgid "All your orders"
 msgstr "Visi Jūsų užsakymai"
 
-#: templates/user_orders.html:50
+#: templates/user_orders.html:51
 msgid "You have no orders at the moment"
 msgstr "Šiuo metu užsakymų neturite"
 
@@ -712,6 +723,14 @@ msgstr "Vartotojas {username_bold} sėkmingai užregistruotas!"
 #: views.py:331
 msgid "Profile updated"
 msgstr "Profilis atnaujintas"
+
+#~ msgid "Hello"
+#~ msgstr "Sveiki"
+
+#~ msgid "If it was you, follow the link below to reset your password"
+#~ msgstr ""
+#~ "Jei tai buvote jūs, paspauskite žemiau pateiktą nuorodą, kad iš naujo "
+#~ "nustatytumėte slaptažodį"
 
 #~ msgid "Someone"
 #~ msgstr "Kažkas"

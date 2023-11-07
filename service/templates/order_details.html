@@ -61,7 +61,9 @@
 {% endif %}
 <br>
 {% if order.user == user %}
-    <a class="btn btn-primary btn-sm mt-1 mb-1" href="{% url 'order-line-new' order.id %}">{% trans "Add a service" %}</a>
+    <a class="btn btn-primary btn-sm mt-1 mb-1" href="{% url 'order-line-new' order.id %}">
+        {% trans "Add a service" %}
+    </a>
 {% endif %}
 <br>
 <br>
@@ -85,7 +87,8 @@
 <div class="container" style="display: inline-block; padding-top: 20px; padding-left: 20px; width: 80%">
     {% if order.comments.all %}
         {% for comment in order.comments.all %}
-            <img src="{{ comment.author.profile.picture.url }}" alt="{% trans 'profile-picture' %}" width="40" height="40">
+            <img src="{{ comment.author.profile.picture.url }}" alt="{% trans 'profile-picture' %}"
+                 width="40" height="40">
             <strong>{{ comment.author }}</strong>, <em>{{ comment.date }}</em>
             <p>{{ comment.text }}</p>
             <hr>

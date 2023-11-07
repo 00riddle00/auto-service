@@ -16,7 +16,8 @@
         {% for order in user_orders %}
             <div class="col-md-4 d-flex align-items-stretch">
                 <div class="card mb-4 shadow-sm">
-                    <img src="{{ order.user.profile.picture.url }}" class="card-img-top" alt="{% trans 'profile-picture' %}">
+                    <img src="{{ order.user.profile.picture.url }}" class="card-img-top"
+                         alt="{% trans 'profile-picture' %}">
                     <div class="card-body">
                         <p class="card-text">
                             <a href="{% url 'order-details' order.id %}">
