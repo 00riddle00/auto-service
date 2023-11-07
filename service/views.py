@@ -163,7 +163,6 @@ class OrderUpdateView(
     LoginRequiredMixin, UserPassesTestMixin, generic.UpdateView
 ):
     model = Order
-    success_url = "/my-orders/"
     form_class = OrderForm
     template_name = "order_form.html"
 

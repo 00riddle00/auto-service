@@ -61,14 +61,14 @@ urlpatterns = [
         name="order-line-new",
     ),
     path(
-        "orders/<int:order_pk>/lines/<int:pk>/delete/",
-        views.OrderLineDeleteView.as_view(),
-        name="order-line-delete",
-    ),
-    path(
         "orders/<int:order_pk>/lines/<int:pk>/edit/",
         views.OrderLineUpdateView.as_view(),
         name="order-line-update",
+    ),
+    path(
+        "orders/<int:order_pk>/lines/<int:pk>/delete/",
+        views.OrderLineDeleteView.as_view(),
+        name="order-line-delete",
     ),
     path("profile/", views.profile, name="profile"),
 ]

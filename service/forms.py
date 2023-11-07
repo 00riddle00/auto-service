@@ -4,7 +4,7 @@ from django.contrib.auth.models import User
 from .models import Order, OrderComment, Profile
 
 
-class DateTimeInput(forms.DateInput):
+class DateTimeInput(forms.DateTimeInput):
     input_type = "datetime-local"
 
 

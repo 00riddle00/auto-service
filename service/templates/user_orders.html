@@ -5,10 +5,10 @@
 {% block content %}
 <h2>Your orders</h2>
 <br>
-<h5>All your orders:</h5>
-<br>
 <a class="btn btn-primary btn-sm mt-1 mb-1" href="{% url 'order-new' %}">New order</a>
 <br>
+<br>
+<h5>All your orders:</h5>
 <br>
 {% if user_orders %}
     <div class="row">
