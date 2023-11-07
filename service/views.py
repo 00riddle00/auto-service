@@ -306,8 +306,7 @@ def register(request):
             messages.info(
                 request,
                 message=_(
-                    "User with username {username_bold} successfully "
-                    "registered!"
+                    "User {username_bold} successfully registered!"
                 ).format(username_bold=f"<strong>{username}</strong>"),
             )
             return redirect("register-complete")

@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-11-04 18:37+0200\n"
-"PO-Revision-Date: 2023-11-04 13:03+0200\n"
+"POT-Creation-Date: 2023-11-04 19:24+0200\n"
+"PO-Revision-Date: 2023-11-04 19:25+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: lt\n"
@@ -118,17 +118,17 @@ msgstr ""
 #: views.py:287
 #, python-brace-format
 msgid "User with username {username_bold} already exists!"
-msgstr ""
+msgstr "Vartotojas su vardu {username_bold} jau egzistuoja!"
 
 #: views.py:296
 #, python-brace-format
 msgid "User with email {email_bold} already exists!"
-msgstr ""
+msgstr "Vartotojas su el. paštu {email_bold} jau egzistuoja!"
 
 #: views.py:308
 #, python-brace-format
-msgid "User with username {username_bold} successfully registered!"
-msgstr ""
+msgid "User {username_bold} successfully registered!"
+msgstr "Vartotojas {username_bold} sėkmingai užregistruotas!"
 
 #~ msgid "User with username"
 #~ msgstr "Vartotojas su vardu"
