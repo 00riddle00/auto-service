@@ -38,11 +38,16 @@ SECRET_KEY = os.environ.get(
 )
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = os.environ.get("DEBUG", default=False)
+DEBUG = os.environ.get("DEBUG", default="False").lower() in [
+    "true",
+    "on",
+    "yes",
+    "1",
+]
 
 ALLOWED_HOSTS = os.environ.get(
-    "ALLOWED_HOSTS", default=["localhost", "127.0.0.1"]
-)
+    "ALLOWED_HOSTS", default="localhost,127.0.0.1"
+).split(",")
 
 # Application definition
 
@@ -150,7 +155,11 @@ DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
 
-STATICFILES_DIRS = os.environ.get("STATICFILES_DIRS", default=[])
+STATICFILES_DIRS = (
+    os.environ.get("STATICFILES_DIRS").split(",")
+    if os.environ.get("STATICFILES_DIR")
+    else []
+)
 
 STATIC_ROOT = os.environ.get("STATIC_ROOT", default="")
 
@@ -170,8 +179,17 @@ LOGIN_REDIRECT_URL = "/"
 
 EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
 EMAIL_HOST = os.environ.get("EMAIL_HOST", default="smtp.gmail.com")
-EMAIL_PORT = os.environ.get("EMAIL_PORT", default=587)
-EMAIL_USE_TLS = os.environ.get("EMAIL_USE_TLS", default=True)
+EMAIL_PORT = (
+    int(os.environ.get("EMAIL_PORT"))
+    if os.environ.get("EMAIL_PORT").isdigit()
+    else 587
+)
+EMAIL_USE_TLS = os.environ.get("EMAIL_USE_TLS", default="true").lower() in [
+    "true",
+    "on",
+    "yes",
+    "1",
+]
 EMAIL_HOST_USER = os.environ.get(
     "EMAIL_HOST_USER", default="admin@example.com"
 )
