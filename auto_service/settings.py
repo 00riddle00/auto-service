@@ -40,7 +40,9 @@ SECRET_KEY = os.environ.get(
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = os.environ.get("DEBUG", default=False)
 
-ALLOWED_HOSTS = ["localhost", "127.0.0.1"]
+ALLOWED_HOSTS = os.environ.get(
+    "ALLOWED_HOSTS", default=["localhost", "127.0.0.1"]
+)
 
 # Application definition
 
@@ -148,11 +150,16 @@ DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
 
+STATICFILES_DIRS = os.environ.get("STATICFILES_DIRS", default=[])
+
+STATIC_ROOT = os.environ.get("STATIC_ROOT", default="")
+
 STATIC_URL = "static/"
 
 # Media files
 
 MEDIA_ROOT = os.path.join(BASE_DIR, "service/media")
+
 MEDIA_URL = "media/"
 
 # Login
