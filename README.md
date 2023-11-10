@@ -29,10 +29,61 @@ python -m venv venv
 pip install -r requirements.txt
 ```
 
-## Admin (superuser) credentials:
+#### [Optional] Install optional requirements:
+
+```Shell
+pip install -r optional-requirements.txt
+```
+
+This will add 
+[black](https://github.com/psf/black) code formatter,
+[isort](https://github.com/PyCQA/isort) import formatter,
+[flake8](https://github.com/PyCQA/flake8) code linter and
+[pydocstyle](https://github.com/PyCQA/pydocstyle) docstring linter.
+
+## Running
+
+##### [1] Set the environment variables:
+
+Create a `.env` file in the project's root directory and add DEVELOPMENT environment variables to this file.
+
+Example `.env` file:
+```
+# DEVELOPMENT environment
+SECRET_KEY=6hNf<_a\M2Ldp/^|U;,mP?m3;Sm%DEV]$hjk;xgTp2ScD,w9TDCh}@,Ys$ttF,E^WA}
+DEBUG=True
+ALLOWED_HOSTS=localhost,127.0.0.1
+DB_NAME=auto_service_dev.sqlite3
+STATICFILES_DIRS=
+STATIC_ROOT=
+EMAIL_HOST=smtp.gmail.com
+EMAIL_PORT=587
+EMAIL_USE_TLS=True
+EMAIL_HOST_USER=tomasgiedraitis@gmail.com
+EMAIL_HOST_PASSWORD=cubgxyscokadfxzj
+```
+
+##### [2] Prepare the database:
+
+Since the SQLite database file is stored in this Git repo, if you would like to use a fresh new database,
+remove this file (`auto_service_dev.sqlite3`), and then run:
+```
+python manage.py makemigrations
+python manage.py migrate
+python manage.py createsuperuser
+```
+
+If you would like to use the existing database, you can optionally create your own superuser:
+```
+python manage.py createsuperuser
+```
+
+The existing superuser credentials:
 * Username: `admin`
 * E-mail: tomasgiedraitis@gmail.com
 * Password: `rorosroros1`
+
+The passwords for all other users are also `rorosroros1`.
 
 ## Latest releases
 
@@ -70,7 +121,7 @@ EMAIL_HOST_PASSWORD=cubgxyscokadfxzj
 ```
 # TESTING environment
 SECRET_KEY=6hNf<_a\AKLJS2Ldp/^|U;,mP?masidlfjs3;Sm;xTESTgTp2ScD,w9TDCh}@,Ys$ttF,E^WA}
-DEBUG=False (?????)
+DEBUG=False
 ALLOWED_HOSTS=localhost,127.0.0.1
 DB_NAME=auto_service_test.sqlite3
 STATICFILES_DIRS=
@@ -133,7 +184,7 @@ Let's say we have root access to an **Ubuntu 22.04 LTS** server with an IP **157
 
 `sudo nano /var/www/auto_service/.env` (add PRODUCTION environment variables to this file).
 
-`sudo rm auto_service.sqlite3` (If you have a database file in Git repo and would like to remove iti)
+`sudo rm auto_service.sqlite3` (If you have a database file in Git repo and would like to remove it)
 
 `python manage.py makemigrations`
 
