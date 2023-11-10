@@ -184,7 +184,7 @@ class OrderLine(models.Model):
     def __str__(self):
         qty = _("qty")
         return (
-            f"{self.order}, {self.price} € ({self.service}, "
+            f"{self.order}, Total: {self.price} € ({self.service}, "
             f"{qty}: {self.quantity})"
         )
 
@@ -205,6 +205,12 @@ class OrderComment(models.Model):
     )
     date = models.DateTimeField(verbose_name=_("Date"), auto_now_add=True)
     text = models.TextField(verbose_name=_("Text"), max_length=2048)
+
+    def __str__(self):
+        return (
+            f"{self.author} ({self.date.strftime('%Y-%m-%d %H:%M:%S')}): "
+            f"{self.text}"
+        )
 
     class Meta:
         verbose_name = _("Comment")
