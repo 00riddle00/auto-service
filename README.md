@@ -78,7 +78,10 @@ If you would like to use the existing database, you can optionally create your o
 python manage.py createsuperuser
 ```
 
-The existing superuser credentials:
+**Note:** After creating a superuser, you need to add a Profile to him/her in the Django Admin page
+(for all other users, the Profile is created automatically on user creation).
+
+Credentials for the existing superuser in the database:
 * Username: `admin`
 * E-mail: tomasgiedraitis@gmail.com
 * Password: `rorosroros1`
