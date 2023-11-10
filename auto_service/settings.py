@@ -167,7 +167,7 @@ STATIC_URL = "static/"
 
 # Media files
 
-MEDIA_ROOT = os.path.join(BASE_DIR, "service/media")
+MEDIA_ROOT = os.path.join(BASE_DIR / "service/media")
 
 MEDIA_URL = "media/"
 
