@@ -49,7 +49,7 @@ Create a `.env` file in the project's root directory and add DEVELOPMENT environ
 
 Example `.env` file:
 ```
-# DEVELOPMENT environment
+# DEVELOPMENT environment (.env ---> .env.dev)
 SECRET_KEY=6hNf<_a\M2Ldp/^|U;,mP?m3;Sm%DEV]$hjk;xgTp2ScD,w9TDCh}@,Ys$ttF,E^WA}
 DEBUG=True
 ALLOWED_HOSTS=localhost,127.0.0.1
@@ -124,10 +124,11 @@ Copyright (c) 2023 Code Academy
 
 ---------------------------------------
 
-## Deployment: preparing `.env` files for DEV, TEST and PROD environments
+## Deployment: preparing `.env` files
 
+#### DEV environment:
 ```
-# DEVELOPMENT environment
+# DEVELOPMENT environment (.env ---> .env.dev)
 SECRET_KEY=6hNf<_a\M2Ldp/^|U;,mP?m3;Sm%DEV]$hjk;xgTp2ScD,w9TDCh}@,Ys$ttF,E^WA}
 DEBUG=True
 ALLOWED_HOSTS=localhost,127.0.0.1
@@ -141,14 +142,15 @@ EMAIL_HOST_USER=tomasgiedraitis@gmail.com
 EMAIL_HOST_PASSWORD=cubgxyscokadfxzj
 ```
 
+#### TEST environment (can be skipped):
 ```
-# TESTING environment
-SECRET_KEY=6hNf<_a\AKLJS2Ldp/^|U;,mP?masidlfjs3;Sm;xTESTgTp2ScD,w9TDCh}@,Ys$ttF,E^WA}
+# TESTING environment (.env ---> .env.test)
+SECRET_KEY=6hNf<_a\AKLJS2Ldp/^|U;,mP?fjs3;Sm;asdaxTESTgTp2ScDwDh}@,Ys$ttF,E^WA}
 DEBUG=False
 ALLOWED_HOSTS=localhost,127.0.0.1
 DB_NAME=auto_service_test.sqlite3
-STATICFILES_DIRS=
-STATIC_ROOT=
+STATICFILES_DIRS=/home/riddle/test_environments/auto_service/service/media
+STATIC_ROOT=/home/riddle/test_environments/auto_service/service/static
 EMAIL_HOST=smtp.gmail.com
 EMAIL_PORT=587
 EMAIL_USE_TLS=True
@@ -156,8 +158,25 @@ EMAIL_HOST_USER=tomasgiedraitis@gmail.com
 EMAIL_HOST_PASSWORD=cubgxyscokadfxzj
 ```
 
+#### PRE-PROD-LOCAL environment (can be skipped):
 ```
-# PRODUCTION environment
+# PRE-PRODUCTION-LOCAL environment (.env ---> .env.pre-prod-local)
+SECRET_KEY=asd8<_aa8ajslds\M2Ldp/^|U;,mP?3;Sm%PROD]$hjk;xgTp2ScD,w9TDCh}@,Ys$ttFa8sA*,E^WA}
+DEBUG=False
+ALLOWED_HOSTS=localhost,127.0.0.1
+DB_NAME=auto_service.sqlite3
+STATICFILES_DIRS=/home/riddle/prod_environments/auto_service/service/media
+STATIC_ROOT=/home/riddle/prod_environments/auto_service/service/static
+EMAIL_HOST=smtp.gmail.com
+EMAIL_PORT=587
+EMAIL_USE_TLS=True
+EMAIL_HOST_USER=tomasgiedraitis@gmail.com
+EMAIL_HOST_PASSWORD=cubgxyscokadfxzj
+```
+
+#### PRE-PROD-REMOTE environment (can be skipped):
+```
+# PRE-PRODUCTION-REMOTE environment (.env ---> .env.pre-prod-remote)
 SECRET_KEY=asd8<_aa8ajslds\M2Ldp/^|U;,mP?3;Sm%PROD]$hjk;xgTp2ScD,w9TDCh}@,Ys$ttFa8sA*,E^WA}
 DEBUG=False
 ALLOWED_HOSTS=157.230.109.213
@@ -171,17 +190,33 @@ EMAIL_HOST_USER=tomasgiedraitis@gmail.com
 EMAIL_HOST_PASSWORD=cubgxyscokadfxzj
 ```
 
+#### PROD environment
+```
+# PRODUCTION environment (.env ---> .env.prod)
+SECRET_KEY=asd8<_aa8ajslds\M2Ldp/^|U;,mP?3;Sm%PROD]$hjk;xgTp2ScD,w9TDCh}@,Ys$ttFa8sA*,E^WA}
+DEBUG=False
+ALLOWED_HOSTS=104.248.250.188
+DB_NAME=auto_service.sqlite3
+STATICFILES_DIRS=/var/www/auto_service/service/media
+STATIC_ROOT=/var/www/auto_service/service/static
+EMAIL_HOST=smtp.gmail.com
+EMAIL_PORT=587
+EMAIL_USE_TLS=True
+EMAIL_HOST_USER=tomasgiedraitis@gmail.com
+EMAIL_HOST_PASSWORD=cubgxyscokadfxzj
+```
+
 ## Deployment with Apache (2023-11-10)
 
-Let's say we have root access to an **Ubuntu 22.04 LTS** server with an IP **157.230.109.213**. We will bypass the creation of user and use **root** account for everything (although this is a bad practice!)
+Let's say we have root access to an **Ubuntu 22.04 LTS** server with an IP **104.248.250.188**. We will bypass the creation of user and use **root** account for everything (although this is a bad practice!)
 
-`ssh root@157.230.109.213`
+`ssh root@104.248.250.188`
 
 `sudo apt update && sudo apt upgrade` (After the upgrade, it will be suggested that a new kernel version could be booted, the prompt will appear on which services to restart - select default options and select "OK").
 
 `sudo reboot` (Needed for booting a new kernel version. You will be logged out of the server. Wait a little bit, and connect to the server again).
 
-`ssh root@157.230.109.213`
+`ssh root@104.248.250.188`
 
 `sudo apt install apache2 libapache2-mod-wsgi-py3`
 
@@ -229,7 +264,7 @@ Let's say we have root access to an **Ubuntu 22.04 LTS** server with an IP **157
 
 ```
 <VirtualHost *:80>
-    ServerName 157.230.109.213
+    ServerName 104.248.250.188
     ServerAdmin tomasgiedraitis@gmail.com
 
     LogLevel warn
@@ -265,4 +300,4 @@ Let's say we have root access to an **Ubuntu 22.04 LTS** server with an IP **157
 
 `sudo systemctl restart apache2`
 
-`(In your browser, go to 157.230.109.213 - the application works)`
+`(In your browser, go to 104.248.250.188 - the application works)`
