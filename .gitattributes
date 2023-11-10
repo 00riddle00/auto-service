@@ -1,0 +1,22 @@
+# The .gitattributes file allows you to specify the files and paths attributes
+# that should be used by git when performing git actions, such as `git commit`, etc.
+#
+# In other words git automatically saves the file according to the attributes
+# specified, every time a file is created or saved.
+#
+# Configure EOL (End of Line) attribute:
+#     Explicitly declare files you want to always be normalized and converted
+#     to native line endings on checkout.
+*.css text eol=lf
+*.csv text eol=lf
+*.html text eol=lf
+*.json text eol=lf
+*.log text eol=lf
+*.md text eol=lf
+*.pl text eol=lf
+*.py text eol=lf
+*.sh text eol=lf
+*.sqbpro text eol=lf
+*.sql text eol=lf
+*.txt text eol=lf
+*.url text eol=lf
