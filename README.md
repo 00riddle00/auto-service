@@ -85,6 +85,26 @@ The existing superuser credentials:
 
 The passwords for all other users are also `rorosroros1`.
 
+## Software dependencies
+
+[Django](https://www.djangoproject.com/) - the web framework for perfectionists with deadlines. Django aims to follow
+Python’s ["batteries included" philosophy](https://docs.python.org/3/tutorial/stdlib.html#tut-batteries-included).
+It ships with a variety of extra, optional tools that solve common web development problems.
+
+[Boostrap v5](https://getbootstrap.com/) - powerful, extensible, and feature-packed frontend toolkit.
+
+[Django-crispy-forms](https://django-crispy-forms.readthedocs.io/) - forms have never been this crispy.
+
+[TinyMCE](https://www.tiny.cloud/) - adds a fully-featured, sleek and intuitive rich text editor to our app – in just
+a few lines of code.
+
+[Python-dotenv](https://pypi.org/project/python-dotenv/) - it reads key-value pairs from a `.env` file and can set 
+them as environment variables. It helps in the development of applications following the 
+[12-factor](https://12factor.net/) principles.
+
+For the full list of software dependencies see [requirements.txt](requirements.txt) and 
+[optional-requirements.txt](optional-requirements.txt).
+
 ## Latest releases
 
 **v1.0.0** (2023-11-10)
