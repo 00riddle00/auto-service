@@ -83,7 +83,7 @@ The existing superuser credentials:
 * E-mail: tomasgiedraitis@gmail.com
 * Password: `rorosroros1`
 
-The passwords for all other users are also `rorosroros1`.
+The passwords for all other users in the database are also `rorosroros1`.
 
 ## Software dependencies
 
@@ -188,7 +188,7 @@ Let's say we have root access to an **Ubuntu 22.04 LTS** server with an IP **157
 
 `sudo apt install git`
 
-`git clone <repository with budget project, with the project root directory called "auto_service"> .`
+`git clone <repository with Auto Service project, with the project root directory called "auto_service"> .`
 
 `python3 -V`
 
