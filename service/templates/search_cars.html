@@ -10,7 +10,7 @@
     <ul>
         {% for car in cars %}
             <li>
-                <a href="{% url 'car-details' car.id %}">{{ car }}</a>
+                <a href="{% url 'car_details' car.id %}">{{ car }}</a>
             </li>
         {% endfor %}
     </ul>

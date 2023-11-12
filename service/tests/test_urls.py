@@ -14,5 +14,5 @@ class TestUrls(TestCase):
         self.assertEqual(resolve(url).func.view_class, OrderListView)
 
     def test_order_details_url_is_resolved(self):
-        url = reverse("order-details", args=[1])
+        url = reverse("order_details", args=[1])
         self.assertEqual(resolve(url).func.view_class, OrderDetailView)

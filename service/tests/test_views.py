@@ -71,7 +71,7 @@ class TestUserOrderListView(TestCase):
         self.client.login(
             username="john_doe", password="VerySecretPassword123"
         )
-        response = self.client.get(reverse("user-orders"))
+        response = self.client.get(reverse("user_orders"))
         self.assertEqual(response.status_code, 200)
         self.assertEqual(str(response.context["user"]), "john_doe")
         self.assertTemplateUsed(response, template_name="user_orders.html")
@@ -80,7 +80,7 @@ class TestUserOrderListView(TestCase):
         self.client.login(
             username="john_doe", password="VerySecretPassword123"
         )
-        response = self.client.get(reverse("user-orders"))
+        response = self.client.get(reverse("user_orders"))
         self.assertEqual(str(response.context["user"]), "john_doe")
         self.assertTrue("user_orders" in response.context)
         self.assertEqual(len(response.context["user_orders"]), 1)

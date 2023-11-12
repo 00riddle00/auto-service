@@ -31,9 +31,9 @@
         <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
             <ul class="navbar-nav mb-2 mb-lg-0">
                 <li>
-                    <form action="{% url 'search-cars' %}" method="get">
-                        <label for="search-cars" hidden></label>
-                        <input type="search" id="search-cars" name="query" class="form-control"
+                    <form action="{% url 'search_cars' %}" method="get">
+                        <label for="search_cars" hidden></label>
+                        <input type="search" id="search_cars" name="query" class="form-control"
                                placeholder="{% trans "Search cars" %}">
                     </form>
                 </li>
@@ -84,7 +84,7 @@
                         <ul class="dropdown-menu">
                             <li><a class="dropdown-item" href="{% url 'profile' %}">{% trans "Your profile" %}</a></li>
                             <li>
-                                <a class="dropdown-item" href="{% url 'user-orders' %}">
+                                <a class="dropdown-item" href="{% url 'user_orders' %}">
                                     {% trans "Your orders" %}
                                 </a>
                             </li>

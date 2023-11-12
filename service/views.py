@@ -117,7 +117,7 @@ class OrderDetailView(FormMixin, generic.DetailView):
 
     # Specify where to redirect after comment is successfully posted.
     def get_success_url(self):
-        return reverse(viewname="order-details", kwargs={"pk": self.object.id})
+        return reverse(viewname="order_details", kwargs={"pk": self.object.id})
 
     # Standard post method override using FormMixin, can be copied directly
     # to our project.
@@ -179,7 +179,7 @@ class OrderUpdateView(
 
     def get_success_url(self):
         return reverse(
-            viewname="order-details", kwargs={"pk": self.kwargs["pk"]}
+            viewname="order_details", kwargs={"pk": self.kwargs["pk"]}
         )
 
 
@@ -213,7 +213,7 @@ class OrderLineCreateView(
 
     def get_success_url(self):
         return reverse(
-            viewname="order-details", kwargs={"pk": self.kwargs["pk"]}
+            viewname="order_details", kwargs={"pk": self.kwargs["pk"]}
         )
 
 
@@ -234,7 +234,7 @@ class OrderLineUpdateView(
 
     def get_success_url(self):
         return reverse(
-            viewname="order-details", kwargs={"pk": self.kwargs["order_pk"]}
+            viewname="order_details", kwargs={"pk": self.kwargs["order_pk"]}
         )
 
 
@@ -250,7 +250,7 @@ class OrderLineDeleteView(
 
     def get_success_url(self):
         return reverse(
-            viewname="order-details", kwargs={"pk": self.kwargs["order_pk"]}
+            viewname="order_details", kwargs={"pk": self.kwargs["order_pk"]}
         )
 
 
@@ -311,7 +311,7 @@ def register(request):
                     "User {username_bold} successfully registered!"
                 ).format(username_bold=f"<strong>{username}</strong>"),
             )
-            return redirect("register-complete")
+            return redirect("register_complete")
     return render(request, template_name="registration/register.html")
 
 

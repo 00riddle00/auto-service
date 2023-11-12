@@ -25,7 +25,7 @@
         <h4>{% trans "Orders" %}:</h4>
         <ul>
             {% for order in car.orders.all %}
-                <li><a href="{% url 'order-details' order.id %}">{{ order }}</a></li>
+                <li><a href="{% url 'order_details' order.id %}">{{ order }}</a></li>
             {% endfor %}
         </ul>
         <hr>

@@ -15,7 +15,7 @@
         </fieldset>
         <div class="form-group">
             <button class="btn btn-danger" type="submit">{% trans "Yes, delete" %}</button>
-            <a class="btn btn-secondary" href="{% url 'order-details' order_line.order.id %}">{% trans "Cancel" %}</a>
+            <a class="btn btn-secondary" href="{% url 'order_details' order_line.order.id %}">{% trans "Cancel" %}</a>
         </div>
     </form>
 </div>

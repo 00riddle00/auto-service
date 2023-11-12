@@ -29,7 +29,7 @@ urlpatterns = (
         path(
             "accounts/register/done/",
             service_views.register_complete,
-            name="register-complete",
+            name="register_complete",
         ),
         path("tinymce/", include("tinymce.urls")),
         path("i18n/", include("django.conf.urls.i18n")),

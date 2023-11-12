@@ -17,12 +17,12 @@
                          alt="{% trans 'profile-picture' %}">
                     <div class="card-body">
                         <p class="card-text">
-                            <a href="{% url 'order-details' order.id %}">
+                            <a href="{% url 'order_details' order.id %}">
                                 {{ order.car.car_model.make }} {{ order.car.car_model.model }}
                                 ({{ order.car.car_model.year }}), {{ order.total_price }} €
                             </a>
                             <br>
-                            <a href="{% url 'order-details' order.id %}">ID: {{ order.id }}</a>
+                            <a href="{% url 'order_details' order.id %}">ID: {{ order.id }}</a>
                         </p>
                         <h6 class="card-subtitle mb-2 text-muted"></h6>
                         <h6 class="card-subtitle mb-2 text-muted">

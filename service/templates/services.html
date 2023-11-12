@@ -9,7 +9,7 @@
 {% if services %}
     <ul>
         {% for service in services %}
-            <li><a href="{% url 'service-details' service.id %}">{{ service.name }}</a> ({{ service.price }} €)</li>
+            <li><a href="{% url 'service_details' service.id %}">{{ service.name }}</a> ({{ service.price }} €)</li>
         {% endfor %}
     </ul>
 {% else %}

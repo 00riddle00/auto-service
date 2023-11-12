@@ -6,7 +6,7 @@
 {% block content %}
 <h2>{% trans "Your orders" %}</h2>
 <br>
-<a class="btn btn-primary btn-sm mt-1 mb-1" href="{% url 'order-new' %}">{% trans "New order" %}</a>
+<a class="btn btn-primary btn-sm mt-1 mb-1" href="{% url 'order_new' %}">{% trans "New order" %}</a>
 <br>
 <br>
 <h5>{% trans "All your orders" %}:</h5>
@@ -20,12 +20,12 @@
                          alt="{% trans 'profile-picture' %}">
                     <div class="card-body">
                         <p class="card-text">
-                            <a href="{% url 'order-details' order.id %}">
+                            <a href="{% url 'order_details' order.id %}">
                                 {{ order.car.car_model.make }} {{ order.car.car_model.model }}
                                 ({{ order.car.car_model.year }}), {{ order.total_price }} €
                             </a>
                             <br>
-                            <a href="{% url 'order-details' order.id %}">ID: {{ order.id }}</a>
+                            <a href="{% url 'order_details' order.id %}">ID: {{ order.id }}</a>
                         </p>
                         <h6 class="card-subtitle mb-2 text-muted"></h6>
                         <br>

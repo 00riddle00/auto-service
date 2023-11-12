@@ -7,8 +7,8 @@
 <h2>{% trans "Order no" %} {{ order.id }}:</h2>
 <hr/>
 {% if order.user == user %}
-    <a class="btn btn-primary btn-sm mt-1 mb-1" href="{% url 'order-update' order.id %}">{% trans "Edit order" %}</a>
-    <a class="btn btn-danger btn-sm mt-1 mb-1" href="{% url 'order-delete' order.id %}">{% trans "Delete order" %}</a>
+    <a class="btn btn-primary btn-sm mt-1 mb-1" href="{% url 'order_update' order.id %}">{% trans "Edit order" %}</a>
+    <a class="btn btn-danger btn-sm mt-1 mb-1" href="{% url 'order_delete' order.id %}">{% trans "Delete order" %}</a>
     <br>
     <br>
 {% endif %}
@@ -19,7 +19,7 @@
     {% if order.is_overdue %}{% trans "Yes" %}{% else %}{% trans "No" %}{% endif %}
 </p>
 <p><strong>{% trans "Client" %}: </strong>{{ order.car.client_name }}</p>
-<p><strong>{% trans "Car" %}: </strong><a href="{% url 'car-details' order.car.id %}">{{ order.car.car_model }}
+<p><strong>{% trans "Car" %}: </strong><a href="{% url 'car_details' order.car.id %}">{{ order.car.car_model }}
     ({{ order.car.license_plate_no }}, {{ order.car.vin_code }})</a></p>
 {% if order.lines.all %}
     <div class="container" style="display: inline-block; padding-top: 20px; padding-left: 20px; width: 80%">
@@ -43,9 +43,9 @@
                     <td>
                         {% if order.user == user %}
                             <a class="btn btn-primary btn-sm mt-1 mb-1"
-                               href="{% url 'order-line-update' order.id line.id %}">{% trans "Edit" %}</a>
+                               href="{% url 'order_line_update' order.id line.id %}">{% trans "Edit" %}</a>
                             <a class="btn btn-danger btn-sm mt-1 mb-1"
-                               href="{% url 'order-line-delete' order.id line.id %}">{% trans "Delete" %}</a>
+                               href="{% url 'order_line_delete' order.id line.id %}">{% trans "Delete" %}</a>
                         {% endif %}
                     </td>
                 </tr>
@@ -61,7 +61,7 @@
 {% endif %}
 <br>
 {% if order.user == user %}
-    <a class="btn btn-primary btn-sm mt-1 mb-1" href="{% url 'order-line-new' order.id %}">
+    <a class="btn btn-primary btn-sm mt-1 mb-1" href="{% url 'order_line_new' order.id %}">
         {% trans "Add a service" %}
     </a>
 {% endif %}
