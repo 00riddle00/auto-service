@@ -33,8 +33,8 @@ wenv/
 
 # Environment files
 #
-# Python-dotenv makes the app load the configuration from a .env file when it is
-# present (e.g. in development environment)
+# Python-dotenv makes the app load the configuration from a .env file when it
+# is present (e.g. in development environment)
 .env
 # Additional .env.{...} files
 .env.*
@@ -73,8 +73,9 @@ instance/
 # Contains dictionary settings for CSpell (a code spell checker).
 cspell.json
 
-# PyCharm project-specific settings. It also contains user's local PyCharm configs
-# Reference: https://intellij-support.jetbrains.com/hc/en-us/articles/206544839.
+# PyCharm project-specific settings. Also contains user's local PyCharm configs
+# Reference:
+# https://intellij-support.jetbrains.com/hc/en-us/articles/206544839.
 .idea/
 
 # PyCharm plugins

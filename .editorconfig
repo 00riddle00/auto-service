@@ -128,7 +128,7 @@ indent_size = 4
 max_line_length = 79
 
 # YAML uses two spaces
-# Tabs may not be valid YAML (see https://yaml.org/spec/1.2/spec.html#id2777534)
+# Tabs may not be valid YAML (https://yaml.org/spec/1.2/spec.html#id2777534)
 [*.{yml,yaml}]
 indent_style = space
 indent_size = 2

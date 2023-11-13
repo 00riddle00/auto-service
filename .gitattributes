@@ -1,5 +1,6 @@
 # The .gitattributes file allows you to specify the files and paths attributes
-# that should be used by git when performing git actions, such as `git commit`, etc.
+# that should be used by git when performing git actions, such as `git commit`,
+# etc.
 #
 # In other words git automatically saves the file according to the attributes
 # specified, every time a file is created or saved.
