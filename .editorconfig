@@ -124,7 +124,7 @@ max_line_length = 79
 # ReStructuredText files
 [*.{rst,rst.txt}]
 indent_style = space
-indent_size = 2
+indent_size = 4
 max_line_length = 79
 
 # YAML uses two spaces
