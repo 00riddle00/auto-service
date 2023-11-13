@@ -4,9 +4,9 @@
 {% block title %}{% trans "Signed Out" %}{% endblock %}
 
 {% block content %}
-<div class="container" style="display: inline-block; width: 70%">
+  <div class="container" style="display: inline-block; width: 70%">
     <h5>{% trans "You have been successfully signed out" %}.</h5>
     <br>
     <a href="{% url 'login' %}">{% trans "Sign in again" %}</a>
-</div>
+  </div>
 {% endblock %}
