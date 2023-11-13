@@ -3,120 +3,106 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>{% block title %}{% endblock %}</title>
-    <!-- Favicon -->
-    <link rel="shortcut icon" href="{% static 'img/favicon.ico' %}" type="image/x-icon">
-    <link rel="icon" href="{% static 'img/favicon.ico' %}" type="image/x-icon">
-    <!-- Bootstrap core CSS, Bootstrap version 5.3.2 -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
-          integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
-    <!-- Additional CSS -->
-    <link rel="stylesheet" href="{% static 'css/main.css' %}">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{% block title %}{% endblock %}</title>
+  <!-- Favicon -->
+  <link rel="shortcut icon" href="{% static 'img/favicon.ico' %}" type="image/x-icon">
+  <link rel="icon" href="{% static 'img/favicon.ico' %}" type="image/x-icon">
+  <!-- Bootstrap core CSS, Bootstrap version 5.3.2 -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+  <!-- Additional CSS -->
+  <link rel="stylesheet" href="{% static 'css/main.css' %}">
 </head>
 <body>
 <!-- Navigation -->
 <nav class="navbar navbar-expand-lg bg-body-tertiary" data-bs-theme="light">
-    <div class="container-fluid">
-        <a class="navbar-brand" href="{% url 'index' %}">
-            <img src="{% static 'img/car_heaven_logo.png' %}" alt="Car Heaven {% trans 'Logo' %}"
-                 width="50" height="50">
-            Car Heaven
-        </a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
-                aria-controls="navbarSupportedContent" aria-expanded="false">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
-            <ul class="navbar-nav mb-2 mb-lg-0">
-                <li>
-                    <form action="{% url 'search_cars' %}" method="get">
-                        <label for="search_cars" hidden></label>
-                        <input type="search" id="search_cars" name="query" class="form-control"
-                               placeholder="{% trans "Search cars" %}">
-                    </form>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="{% url 'cars' %}">{% trans "Cars" %}</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="{% url 'services' %}">
-                        {% trans "Services" %}
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="{% url 'orders' %}">{% trans "Orders" %}</a>
-                </li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                        <img src="{% static 'img/lang.png' %}" alt="{% trans 'language-icon' %}" width="25" height="25">
-                    </a>
-                    <ul class="dropdown-menu">
-                        <li>
-                            <form action="{% url 'set_language' %}" method="post">
-                                {% csrf_token %}
-                                <input name="next" type="hidden" value="{{ redirect_to }}"/>
-                                <label for="language">
-                                    {% get_available_languages as LANGUAGES %}
-                                    {% get_current_language as LANGUAGE_CODE %}
-                                    <select class="form-select" size={{ LANGUAGES|length }} name="language"
-                                            id="language" onchange="this.form.submit()">
-                                        {% for lang in LANGUAGES %}
-                                            <option value="{{ lang.0 }}"
-                                                    {% if LANGUAGE_CODE == lang.0 %}selected="selected"{% endif %}>
-                                                {{ lang.1 }}
-                                            </option>
-                                        {% endfor %}
-                                    </select>
-                                </label>
-                            </form>
-                    </ul>
-                </li>
-                {% if user.is_authenticated %}
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
-                           aria-expanded="false">
-                            <img src="{{ user.profile.picture.url }}" alt="{% trans 'profile-picture' %}"
-                                 width="25" height="25">
-                            {{ user.get_username }}
-                        </a>
-                        <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="{% url 'profile' %}">{% trans "Your profile" %}</a></li>
-                            <li>
-                                <a class="dropdown-item" href="{% url 'user_orders' %}">
-                                    {% trans "Your orders" %}
-                                </a>
-                            </li>
-                            <li>
-                                <hr>
-                            </li>
-                            <li><a class="dropdown-item" href="{% url 'logout' %}">{% trans "Sign out" %}</a></li>
-                        </ul>
-                    </li>
-                {% else %}
-                    <li class="nav-item">
-                        <a class="nav-link" href="{% url 'login' %}">{% trans "Sign in" %}</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{% url 'register' %}">{% trans "Sign up" %}</a>
-                    </li>
-                {% endif %}
+  <div class="container-fluid">
+    <a class="navbar-brand" href="{% url 'index' %}">
+      <img src="{% static 'img/car_heaven_logo.png' %}" alt="Car Heaven {% trans 'Logo' %}" width="50" height="50">
+      Car Heaven
+    </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
+      <ul class="navbar-nav mb-2 mb-lg-0">
+        <li>
+          <form action="{% url 'search_cars' %}" method="get">
+            <label for="search_cars" hidden></label>
+            <input type="search" id="search_cars" name="query" class="form-control"
+                   placeholder="{% trans "Search cars" %}"/>
+          </form>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="{% url 'cars' %}">{% trans "Cars" %}</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="{% url 'services' %}">{% trans "Services" %}</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="{% url 'orders' %}">{% trans "Orders" %}</a>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            <img src="{% static 'img/lang.png' %}" alt="{% trans 'language-icon' %}" width="25" height="25">
+          </a>
+          <ul class="dropdown-menu">
+            <li>
+              <form action="{% url 'set_language' %}" method="post">
+                {% csrf_token %}
+                <input name="next" type="hidden" value="{{ redirect_to }}"/>
+                <label for="language">
+                  {% get_available_languages as LANGUAGES %}
+                  {% get_current_language as LANGUAGE_CODE %}
+                  <select class="form-select" size={{ LANGUAGES|length }} name="language" id="language"
+                          onchange="this.form.submit()">
+                    {% for lang in LANGUAGES %}
+                      <option value="{{ lang.0 }}" {% if LANGUAGE_CODE == lang.0 %}selected="selected"{% endif %}>
+                        {{ lang.1 }}
+                      </option>
+                    {% endfor %}
+                  </select>
+                </label>
+              </form>
+          </ul>
+        </li>
+        {% if user.is_authenticated %}
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              <img src="{{ user.profile.picture.url }}" alt="{% trans 'profile-picture' %}" width="25" height="25">
+              {{ user.get_username }}
+            </a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="{% url 'profile' %}">{% trans "Your profile" %}</a></li>
+              <li><a class="dropdown-item" href="{% url 'user_orders' %}">{% trans "Your orders" %}</a></li>
+              <li>
+                <hr>
+              </li>
+              <li><a class="dropdown-item" href="{% url 'logout' %}">{% trans "Sign out" %}</a></li>
             </ul>
-        </div>
+          </li>
+        {% else %}
+          <li class="nav-item"><a class="nav-link" href="{% url 'login' %}">{% trans "Sign in" %}</a></li>
+          <li class="nav-item"><a class="nav-link" href="{% url 'register' %}">{% trans "Sign up" %}</a></li>
+        {% endif %}
+      </ul>
     </div>
+  </div>
 </nav>
 <!-- Page Content -->
 <div class="container" style="padding-top: 30px">
-    {% if messages %}
-        {% for msg in messages %}
-            <div class="alert alert-{% if msg.tags == 'error' %}danger{% elif msg.tags in 'info,success' %}success{% endif %}"
-                 role="alert">
-                {{ msg|safe }}
-            </div>
-        {% endfor %}
-    {% endif %}
-    {% block content %}{% endblock %}
+  {% if messages %}
+    {% for msg in messages %}
+      <div class="alert alert-{% if msg.tags == 'error' %}danger{% elif msg.tags in 'info,success' %}success{% endif %}"
+           role="alert">
+        {{ msg|safe }}
+      </div>
+    {% endfor %}
+  {% endif %}
+  {% block content %}{% endblock %}
 </div>
 <!-- Scripts -->
 <!-- Bootstrap core JS (adding Popper and Bootstrap's JS separately) -->

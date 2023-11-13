@@ -4,34 +4,30 @@
 {% block title %}{% trans "Services" %}{% endblock %}
 
 {% block content %}
-<h2>{% trans "Services" %}</h2>
-<h5>{% trans "List of our services" %}:</h5>
-{% if services %}
+  <h2>{% trans "Services" %}</h2>
+  <h5>{% trans "List of our services" %}:</h5>
+  {% if services %}
     <ul>
-        {% for service in services %}
-            <li><a href="{% url 'service_details' service.id %}">{{ service.name }}</a> ({{ service.price }} €)</li>
-        {% endfor %}
+      {% for service in services %}
+        <li><a href="{% url 'service_details' service.id %}">{{ service.name }}</a> ({{ service.price }} €)</li>
+      {% endfor %}
     </ul>
-{% else %}
+  {% else %}
     <p>{% trans "There are no services at the moment" %}.</p>
-{% endif %}
-<div class="container">
+  {% endif %}
+  <div class="container">
     <nav>
-        {% if cars.has_other_pages %}
-            <ul class="pagination pagination-sm justify-content-center">
-                {% for i in cars.paginator.page_range %}
-                    {% if cars.number == i %}
-                        <li class="page-item active">
-                            <a class="page-link">{{ i }}</a>
-                        </li>
-                    {% else %}
-                        <li class="page-item">
-                            <a class="page-link" href="?page={{ i }}">{{ i }}</a>
-                        </li>
-                    {% endif %}
-                {% endfor %}
-            </ul>
-        {% endif %}
+      {% if cars.has_other_pages %}
+        <ul class="pagination pagination-sm justify-content-center">
+          {% for i in cars.paginator.page_range %}
+            {% if cars.number == i %}
+              <li class="page-item active"><a class="page-link">{{ i }}</a></li>
+            {% else %}
+              <li class="page-item"><a class="page-link" href="?page={{ i }}">{{ i }}</a></li>
+            {% endif %}
+          {% endfor %}
+        </ul>
+      {% endif %}
     </nav>
-</div>
+  </div>
 {% endblock %}

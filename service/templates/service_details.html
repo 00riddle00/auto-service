@@ -4,7 +4,7 @@
 {% block title %}{% trans "Service Details" %}{% endblock %}
 
 {% block content %}
-<h2>{{ service.name }}</h2>
-<p><strong>{% trans "Price" %}: </strong>{{ service.price }} €</p>
-<p><strong>{% trans "Description" %}: </strong>{{ service.description|safe }}</p>
+  <h2>{{ service.name }}</h2>
+  <p><strong>{% trans "Price" %}: </strong>{{ service.price }} €</p>
+  <p><strong>{% trans "Description" %}: </strong>{{ service.description|safe }}</p>
 {% endblock %}

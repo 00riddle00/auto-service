@@ -4,17 +4,15 @@
 {% block title %}{% trans "Car Search Results" %}{% endblock %}
 
 {% block content %}
-<h4>{% trans "Search results for" %} "{{ query }}":</h4>
-<br>
-{% if cars %}
+  <h4>{% trans "Search results for" %} "{{ query }}":</h4>
+  <br>
+  {% if cars %}
     <ul>
-        {% for car in cars %}
-            <li>
-                <a href="{% url 'car_details' car.id %}">{{ car }}</a>
-            </li>
-        {% endfor %}
+      {% for car in cars %}
+        <li><a href="{% url 'car_details' car.id %}">{{ car }}</a></li>
+      {% endfor %}
     </ul>
-{% else %}
+  {% else %}
     <p>{% trans "Oops. Nothing found." %}</p>
-{% endif %}
+  {% endif %}
 {% endblock %}

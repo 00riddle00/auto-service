@@ -5,30 +5,30 @@
 {% block title %}{% trans "Car Details" %}{% endblock %}
 
 {% block content %}
-<div class="container">
+  <div class="container">
     <img src="{{ car.photo.url }}" class="card-img-top" alt="{% trans 'car-photo' %}">
-</div>
-<br>
-<h2>{{ car.car_model.make }} {{ car.car_model.model }}</h2>
-<hr/>
-<p><strong>{% trans "Client" %}: </strong>{{ car.client_name }}</p>
-<p><strong>{% trans "License plate number" %}: </strong>{{ car.license_plate_no }}</p>
-<p><strong>{% trans "VIN code" %}: </strong>{{ car.vin_code }}</p>
-<p><strong>{% trans "Year" %}: </strong>{{ car.car_model.year }}</p>
-<p><strong>{% trans "Engine type" %}: </strong>{{ car.car_model.engine_type }}</p>
-<p><strong>{% trans "Fuel type" %}: </strong>{{ car.car_model.fuel_type }}</p>
-<p><strong>{% trans "Observations" %}: </strong>{{ car.observations }}</p>
-<p><strong>{% trans "Model description" %}: </strong>{{ car.car_model.description|safe }}</p>
-{% if car.orders.all %}
+  </div>
+  <br>
+  <h2>{{ car.car_model.make }} {{ car.car_model.model }}</h2>
+  <hr>
+  <p><strong>{% trans "Client" %}: </strong>{{ car.client_name }}</p>
+  <p><strong>{% trans "License plate number" %}: </strong>{{ car.license_plate_no }}</p>
+  <p><strong>{% trans "VIN code" %}: </strong>{{ car.vin_code }}</p>
+  <p><strong>{% trans "Year" %}: </strong>{{ car.car_model.year }}</p>
+  <p><strong>{% trans "Engine type" %}: </strong>{{ car.car_model.engine_type }}</p>
+  <p><strong>{% trans "Fuel type" %}: </strong>{{ car.car_model.fuel_type }}</p>
+  <p><strong>{% trans "Observations" %}: </strong>{{ car.observations }}</p>
+  <p><strong>{% trans "Model description" %}: </strong>{{ car.car_model.description|safe }}</p>
+  {% if car.orders.all %}
     <div class="container">
-        <hr>
-        <h4>{% trans "Orders" %}:</h4>
-        <ul>
-            {% for order in car.orders.all %}
-                <li><a href="{% url 'order_details' order.id %}">{{ order }}</a></li>
-            {% endfor %}
-        </ul>
-        <hr>
+      <hr>
+      <h4>{% trans "Orders" %}:</h4>
+      <ul>
+        {% for order in car.orders.all %}
+          <li><a href="{% url 'order_details' order.id %}">{{ order }}</a></li>
+        {% endfor %}
+      </ul>
+      <hr>
     </div>
-{% endif %}
+  {% endif %}
 {% endblock %}
