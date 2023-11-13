@@ -35,7 +35,7 @@ pip install -r requirements.txt
 pip install -r optional-requirements.txt
 ```
 
-This will add 
+This will add
 [black](https://github.com/psf/black) code formatter,
 [isort](https://github.com/PyCQA/isort) import formatter,
 [flake8](https://github.com/PyCQA/flake8) code linter and
@@ -45,9 +45,11 @@ This will add
 
 ##### [1] Set the environment variables:
 
-Create a `.env` file in the project's root directory and add DEVELOPMENT environment variables to this file.
+Create a `.env` file in the project's root directory and add DEVELOPMENT
+environment variables to this file.
 
 Example `.env` file:
+
 ```
 # DEVELOPMENT environment (.env ---> .env.dev)
 SECRET_KEY=6hNf<_a\M2Ldp/^|U;,mP?m3;Sm%DEV]$hjk;xgTp2ScD,w9TDCh}@,Ys$ttF,E^WA}
@@ -65,23 +67,29 @@ EMAIL_HOST_PASSWORD=cubgxyscokadfxzj
 
 ##### [2] Prepare the database:
 
-Since the SQLite database file is stored in this Git repo, if you would like to use a fresh new database,
-remove this file (`auto_service_dev.sqlite3`), and then run:
+Since the SQLite database file is stored in this Git repo, if you would like to
+use a fresh new database, remove this file (`auto_service_dev.sqlite3`), and
+then run:
+
 ```
 python manage.py makemigrations
 python manage.py migrate
 python manage.py createsuperuser
 ```
 
-If you would like to use the existing database, you can optionally create your own superuser:
+If you would like to use the existing database, you can optionally create your
+own superuser:
+
 ```
 python manage.py createsuperuser
 ```
 
-**Note:** After creating a superuser, you need to add a Profile to him/her in the Django Admin page
+**Note:** After creating a superuser, you need to add a Profile to him/her in
+the Django Admin page
 (for all other users, the Profile is created automatically on user creation).
 
 Credentials for the existing superuser in the database:
+
 * Username: `admin`
 * E-mail: tomasgiedraitis@gmail.com
 * Password: `rorosroros1`
@@ -90,22 +98,30 @@ The passwords for all other users in the database are also `rorosroros1`.
 
 ## Software dependencies
 
-[Django](https://www.djangoproject.com/) - the web framework for perfectionists with deadlines. Django aims to follow
+[Django](https://www.djangoproject.com/) - the web framework for perfectionists
+with deadlines. Django aims to follow
 Python’s ["batteries included" philosophy](https://docs.python.org/3/tutorial/stdlib.html#tut-batteries-included).
-It ships with a variety of extra, optional tools that solve common web development problems.
+It ships with a variety of extra, optional tools that solve common web
+development problems.
 
-[Boostrap v5](https://getbootstrap.com/) - powerful, extensible, and feature-packed frontend toolkit.
+[Boostrap v5](https://getbootstrap.com/) - powerful, extensible, and
+feature-packed frontend toolkit.
 
-[Django-crispy-forms](https://django-crispy-forms.readthedocs.io/) - forms have never been this crispy.
+[Django-crispy-forms](https://django-crispy-forms.readthedocs.io/) - forms have
+never been this crispy.
 
-[TinyMCE](https://www.tiny.cloud/) - adds a fully-featured, sleek and intuitive rich text editor to our app – in just
+[TinyMCE](https://www.tiny.cloud/) - adds a fully-featured, sleek and intuitive
+rich text editor to our app – in just
 a few lines of code.
 
-[Python-dotenv](https://pypi.org/project/python-dotenv/) - it reads key-value pairs from a `.env` file and can set 
-them as environment variables. It helps in the development of applications following the 
+[Python-dotenv](https://pypi.org/project/python-dotenv/) - it reads key-value
+pairs from a `.env` file and can set
+them as environment variables. It helps in the development of applications
+following the
 [12-factor](https://12factor.net/) principles.
 
-For the full list of software dependencies see [requirements.txt](requirements.txt) and 
+For the full list of software dependencies
+see [requirements.txt](requirements.txt) and
 [optional-requirements.txt](optional-requirements.txt).
 
 ## Latest releases
@@ -127,6 +143,7 @@ Copyright (c) 2023 Code Academy
 ## Deployment: preparing `.env` files
 
 #### DEV environment:
+
 ```
 # DEVELOPMENT environment (.env ---> .env.dev)
 SECRET_KEY=6hNf<_a\M2Ldp/^|U;,mP?m3;Sm%DEV]$hjk;xgTp2ScD,w9TDCh}@,Ys$ttF,E^WA}
@@ -143,6 +160,7 @@ EMAIL_HOST_PASSWORD=cubgxyscokadfxzj
 ```
 
 #### TEST environment (can be skipped):
+
 ```
 # TESTING environment (.env ---> .env.test)
 SECRET_KEY=6hNf<_a\AKLJS2Ldp/^|U;,mP?fjs3;Sm;asdaxTESTgTp2ScDwDh}@,Ys$ttF,E^WA}
@@ -159,6 +177,7 @@ EMAIL_HOST_PASSWORD=cubgxyscokadfxzj
 ```
 
 #### PRE-PROD-LOCAL environment (can be skipped):
+
 ```
 # PRE-PRODUCTION-LOCAL environment (.env ---> .env.pre-prod-local)
 SECRET_KEY=asd8<_aa8ajslds\M2Ldp/^|U;,mP?3;Sm%PROD]$hjk;xgTp2ScD,w9TDCh}@,Ys$ttFa8sA*,E^WA}
@@ -175,6 +194,7 @@ EMAIL_HOST_PASSWORD=cubgxyscokadfxzj
 ```
 
 #### PRE-PROD-REMOTE environment (can be skipped):
+
 ```
 # PRE-PRODUCTION-REMOTE environment (.env ---> .env.pre-prod-remote)
 SECRET_KEY=asd8<_aa8ajslds\M2Ldp/^|U;,mP?3;Sm%PROD]$hjk;xgTp2ScD,w9TDCh}@,Ys$ttFa8sA*,E^WA}
@@ -191,6 +211,7 @@ EMAIL_HOST_PASSWORD=cubgxyscokadfxzj
 ```
 
 #### PROD environment
+
 ```
 # PRODUCTION environment (.env ---> .env.prod)
 SECRET_KEY=asd8<_aa8ajslds\M2Ldp/^|U;,mP?3;Sm%PROD]$hjk;xgTp2ScD,w9TDCh}@,Ys$ttFa8sA*,E^WA}
@@ -208,13 +229,18 @@ EMAIL_HOST_PASSWORD=cubgxyscokadfxzj
 
 ## Deployment with Apache (2023-11-10)
 
-Let's say we have root access to an **Ubuntu 22.04 LTS** server with an IP **104.248.250.188**. We will bypass the creation of user and use **root** account for everything (although this is a bad practice!)
+Let's say we have root access to an **Ubuntu 22.04 LTS** server with an IP *
+*104.248.250.188**. We will bypass the creation of user and use **root**
+account for everything (although this is a bad practice!)
 
 `ssh root@104.248.250.188`
 
-`sudo apt update && sudo apt upgrade` (After the upgrade, it will be suggested that a new kernel version could be booted, the prompt will appear on which services to restart - select default options and select "OK").
+`sudo apt update && sudo apt upgrade` (After the upgrade, it will be suggested
+that a new kernel version could be booted, the prompt will appear on which
+services to restart - select default options and select "OK").
 
-`sudo reboot` (Needed for booting a new kernel version. You will be logged out of the server. Wait a little bit, and connect to the server again).
+`sudo reboot` (Needed for booting a new kernel version. You will be logged out
+of the server. Wait a little bit, and connect to the server again).
 
 `ssh root@104.248.250.188`
 
@@ -240,9 +266,11 @@ Let's say we have root access to an **Ubuntu 22.04 LTS** server with an IP **104
 
 `pip install -r requirements.txt`
 
-`sudo nano /var/www/auto_service/.env` (add PRODUCTION environment variables to this file).
+`sudo nano /var/www/auto_service/.env` (add PRODUCTION environment variables to
+this file).
 
-`sudo rm auto_service.sqlite3` (If you have a database file in Git repo and would like to remove it)
+`sudo rm auto_service.sqlite3` (If you have a database file in Git repo and
+would like to remove it)
 
 `python manage.py makemigrations`
 
