@@ -14,9 +14,7 @@ class TestServiceListView(TestCase):
     @classmethod
     def setUpTestData(cls):
         for service_id in range(1, 11):
-            Service.objects.create(
-                name="Tire mounting and wheel balancing", price=45
-            )
+            Service.objects.create(name="Tire mounting and wheel balancing", price=45)
 
     def test_view_url_exists_at_desired_location(self):
         response = self.client.get("/services/")
@@ -68,18 +66,14 @@ class TestUserOrderListView(TestCase):
         )
 
     def test_logged_in_uses_correct_template(self):
-        self.client.login(
-            username="john_doe", password="VerySecretPassword123"
-        )
+        self.client.login(username="john_doe", password="VerySecretPassword123")
         response = self.client.get(reverse("user_orders"))
         self.assertEqual(response.status_code, 200)
         self.assertEqual(str(response.context["user"]), "john_doe")
         self.assertTemplateUsed(response, template_name="user_orders.html")
 
     def test_user_order_in_list(self):
-        self.client.login(
-            username="john_doe", password="VerySecretPassword123"
-        )
+        self.client.login(username="john_doe", password="VerySecretPassword123")
         response = self.client.get(reverse("user_orders"))
         self.assertEqual(str(response.context["user"]), "john_doe")
         self.assertTrue("user_orders" in response.context)

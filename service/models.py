@@ -15,8 +15,8 @@ class Car(models.Model):
         verbose_name=_("License plate number"),
         max_length=16,
         help_text=_(
-            "Enter car's licence plate number (it need not be unique, "
-            "since cars can be from different countries)"
+            "Enter car's licence plate number (it need not be unique, since cars can "
+            "be from different countries)"
         ),
     )
     vin_code = models.CharField(
@@ -32,9 +32,7 @@ class Car(models.Model):
         on_delete=models.SET_NULL,
         null=True,
     )
-    client_name = models.CharField(
-        verbose_name=_("Client's name"), max_length=64
-    )
+    client_name = models.CharField(verbose_name=_("Client's name"), max_length=64)
     observations = models.TextField(
         verbose_name=_("Observations"), max_length=2048, default=""
     )
@@ -68,13 +66,9 @@ class CarModel(models.Model):
     make = models.CharField(verbose_name=_("Make"), max_length=64)
     model = models.CharField(verbose_name=_("Model"), max_length=64)
     year = models.IntegerField(verbose_name=_("Year"))
-    engine_type = models.CharField(
-        verbose_name=_("Engine type"), max_length=64
-    )
+    engine_type = models.CharField(verbose_name=_("Engine type"), max_length=64)
     fuel_type = models.CharField(verbose_name=_("Fuel type"), max_length=64)
-    description = HTMLField(
-        verbose_name=_("Description"), max_length=4096, default=""
-    )
+    description = HTMLField(verbose_name=_("Description"), max_length=4096, default="")
 
     def __str__(self):
         return (
@@ -90,9 +84,7 @@ class CarModel(models.Model):
 class Service(models.Model):
     name = models.CharField(verbose_name=_("Name"), max_length=128)
     price = models.FloatField(verbose_name=_("Price"))
-    description = HTMLField(
-        verbose_name=_("Description"), max_length=4096, default=""
-    )
+    description = HTMLField(verbose_name=_("Description"), max_length=4096, default="")
 
     def __str__(self):
         return f"{self.name} ({self.price} €)"
@@ -128,9 +120,7 @@ class Order(models.Model):
         blank=True,
     )
 
-    deadline = models.DateTimeField(
-        verbose_name=_("Deadline"), null=True, blank=True
-    )
+    deadline = models.DateTimeField(verbose_name=_("Deadline"), null=True, blank=True)
 
     user = models.ForeignKey(
         to=User,

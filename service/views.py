@@ -64,23 +64,18 @@ def cars(request):
     paginator = Paginator(Car.objects.all(), per_page=5)
     page_number = request.GET.get("page")
     paged_cars = paginator.get_page(page_number)
-    return render(
-        request, template_name="cars.html", context={"cars": paged_cars}
-    )
+    return render(request, template_name="cars.html", context={"cars": paged_cars})
 
 
 def car(request, pk):
     car_ = get_object_or_404(Car, pk=pk)
-    return render(
-        request, template_name="car_details.html", context={"car": car_}
-    )
+    return render(request, template_name="car_details.html", context={"car": car_})
 
 
 def search(request):
     query = request.GET.get("query")
     search_results = Car.objects.filter(
-        Q(car_model__make__icontains=query)
-        | Q(car_model__model__icontains=query)
+        Q(car_model__make__icontains=query) | Q(car_model__model__icontains=query)
     )
     return render(
         request,
@@ -145,9 +140,7 @@ class UserOrderListView(LoginRequiredMixin, generic.ListView):
     template_name = "user_orders.html"
 
     def get_queryset(self):
-        return Order.objects.filter(user=self.request.user).order_by(
-            "deadline"
-        )
+        return Order.objects.filter(user=self.request.user).order_by("deadline")
 
 
 class OrderCreateView(LoginRequiredMixin, generic.CreateView):
@@ -162,9 +155,7 @@ class OrderCreateView(LoginRequiredMixin, generic.CreateView):
         return super().form_valid(form)
 
 
-class OrderUpdateView(
-    LoginRequiredMixin, UserPassesTestMixin, generic.UpdateView
-):
+class OrderUpdateView(LoginRequiredMixin, UserPassesTestMixin, generic.UpdateView):
     model = Order
     form_class = OrderForm
     template_name = "order_form.html"
@@ -178,14 +169,10 @@ class OrderUpdateView(
         return self.get_object().user == self.request.user
 
     def get_success_url(self):
-        return reverse(
-            viewname="order_details", kwargs={"pk": self.kwargs["pk"]}
-        )
+        return reverse(viewname="order_details", kwargs={"pk": self.kwargs["pk"]})
 
 
-class OrderDeleteView(
-    LoginRequiredMixin, UserPassesTestMixin, generic.DeleteView
-):
+class OrderDeleteView(LoginRequiredMixin, UserPassesTestMixin, generic.DeleteView):
     model = Order
     success_url = "/my-orders/"
     context_object_name = "order"
@@ -195,9 +182,7 @@ class OrderDeleteView(
         return self.get_object().user == self.request.user
 
 
-class OrderLineCreateView(
-    LoginRequiredMixin, UserPassesTestMixin, generic.CreateView
-):
+class OrderLineCreateView(LoginRequiredMixin, UserPassesTestMixin, generic.CreateView):
     model = OrderLine
     fields = ["service", "quantity"]
     template_name = "order_line_form.html"
@@ -212,14 +197,10 @@ class OrderLineCreateView(
         return order.user == self.request.user
 
     def get_success_url(self):
-        return reverse(
-            viewname="order_details", kwargs={"pk": self.kwargs["pk"]}
-        )
+        return reverse(viewname="order_details", kwargs={"pk": self.kwargs["pk"]})
 
 
-class OrderLineUpdateView(
-    LoginRequiredMixin, UserPassesTestMixin, generic.UpdateView
-):
+class OrderLineUpdateView(LoginRequiredMixin, UserPassesTestMixin, generic.UpdateView):
     model = OrderLine
     fields = ["service", "quantity"]
     template_name = "order_line_form.html"
@@ -233,14 +214,10 @@ class OrderLineUpdateView(
         return self.get_object().order.user == self.request.user
 
     def get_success_url(self):
-        return reverse(
-            viewname="order_details", kwargs={"pk": self.kwargs["order_pk"]}
-        )
+        return reverse(viewname="order_details", kwargs={"pk": self.kwargs["order_pk"]})
 
 
-class OrderLineDeleteView(
-    LoginRequiredMixin, UserPassesTestMixin, generic.DeleteView
-):
+class OrderLineDeleteView(LoginRequiredMixin, UserPassesTestMixin, generic.DeleteView):
     model = OrderLine
     context_object_name = "order_line"
     template_name = "order_line_delete.html"
@@ -249,9 +226,7 @@ class OrderLineDeleteView(
         return self.get_object().order.user == self.request.user
 
     def get_success_url(self):
-        return reverse(
-            viewname="order_details", kwargs={"pk": self.kwargs["order_pk"]}
-        )
+        return reverse(viewname="order_details", kwargs={"pk": self.kwargs["order_pk"]})
 
 
 @csrf_protect
@@ -277,8 +252,8 @@ def register(request):
             messages.error(
                 request,
                 message=_(
-                    "Password must be minimum 8 characters long, contain at "
-                    "least one letter and one number."
+                    "Password must be minimum 8 characters long, contain at least one "
+                    "letter and one number."
                 ),
             )
             return redirect("register")
@@ -286,30 +261,28 @@ def register(request):
         elif User.objects.filter(username=username).exists():
             messages.error(
                 request,
-                message=_(
-                    "User with username {username_bold} already exists!"
-                ).format(username_bold=f"<strong>{username}</strong>"),
+                message=_("User with username {username_bold} already exists!").format(
+                    username_bold=f"<strong>{username}</strong>"
+                ),
             )
             return redirect("register")
         # Check if there is already a user with this email.
         elif User.objects.filter(email=email).exists():
             messages.error(
                 request,
-                message=_(
-                    "User with email {email_bold} already exists!"
-                ).format(email_bold=f"<strong>{email}</strong>"),
+                message=_("User with email {email_bold} already exists!").format(
+                    email_bold=f"<strong>{email}</strong>"
+                ),
             )
             return redirect("register")
         # If everything is ok, create new user.
         else:
-            User.objects.create_user(
-                username=username, email=email, password=password
-            )
+            User.objects.create_user(username=username, email=email, password=password)
             messages.info(
                 request,
-                message=_(
-                    "User {username_bold} successfully registered!"
-                ).format(username_bold=f"<strong>{username}</strong>"),
+                message=_("User {username_bold} successfully registered!").format(
+                    username_bold=f"<strong>{username}</strong>"
+                ),
             )
             return redirect("register_complete")
     return render(request, template_name="registration/register.html")

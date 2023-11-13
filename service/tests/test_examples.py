@@ -5,16 +5,15 @@ class YourTestClass(TestCase):
     @classmethod
     def setUpTestData(cls):
         print(
-            "\nMethod setUpTestData is run once at the beginning of the test "
-            "case for class level setup, it creates unmodified data for all "
-            "remaining test methods."
+            "\nMethod setUpTestData is run once at the beginning of the test case for "
+            "class level setup, it creates unmodified data for all remaining test "
+            "methods."
         )
         pass
 
     def setUp(self):
         print(
-            "\nMethod setUp is run once before every test method to setup "
-            "clean data."
+            "\nMethod setUp is run once before every test method to setup clean data."
         )
         pass
 

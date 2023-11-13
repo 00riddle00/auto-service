@@ -26,7 +26,6 @@ if os.path.exists(dotenv_path):
     # take environment variables from .env file
     load_dotenv(dotenv_path)
 
-
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
 
@@ -45,9 +44,9 @@ DEBUG = os.environ.get("DEBUG", default="False").lower() in [
     "1",
 ]
 
-ALLOWED_HOSTS = os.environ.get(
-    "ALLOWED_HOSTS", default="localhost,127.0.0.1"
-).split(",")
+ALLOWED_HOSTS = os.environ.get("ALLOWED_HOSTS", default="localhost,127.0.0.1").split(
+    ","
+)
 
 # Application definition
 
@@ -103,11 +102,9 @@ WSGI_APPLICATION = "auto_service.wsgi.application"
 DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.sqlite3",
-        "NAME": BASE_DIR
-        / os.environ.get("DB_NAME", default="auto_service.sqlite3"),
+        "NAME": BASE_DIR / os.environ.get("DB_NAME", default="auto_service.sqlite3"),
     }
 }
-
 
 # Password validation
 # https://docs.djangoproject.com/en/4.2/ref/settings/#auth-password-validators
@@ -118,16 +115,13 @@ AUTH_PASSWORD_VALIDATORS = [
         ".UserAttributeSimilarityValidator",
     },
     {
-        "NAME": "django.contrib.auth.password_validation"
-        ".MinimumLengthValidator",
+        "NAME": "django.contrib.auth.password_validation" ".MinimumLengthValidator",
     },
     {
-        "NAME": "django.contrib.auth.password_validation"
-        ".CommonPasswordValidator",
+        "NAME": "django.contrib.auth.password_validation" ".CommonPasswordValidator",
     },
     {
-        "NAME": "django.contrib.auth.password_validation"
-        ".NumericPasswordValidator",
+        "NAME": "django.contrib.auth.password_validation" ".NumericPasswordValidator",
     },
 ]
 
@@ -180,9 +174,7 @@ LOGIN_REDIRECT_URL = "/"
 EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
 EMAIL_HOST = os.environ.get("EMAIL_HOST", default="smtp.gmail.com")
 EMAIL_PORT = (
-    int(os.environ.get("EMAIL_PORT"))
-    if os.environ.get("EMAIL_PORT").isdigit()
-    else 587
+    int(os.environ.get("EMAIL_PORT")) if os.environ.get("EMAIL_PORT").isdigit() else 587
 )
 EMAIL_USE_TLS = os.environ.get("EMAIL_USE_TLS", default="true").lower() in [
     "true",
@@ -190,9 +182,7 @@ EMAIL_USE_TLS = os.environ.get("EMAIL_USE_TLS", default="true").lower() in [
     "yes",
     "1",
 ]
-EMAIL_HOST_USER = os.environ.get(
-    "EMAIL_HOST_USER", default="admin@example.com"
-)
+EMAIL_HOST_USER = os.environ.get("EMAIL_HOST_USER", default="admin@example.com")
 EMAIL_HOST_PASSWORD = os.environ.get("EMAIL_HOST_PASSWORD", default="password")
 
 # TinyMCE for WYSIWYG editing
