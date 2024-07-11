@@ -122,8 +122,6 @@ Table service_ordercomment {
 
 // --------------- Relationships ---------------
 
-Ref: service_order.id < service_ordercomment.order_id // one-to-many
-
 // "auth_group_permissions" association table realizes a many-to-many
 // relationship between the tables "auth_group" and "auth_permission".
 // Many-to-many relationship is realized via two one-to-many
@@ -160,3 +158,5 @@ Ref: service_car.id < service_order.car_id // one-to-many
 // relationships:
 Ref: service_order.id < service_orderline.order_id // one-to-many
 Ref: service_service.id < service_orderline.service_id // one-to-many
+
+Ref: service_order.id < service_ordercomment.order_id // one-to-many
