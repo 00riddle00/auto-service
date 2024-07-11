@@ -1,0 +1,162 @@
+// Use DBML to define your database structure
+// Diagram builder: https://dbdiagram.io/
+// Docs: https://dbml.dbdiagram.io/docs
+
+Table auth_group {
+  id integer [primary key]
+  name varchar
+}
+
+Table auth_permission {
+  id integer [primary key]
+  content_type_id integer
+  codename varchar
+  name varchar
+}
+
+// "auth_group_permissions" association table realizes a many-to-many
+// relationship between the tables "auth_group" and "auth_permission".
+Table auth_group_permissions {
+  id integer [primary key]
+  group_id integer
+  permission_id integer
+}
+
+Table auth_user {
+  id integer [primary key]
+  password varchar
+  last_login datetime
+  is_superuser bool
+  username varchar
+  last_name varchar
+  email varchar
+  is_staff bool
+  is_active bool
+  date_joined varchar
+  first_name varchar
+}
+
+// "auth_user_groups" association table realizes a many-to-many
+// relationship between the tables "auth_user" and "auth_group".
+Table auth_user_groups {
+  id integer [primary key]
+  user_id integer
+  group_id integer
+}
+
+// "auth_user_user_permissions" association table realizes a
+// many-to-many relationship between the tables "auth_user" and
+Table auth_user_user_permissions {
+  id integer [primary key]
+  user_id integer
+  permission_id integer
+}
+
+Table service_profile {
+  id integer [primary key]
+  picture varchar
+  user_id integer
+}
+
+Table service_car {
+  id integer [primary key]
+  license_plate_no varchar
+  vin_code varchar
+  client_name varchar
+  car_model_id integer
+  observations varchar
+  photo varchar
+}
+
+Table service_carmodel {
+  id integer [primary key]
+  make varchar
+  model varchar
+  year integer
+  engine_type varchar
+  fuel_type varchar
+  description varchar
+}
+
+Table service_service {
+  id integer [primary key]
+  name varchar
+  price float
+  description varchar
+}
+
+enum ORDER_STATUS {
+  N [note: "New"]
+  D [note: "Declined"]
+  A [note: "Accepted"]
+  P [note: "In Progress"]
+  C [note: "Completed"]
+}
+
+Table service_order {
+  id integer [primary key]
+  date datetime
+  car_id integer
+  status ORDER_STATUS
+  user_id integer
+  deadline datetime
+}
+
+// "service_orderline" association table realizes a many-to-many
+// relationship between the tables "service_order" and
+// "service_service".
+Table service_orderline {
+  id integer [primary key]
+  order_id integer
+  service_id integer
+  quantity integer
+}
+
+Table service_ordercomment {
+  id integer [primary key]
+  date varchar
+  text varchar
+  author_id integer
+  order_id integer
+}
+
+// --------------- Relationships ---------------
+
+Ref: service_order.id < service_ordercomment.order_id // one-to-many
+
+// "auth_group_permissions" association table realizes a many-to-many
+// relationship between the tables "auth_group" and "auth_permission".
+// Many-to-many relationship is realized via two one-to-many
+// relationships:
+Ref: auth_group.id < auth_group_permissions.group_id // one-to-many
+Ref: auth_permission.id < auth_group_permissions.permission_id // one-to-many
+
+// "auth_user_groups" association table realizes a many-to-many
+// relationship between the tables "auth_user" and "auth_group".
+// Many-to-many relationship is realized via two one-to-many
+// relationships:
+Ref: auth_user.id < auth_user_groups.user_id // one-to-many
+Ref: auth_group.id < auth_user_groups.group_id // one-to-many
+
+// "auth_user_user_permissions" association table realizes a
+// many-to-many relationship between the tables "auth_user" and
+// "auth_permission".
+// Many-to-many relationship is realized via two one-to-many
+// relationships:
+Ref: auth_user.id < auth_user_user_permissions.user_id // one-to-many
+Ref: auth_permission.id < auth_user_user_permissions.permission_id // one-to-many
+
+Ref: auth_user.id - service_profile.user_id // one-to-one
+
+Ref: service_carmodel.id < service_car.car_model_id // one-to-many
+
+Ref: auth_user.id < service_order.user_id // one-to-many
+Ref: service_car.id < service_order.car_id // one-to-many
+
+// "service_orderline" association table realizes a many-to-many
+// relationship between the tables "service_order" and
+// "service_service".
+// Many-to-many relationship is realized via two one-to-many
+// relationships:
+Ref: service_order.id < service_orderline.order_id // one-to-many
+Ref: service_service.id < service_orderline.service_id // one-to-many
