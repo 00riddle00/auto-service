@@ -7,7 +7,7 @@
 #### Create virtual environment in project's root directory:
 
 ```Shell
-python -m venv venv
+python3.11 -m venv venv
 ```
 
 #### Activate the virtual environment:
@@ -258,7 +258,7 @@ of the server. Wait a little bit, and connect to the server again).
 
 `sudo apt install python3-pip python3-venv`
 
-`python3 -m venv auto_service/venv`
+`python3.11 -m venv auto_service/venv`
 
 `cd auto_service/`
 
